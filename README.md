@@ -1,8 +1,8 @@
 # Estudos Kubernetes
 
   - [1) Ferramentas K8S](#1-ferramentas-k8s)
-    - [1.1) Provisionando Cluster](#1.1-provisionando-cluster)
-    - [1.2) Deploy de Manifestos](#1.2-deploy-de-manifestos)
+    - [1.1) Provisionando Cluster](#11-provisionando-cluster)
+    - [1.2) Deploy de Manifestos](#12-deploy-de-manifestos)
 
 ## 1) Ferramentas K8S
 
