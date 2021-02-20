@@ -10,10 +10,10 @@
 
 ## 1.1) Provisionando Cluster com Kops
   
-  * ### [Kops](https://github.com/PauloRogerio/planejamento-datacenter/blob/master/gitlab/gitlab.md)
+  * ### [Kops](https://github.com/PauloRogerio/kubernetes/blob/main/kops/kops.md)
 
 ### 1.2) Deploy de Manifestos usando Helm
 
 
-* ### [Helm](https://github.com/PauloRogerio/planejamento-datacenter/blob/master/gitlab-runner/gitlab-runner.md)
+* ### [Helm](https://github.com/PauloRogerio/kubernetes/blob/main/helm/helm.md)
 
