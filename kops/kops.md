@@ -179,8 +179,33 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 
 ## 4) Kops Provisionando Cluster
 
+  O kops aceita vários parâmetros na hora da criação do cluster. Os valores passados foi para atender a minha necessidade, como é um ambiente de estudos utilizei o mínimo de recursos necessários.
+
+```yaml
+  Zona AWS                        => us-east-1 ( Norte da Virgínia )
+  EC2 Master                      => t3.medium
+  EC2 Worker                      => t2.micro
+  Quantidade de Instâncias Master => 1
+  Quantidade de Instâncias Worker => 2 
+```
+
 ### 4.1) Criando Cluster
+
+```bash
+[root@kops-server ~]#
+kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2
+[root@kops-server ~]# kops create secret --name=$NAME sshpublickey admin -i ~/.ssh/id_rsa.pub
+[root@kops-server ~]# kops update cluster $NAME --yes
+```
+
 ### 4.2) Validando Cluster
+
+```bash
+[root@kops-server ~]# kops export kubecfg msginova.com --admin
+[root@kops-server ~]# kops get cluster
+[root@kops-server ~]# kops validate cluster
+[root@kops-server ~]# kubectl get nodes
+```
 ### 4.3) Primeiro Deployment
 ### 4.4) LoadBalancer Acesso Externo
 
