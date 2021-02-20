@@ -51,13 +51,32 @@ mem : 1
 
 ![alt text](img/6-setup.png "Permissões")
 
+  Vincule as permissões recém criadas na instância desejada.
+
+![alt text](img/7-setup.png "Permissões")
+
 ### 1.4) Instalando AWS Client
 
   Conecte na instância via SSH para podermos prepara-la. Após conectar vire root.
 
 ![alt text](img/2-setup.png "SSH")
 
+```bash
+[root@kops-server ~]# mkdir -p /opt/sources
+[root@kops-server ~]# curl -fsSL -o /opt/sources/awscli-bundle.zip https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+[root@kops-server ~]# yum update && yum install unzip python -y
+[root@kops-server ~]# cd /opt/sources && unzip -q awscli-bundle.zip && cd awscli-bundle && ./install -i /opt/apps/aws -b /opt/apps/aws/bin
+[root@kops-server ~]#  echo "/opt/apps/aws/lib/python2.7" > /etc/ld.so.conf.d/aws.conf && ldconfig
+[root@kops-server ~]# aws ls
+```
+
+Uma vez instalado, agora é necessário configurar a instância para interagir com AWS.
+
+*OBS.:* Os campos **AWS Access Key ID** e **AWS Secret Access Key** não devem ser preenchido, pois já fizemos o vínculo em um passo anterior.
+
+
 ### 1.5) Instalando Kubectl
+
 
 ### 1.6) Instalando Kops
 
