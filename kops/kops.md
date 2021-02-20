@@ -9,7 +9,8 @@
     - [1.6) Instalando Kops](#16-instalando-kops)
     - [1.7) Par de Chaves](#17-par-de-chaves)            
   - [2) Route53](#2-route53)
-      - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)            
+      - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)
+      - [2.2) Configurar DNS](#22-configurar-dns)                  
 
 ## 1) Preparando Host Compartilhado
 
@@ -128,12 +129,29 @@ The key's randomart image is:
 
 ## 2) Route53 
 
-O kops é orientado por rotas baseado em nomes, por isso é interessante criar um domínio próprio antes de iniciar o cluster. A partir da versão 1.16 é possível criar um cluster usando um DNS genérico **k8s.local**.
+  O kops é orientado por rotas baseado em nomes, por isso é interessante criar um domínio próprio antes de iniciar o cluster. A partir da versão 1.16 é possível criar um cluster usando um DNS genérico **k8s.local**.
 
-O melhor cenário é criar um **sub-domínio** para receber as entradas DNS. Nesse documento vou usar um domínio real chamado *msginova.com*. Não estarei usando sub-domínio pois até o momento da criação desse documento meu DNS estava sob-responsabilidade da Goddady.
+  O melhor cenário é criar um **sub-domínio** para receber as entradas DNS. Nesse documento vou usar um domínio real chamado *msginova.com*. Não estarei usando sub-domínio pois até o momento da criação desse documento meu DNS estava sob-responsabilidade da Goddady.
 
-Para fazer uso do sub-domínio é necessário migrar o gerenciamento do *DNS* para *AWS*. 
+  Para fazer uso do sub-domínio é necessário migrar o gerenciamento do *DNS* para *AWS*. 
 
 ### 2.1) DNS Sub-Domínios
 
-Uma vez que o sub-domino estiver configurado, o layout desejado seria esse:
+  Uma vez que o sub-domino estiver configurado, o layout desejado seria esse:
+
+```yaml
+Dominio Principal    => msginova.com
+Sub-Dominio-K8S      => k8s.msginova.com
+
+Cluster Produção     => production.k8s.msginova.com
+Cluster Staging      => staging.k8s.msginova.com
+Cluster Homologacao  => homologacao.k8s.msginova.com
+```
+
+### 2.2) Configurar DNS
+
+  Para o laboratório vamos usar um **DNS Vádido** *msginova.com*. No painel AWS busque por *Route53*, depois crie uma Zona do tipo *Público*.
+
+![alt text](img/1-route53.png "Route 53")  
+
+ 
