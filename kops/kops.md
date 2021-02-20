@@ -12,6 +12,7 @@
     - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)
     - [2.2) Configurar DNS](#22-configurar-dns)                  
   - [3) Buckets S3](#3-buckets-s3)
+    - [3.1) Criando um Bucket](#31-criando-um-bucket) 
   - [4) Kops Provisionando Cluster](#4-kops-provisionando-cluster)
     - [4.1) Criando Cluster](#41-criando-cluster)
     - [4.2) Validando Cluster](#42-criando-cluster)
@@ -165,6 +166,8 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
  ## 3) Buckets S3
 
   Todas as configurações do cluster kubernetes gerenciado pelo kops ficam armazenados no *S3*, portanto devemos configurar esse serviço antes de iniciarmos os trabalhos com o kops.
+
+### 3.1) Criando um Bucket
 
 ```bash
 [root@kops-server ~]# export KOPS_STATE_STORE=s3://k8s-dev.msginova.com
