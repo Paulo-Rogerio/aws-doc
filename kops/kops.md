@@ -9,7 +9,7 @@
     - [1.6) Instalando Kops](#16-instalando-kops)
     - [1.7) Par de Chaves](#17-par-de-chaves)            
   - [2) Route53](#2-route53)
-      - [2.1) DNS Sub-Domínios](#21-dns-sub-dominios)            
+      - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)            
 
 ## 1) Preparando Host Compartilhado
 
