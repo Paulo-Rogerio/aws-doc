@@ -74,12 +74,55 @@ Uma vez instalado, agora é necessário configurar a instância para interagir c
 
 *OBS.:* Os campos **AWS Access Key ID** e **AWS Secret Access Key** não devem ser preenchido, pois já fizemos o vínculo em um passo anterior.
 
+```bash
+[root@kops-server ~]# aws configure
+AWS Access Key ID [None]:
+AWS Secret Access Key [None]:
+Default region name [None]: us-east-1
+Default output format [json]: json
+```
 
 ### 1.5) Instalando Kubectl
 
+```bash
+[root@kops-server ~]# curl -fsSL -o /opt/sources/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+[root@kops-server ~]# chmod +x /opt/sources/kubectl
+[root@kops-server ~]# mv /opt/sources/kubectl /usr/local/bin/kubectl
+[root@kops-server ~]# echo "export PATH=$PATH:/usr/local/bin/" > /etc/profile.d/kubernets.sh && source /etc/profile
+```
 
 ### 1.6) Instalando Kops
 
+```bash
+[root@kops-server ~]# curl -fsSL -o /opt/sources/kops-linux-amd64 https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+[root@kops-server ~]# chmod +x /opt/sources/kops-linux-amd64
+[root@kops-server ~]# mv /opt/sources/kops-linux-amd64 /usr/local/bin/kops
+```
 ### 1.7) Par de Chaves
+
+```bash
+[root@kops-server ~]# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:UgIAhdy6IXxzddeh0WZCVU7YGPDxcMF797CiRY2Zi/RA root@kops-server
+The key's randomart image is:
++---[RSA 2048]----+
+|&@@OB.           |
+|=OoE X           |
+|..= @ * .        |
+| o @ o =         |
+|. = * = S        |
+|   . + o         |
+|    .            |
+|                 |
+|                 |
++----[SHA256]-----+
+```
 
 ## 2) Route53 DNS Server
