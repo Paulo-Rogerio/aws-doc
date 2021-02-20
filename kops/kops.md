@@ -31,11 +31,31 @@ mem : 1
 
   Para que o kops possa interagir com os serviços da **AWS**, será necessário conceder previlégios. Nada impede de possuir uma conta de usuário *IAM* e especificar dentro da máquina **KOPS** as credencias necessárias ( **AWS Access Key ID** / **AWS Secret Access Key** ).
   
-  Nessa documentação iremos adotar uma outra abordagem, vamos criar uma **ROLE** e anexar essa role na instância, assim não há necessidade de 
+  Nessa documentação iremos adotar uma outra abordagem, vamos criar uma **ROLE** e anexar essa role na instância.
 
 ### 1.3) Criando Roles
 
+  No painel esquerdo localize o menu **Funções**
+
+![alt text](img/3-setup.png "Funções")
+
+  Selecione a opção EC2
+
+![alt text](img/4-setup.png "Funções")
+
+  Aplique todas as permissões abaixo na Role.
+
+![alt text](img/5-setup.png "Permissões")
+
+  No menu de buscas, localize sua instâncias, mais precisamente a **EC2** que está rodando o **kops-manager**. Após localiza-la, vamos atribui-la a essa função recém criada.
+
+![alt text](img/6-setup.png "Permissões")
+
 ### 1.4) Instalando AWS Client
+
+  Conecte na instância via SSH para podermos prepara-la. Após conectar vire root.
+
+![alt text](img/2-setup.png "SSH")
 
 ### 1.5) Instalando Kubectl
 
