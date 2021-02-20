@@ -9,8 +9,16 @@
     - [1.6) Instalando Kops](#16-instalando-kops)
     - [1.7) Par de Chaves](#17-par-de-chaves)            
   - [2) Route53](#2-route53)
-      - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)
-      - [2.2) Configurar DNS](#22-configurar-dns)                  
+    - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)
+    - [2.2) Configurar DNS](#22-configurar-dns)                  
+  - [3) Buckets S3](#3-buckets-s3)
+  - [4) Kops Provisionando Cluster](#4-kops-provisionando-cluster)
+    - [4.1) Criando Cluster](#41-criando-cluster)
+    - [4.2) Validando Cluster](#42-criando-cluster)
+    - [4.3) Primeiro Deployment](#43-primeiro-deployment)
+    - [4.4) LoadBalancer Acesso Externo](#44-loadbalancer-acesso-externo)
+  - [5) Manipulando Orquestrador](#5-manipulando-orquestrador)
+    - [5.1) Aumentando Quantidade de Workers](#5.1-aumentando-quantidade-de-workers)
 
 ## 1) Preparando Host Compartilhado
 
@@ -154,4 +162,25 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 
 ![alt text](img/1-route53.png "Route 53")  
 
- 
+ ## 3) Buckets S3
+
+  Todas as configurações do cluster kubernetes gerenciado pelo kops ficam armazenados no *S3*, portanto devemos configurar esse serviço antes de iniciarmos os trabalhos com o kops.
+
+```bash
+[root@kops-server ~]# export KOPS_STATE_STORE=s3://k8s-dev.msginova.com
+[root@kops-server ~]# export NAME=msginova.com
+[root@kops-server ~]# aws s3 mb $KOPS_STATE_STORE
+```
+
+![alt text](img/1-s3.png "S3")
+
+## 4) Kops Provisionando Cluster
+
+### 4.1) Criando Cluster
+### 4.2) Validando Cluster
+### 4.3) Primeiro Deployment
+### 4.4) LoadBalancer Acesso Externo
+
+## 5) Manipulando Orquestrador
+
+### 5.1) Aumentando Quantidade de Workers
