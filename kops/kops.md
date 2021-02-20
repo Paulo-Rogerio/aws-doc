@@ -8,7 +8,8 @@
     - [1.5) Instalando Kubectl](#15-instalando-kubectl)
     - [1.6) Instalando Kops](#16-instalando-kops)
     - [1.7) Par de Chaves](#17-par-de-chaves)            
-  - [2) Route53 DNS Server](#2-route53-dns-server)
+  - [2) Route53](#2-route53)
+      - [2.1) DNS Sub-Domínios](#21-dns-sub-dominios)            
 
 ## 1) Preparando Host Compartilhado
 
@@ -125,4 +126,14 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## 2) Route53 DNS Server
+## 2) Route53 
+
+O kops é orientado por rotas baseado em nomes, por isso é interessante criar um domínio próprio antes de iniciar o cluster. A partir da versão 1.16 é possível criar um cluster usando um DNS genérico **k8s.local**.
+
+O melhor cenário é criar um **sub-domínio** para receber as entradas DNS. Nesse documento vou usar um domínio real chamado *msginova.com*. Não estarei usando sub-domínio pois até o momento da criação desse documento meu DNS estava sob-responsabilidade da Goddady.
+
+Para fazer uso do sub-domínio é necessário migrar o gerenciamento do *DNS* para *AWS*. 
+
+### 2.1) DNS Sub-Domínios
+
+Uma vez que o sub-domino estiver configurado, o layout desejado seria esse:
