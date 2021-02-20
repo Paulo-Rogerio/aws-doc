@@ -192,8 +192,7 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 ### 4.1) Criando Cluster
 
 ```bash
-[root@kops-server ~]#
-kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2
+[root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2
 [root@kops-server ~]# kops create secret --name=$NAME sshpublickey admin -i ~/.ssh/id_rsa.pub
 [root@kops-server ~]# kops update cluster $NAME --yes
 ```
