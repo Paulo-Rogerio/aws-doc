@@ -2,7 +2,7 @@
 
   - [1) Preparando Host Compartilhado](#1-preparando-host-compartilhado)
     - [1.1) Instância EC2 com Kops](#11-inst%C3%A2ncia-ec2-com-kops)
-    - [1.2) Previlégios Necessários](#12-privil%C3%A9gios-necess%C3%A1rios)
+    - [1.2) Previlégios Necessários](#12-previl%C3%A9gios-necess%C3%A1rios)
     - [1.3) Criando Roles](#13-criando-roles)
     - [1.4) Instalando AWS Client](#14-instalando-aws-client)
     - [1.5) Instalando Kubectl](#15-instalando-kubectl)
