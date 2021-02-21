@@ -373,6 +373,8 @@ Apesar da aplicação está disponível na internet, esse DNS não ficou muito a
 
 ![alt text](img/13-kops.png "Kops")
 
+Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agradável.
+
 ![alt text](img/14-kops.png "Kops")
 
 ## 5) Manipulando Orquestrador
