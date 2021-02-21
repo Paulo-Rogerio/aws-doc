@@ -237,20 +237,95 @@ Após aguardar os 10 minutos, rode novamente o comando.
 
 ![alt text](img/6-kops.png "Kops")
 
+Após aguardar os 10 minutos....
+
 ![alt text](img/7-kops.png "Kops")
 
 ### 4.3) Primeiro Deployment
 
-  Nesse momento o cluster já está disponível, vamos subir um pod apenas para validar se tudo está funcionando conforme o esperado.
+  Nesse momento o cluster já está disponível, vamos subir um pod apenas para validar se tudo está funcionando conforme o esperado. Vamos criar o aquivo **nginx-deployment.yaml** com o seguinte conteúdo.
 
-### 4.3.1) Deployment de Teste
+```yaml
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.15
+        ports:
+        - containerPort: 80
+```
 
 ```bash
-[root@kops-server ~]# kubectl run nginx --image nginx
+[root@kops-server ~]# kubectl  apply -f nginx-deployment.yaml
 pod/nginx created
 ```
 
+```bash
+[root@kops-server ~]# kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-698676d7f8-z25rs   1/1     Running   0          7m39s
+```
+
+Conectando na Instância Nginx
+
+```bash
+[root@kops-server ~]# kubectl exec -it nginx-698676d7f8-z25rs -n default -- bash
+```
+
+```bash
+root@nginx-698676d7f8-z25rs:/# apt update && apt install curl -y
+Ign:1 http://deb.debian.org/debian stretch InRelease
+Get:2 http://deb.debian.org/debian stretch-updates InRelease [93.6 kB]
+...
+...
+```
+
+```bash
+root@nginx-698676d7f8-z25rs:/# curl localhost:80
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+```
+
 ### 4.4) LoadBalancer Acesso Externo
+
+Até o momento o serviço está rodando mas apenas localmente, precisamos expor o serviço para o mundo exterior
 
 ## 5) Manipulando Orquestrador
 
