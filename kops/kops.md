@@ -192,7 +192,7 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 
 ```bash
 [root@kops-server ~]# export NAME=msginova.com
-[root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2 --kubernetes-version 1.16.0
+[root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2 --kubernetes-version 1.16.3
 ```
 
 ![alt text](img/1-kops.png "Kops")
@@ -234,6 +234,15 @@ kops has set your kubectl context to msginova.com
 ![alt text](img/5-kops.png "Kops")
 
 ### 4.3) Primeiro Deployment
+
+  Nesse momento o cluster já está disponível, vamos subir um pod apenas para validar se tudo está funcionando conforme o esperado.
+
+### 4.3.1) Deployment de Teste
+
+```bash
+[root@kops-server ~]# kubectl run nginx --image nginx
+pod/nginx created
+```
 
 ### 4.4) LoadBalancer Acesso Externo
 
