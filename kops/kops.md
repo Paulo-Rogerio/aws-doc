@@ -18,6 +18,7 @@
     - [4.2) Validando Cluster](#42-criando-cluster)
     - [4.3) Primeiro Deployment](#43-primeiro-deployment)
     - [4.4) LoadBalancer Acesso Externo](#44-loadbalancer-acesso-externo)
+    - [4.5) DNS Amigável](#45-dns-amig%C3%A1vel)    
   - [5) Manipulando Orquestrador](#5-manipulando-orquestrador)
     - [5.1) Aumentando Quantidade de Workers](#5.1-aumentando-quantidade-de-workers)
 
@@ -325,9 +326,52 @@ Commercial support is available at
 
 ### 4.4) LoadBalancer Acesso Externo
 
-Até o momento o serviço está rodando mas apenas localmente, precisamos nesse momento expor o serviço para o mundo exterior para disponibilizar externamente. Para isso precisaremos criar LoadBalancer para fazer essa ponte. Se observarmos não temos nenhum L.B cadastrado em nosso cluster.
+  Até o momento o serviço está rodando mas apenas localmente, precisamos nesse momento expor o serviço para o mundo exterior para disponibilizar externamente. Para isso precisaremos criar LoadBalancer para fazer essa ponte. Se observarmos não temos nenhum L.B cadastrado em nosso cluster.
 
 ![alt text](img/8-kops.png "Kops")
+
+  Vamos criar um service que fará essa ponte entre o Pod que roda a aplicação e o mundo exterior. Vamos criar o aquivo **nginx-service-loadbalancer.yaml** com o seguinte conteúdo.
+
+```yaml
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: nginx-elb
+  namespace: default
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+```
+
+```bash
+[root@kops-server ~]# kubectl  apply -f nginx-service-loadbalancer.yaml
+pod/nginx created
+```
+
+![alt text](img/9-kops.png "Kops")
+
+![alt text](img/10-kops.png "Kops")
+
+Esse endereço é provisionado dinâmicamente pelo LoadBalancer do AWS.
+
+![alt text](img/11-kops.png "Kops")
+
+### 4.5) DNS Amigável
+
+Apesar da aplicação está disponível na internet, esse DNS não ficou muito amigável para dipsonibilizá-la para os usuários consumirem a aplicação. Para contornar isso vamos adicionar uma entrada no DNS ( Route53 ).
+
+![alt text](img/12-kops.png "Kops")
+
+![alt text](img/13-kops.png "Kops")
 
 ## 5) Manipulando Orquestrador
 
