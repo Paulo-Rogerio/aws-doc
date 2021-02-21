@@ -192,7 +192,7 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 
 ```bash
 [root@kops-server ~]# export NAME=msginova.com
-[root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2 --kubernetes-version 1.16.3
+[root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2
 ```
 
 ![alt text](img/1-kops.png "Kops")
@@ -205,8 +205,6 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 ![alt text](img/2-kops.png "Kops")
 
 ### 4.2) Validando Cluster
-
-O processo de criação do cluster demora de 5 a 10 minutos, quando finalizar deve-se existir 3 novas instâncias EC2.
 
 ![alt text](img/3-kops.png "Kops")
 
@@ -225,13 +223,21 @@ kops has set your kubectl context to msginova.com
 [root@kops-server ~]# kops validate cluster
 ```
 
+O processo de criação do cluster demora de 5 a 10 minutos, quando finalizar deve-se existir 3 novas instâncias EC2.
+
 ![alt text](img/4-kops.png "Kops")
+
+Após aguardar os 10 minutos, rode novamente o comando.
+
+![alt text](img/5-kops.png "Kops")
 
 ```bash
 [root@kops-server ~]# kubectl get nodes
 ```
 
-![alt text](img/5-kops.png "Kops")
+![alt text](img/6-kops.png "Kops")
+
+![alt text](img/7-kops.png "Kops")
 
 ### 4.3) Primeiro Deployment
 
