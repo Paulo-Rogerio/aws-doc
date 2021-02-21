@@ -373,6 +373,8 @@ Apesar da aplicação está disponível na internet, esse DNS não ficou muito a
 
 ![alt text](img/13-kops.png "Kops")
 
+![alt text](img/14-kops.png "Kops")
+
 ## 5) Manipulando Orquestrador
 
 ### 5.1) Aumentando Quantidade de Workers
