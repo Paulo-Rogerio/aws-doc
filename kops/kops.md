@@ -369,13 +369,13 @@ Esse endereço é provisionado dinâmicamente pelo LoadBalancer do AWS.
 
 Apesar da aplicação está disponível na internet, esse DNS não ficou muito amigável para dipsonibilizá-la para os usuários consumirem a aplicação. Para contornar isso vamos adicionar uma entrada no DNS ( Route53 ).
 
-![alt text](img/12-kops.png "Kops")
+![alt text](img/12-kops.png "DNS")
 
-![alt text](img/13-kops.png "Kops")
+![alt text](img/13-kops.png "DNS")
 
 Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agradável.
 
-![alt text](img/14-kops.png "Kops")
+![alt text](img/14-kops.png "Nginx")
 
 ## 5) Manipulando Orquestrador
 
