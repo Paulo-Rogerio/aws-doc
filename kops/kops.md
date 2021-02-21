@@ -379,4 +379,106 @@ Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agra
 
 ## 5) Manipulando Orquestrador
 
+Como podemos observar temos 2 instâncias EC2 rodando como worker. 
+
+```bash
+[root@kops-server manifestos]# kubectl get nodes
+NAME                            STATUS   ROLES    AGE   VERSION
+ip-172-20-35-7.ec2.internal     Ready    master   69m   v1.19.7
+ip-172-20-46-193.ec2.internal   Ready    node     65m   v1.19.7
+ip-172-20-49-167.ec2.internal   Ready    node     65m   v1.19.7
+```
+
+Suponhamos que a quantidade de worker não esteja aguentando a carga de trabalho, então é necessário aumentar a quantidade de instâncias EC2 fazendo esse papel.
+
 ### 5.1) Aumentando Quantidade de Workers
+
+Primeiramente é necessário listarmos nossa **Instance Groups**
+
+```bash
+[root@kops-server manifestos]# kops get cluster
+NAME		CLOUD	ZONES
+msginova.com	aws	us-east-1a
+```
+
+*Obd.: Pode usar o alias (ig) ao envez do nome instancegroup*
+
+```bash
+[root@kops-server manifestos]# kops get ig --name msginova.com
+NAME			ROLE	MACHINETYPE	MIN	MAX	ZONES
+master-us-east-1a	Master	t3.medium	1	1	us-east-1a
+nodes-us-east-1a	Node	  t2.micro	2	2	us-east-1a
+```
+
+Vamos editar o instânce group responsável por gerir os nodes workers *nodes-us-east-1a*
+
+```bash
+[root@kops-server manifestos]# kops edit ig --name msginova.com nodes-us-east-1a
+```
+Esse comando abre um arquivo yaml 
+
+```yaml
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: "2021-02-21T17:30:57Z"
+  labels:
+    kops.k8s.io/cluster: msginova.com
+  name: nodes-us-east-1a
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210119.1
+  machineType: t2.micro
+  maxSize: 4
+  minSize: 3
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-us-east-1a
+  role: Node
+  subnets:
+  - us-east-1a
+```
+
+
+```bash
+[root@kops-server manifestos]# kops update cluster --name msginova.com --yes
+I0221 18:51:18.027040    4548 executor.go:111] Tasks: 0 done / 79 total; 45 can run
+I0221 18:51:18.356633    4548 executor.go:111] Tasks: 45 done / 79 total; 16 can run
+I0221 18:51:18.520630    4548 executor.go:111] Tasks: 61 done / 79 total; 16 can run
+I0221 18:51:18.793169    4548 executor.go:111] Tasks: 77 done / 79 total; 2 can run
+I0221 18:51:19.065463    4548 executor.go:111] Tasks: 79 done / 79 total; 0 can run
+I0221 18:51:19.065575    4548 dns.go:156] Pre-creating DNS records
+I0221 18:51:19.351162    4548 update_cluster.go:313] Exporting kubecfg for cluster
+kops has set your kubectl context to msginova.com
+W0221 18:51:19.401363    4548 update_cluster.go:337] Exported kubecfg with no user authentication; use --admin, --user or --auth-plugin flags with `kops export kubecfg`
+
+Cluster changes have been applied to the cloud.
+
+
+Changes may require instances to restart: kops rolling-update cluster
+```
+
+```bash
+[root@kops-server manifestos]# kops export kubecfg msginova.com --admin
+kops has set your kubectl context to msginova.com
+```
+
+```bash
+[root@kops-server manifestos]# kops rolling-update cluster --name msginova.com --yes
+NAME			STATUS	NEEDUPDATE	READY	MIN	TARGET	MAX	NODES
+master-us-east-1a	Ready	0		1	1	1	1	1
+nodes-us-east-1a	Ready	0		3	3	3	4	2
+
+No rolling-update required.
+```
+
+Após executar os procedimentos acima deve-se criar uma nova instância EC2, pois definimos que o mínimo de instância que queriamos eram 3 EC2 funcionando como worker.
+
+![alt text](img/15-kops.png "Nginx")
+
+```bash
+[root@kops-server manifestos]# kubectl get nodes
+NAME                            STATUS   ROLES    AGE     VERSION
+ip-172-20-35-7.ec2.internal     Ready    master   85m     v1.19.7
+ip-172-20-46-193.ec2.internal   Ready    node     81m     v1.19.7
+ip-172-20-49-167.ec2.internal   Ready    node     81m     v1.19.7
+ip-172-20-56-184.ec2.internal   Ready    node     5m21s   v1.19.7
+```
