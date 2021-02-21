@@ -21,6 +21,7 @@
     - [4.5) DNS Amigável](#45-dns-amig%C3%A1vel)    
   - [5) Manipulando Orquestrador](#5-manipulando-orquestrador)
     - [5.1) Aumentando Quantidade de Workers](#5.1-aumentando-quantidade-de-workers)
+  - [6) Destruindo o Cluster](#6-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
 
@@ -101,6 +102,7 @@ Default output format [json]: json
 [root@kops-server ~]# chmod +x /opt/sources/kubectl
 [root@kops-server ~]# mv /opt/sources/kubectl /usr/local/bin/kubectl
 [root@kops-server ~]# echo "export PATH=$PATH:/usr/local/bin/" > /etc/profile.d/kubernets.sh && source /etc/profile
+[root@kops-server ~]# echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
 
 ### 1.6) Instalando Kops
@@ -382,7 +384,7 @@ Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agra
 Como podemos observar temos 2 instâncias EC2 rodando como worker. 
 
 ```bash
-[root@kops-server manifestos]# kubectl get nodes
+[root@kops-server ~]# kubectl get nodes
 NAME                            STATUS   ROLES    AGE   VERSION
 ip-172-20-35-7.ec2.internal     Ready    master   69m   v1.19.7
 ip-172-20-46-193.ec2.internal   Ready    node     65m   v1.19.7
@@ -396,7 +398,7 @@ Suponhamos que a quantidade de worker não esteja aguentando a carga de trabalho
 Primeiramente é necessário listarmos nossa **Instance Groups**
 
 ```bash
-[root@kops-server manifestos]# kops get cluster
+[root@kops-server ~]# kops get cluster
 NAME		CLOUD	ZONES
 msginova.com	aws	us-east-1a
 ```
@@ -404,7 +406,7 @@ msginova.com	aws	us-east-1a
 *Obd.: Pode usar o alias (ig) ao envez do nome instancegroup*
 
 ```bash
-[root@kops-server manifestos]# kops get ig --name msginova.com
+[root@kops-server ~]# kops get ig --name msginova.com
 NAME			ROLE	MACHINETYPE	MIN	MAX	ZONES
 master-us-east-1a	Master	t3.medium	1	1	us-east-1a
 nodes-us-east-1a	Node	  t2.micro	2	2	us-east-1a
@@ -413,7 +415,7 @@ nodes-us-east-1a	Node	  t2.micro	2	2	us-east-1a
 Vamos editar o instânce group responsável por gerir os nodes workers *nodes-us-east-1a*
 
 ```bash
-[root@kops-server manifestos]# kops edit ig --name msginova.com nodes-us-east-1a
+[root@kops-server ~]# kops edit ig --name msginova.com nodes-us-east-1a
 ```
 Esse comando abre um arquivo yaml 
 
@@ -439,7 +441,7 @@ spec:
 
 
 ```bash
-[root@kops-server manifestos]# kops update cluster --name msginova.com --yes
+[root@kops-server ~]# kops update cluster --name msginova.com --yes
 I0221 18:51:18.027040    4548 executor.go:111] Tasks: 0 done / 79 total; 45 can run
 I0221 18:51:18.356633    4548 executor.go:111] Tasks: 45 done / 79 total; 16 can run
 I0221 18:51:18.520630    4548 executor.go:111] Tasks: 61 done / 79 total; 16 can run
@@ -457,12 +459,12 @@ Changes may require instances to restart: kops rolling-update cluster
 ```
 
 ```bash
-[root@kops-server manifestos]# kops export kubecfg msginova.com --admin
+[root@kops-server ~]# kops export kubecfg msginova.com --admin
 kops has set your kubectl context to msginova.com
 ```
 
 ```bash
-[root@kops-server manifestos]# kops rolling-update cluster --name msginova.com --yes
+[root@kops-server ~]# kops rolling-update cluster --name msginova.com --yes
 NAME			STATUS	NEEDUPDATE	READY	MIN	TARGET	MAX	NODES
 master-us-east-1a	Ready	0		1	1	1	1	1
 nodes-us-east-1a	Ready	0		3	3	3	4	2
@@ -472,13 +474,38 @@ No rolling-update required.
 
 Após executar os procedimentos acima deve-se criar uma nova instância EC2, pois definimos que o mínimo de instância que queriamos eram 3 EC2 funcionando como worker.
 
-![alt text](img/15-kops.png "Nginx")
+![alt text](img/15-kops.png "Update Cluster")
 
 ```bash
-[root@kops-server manifestos]# kubectl get nodes
+[root@kops-server ~]# kubectl get nodes
 NAME                            STATUS   ROLES    AGE     VERSION
 ip-172-20-35-7.ec2.internal     Ready    master   85m     v1.19.7
 ip-172-20-46-193.ec2.internal   Ready    node     81m     v1.19.7
 ip-172-20-49-167.ec2.internal   Ready    node     81m     v1.19.7
 ip-172-20-56-184.ec2.internal   Ready    node     5m21s   v1.19.7
 ```
+
+## 6) Destruindo o Cluster
+
+  Por fim, podemos destruir o cluster após aprendermos sobre o kops.
+
+```bash
+[root@kops-server manifestos]# kops get cluster
+NAME		CLOUD	ZONES
+msginova.com	aws	us-east-1a
+```
+
+```bash
+[root@kops-server manifestos]# kops delete cluster msginova.com --yes
+TYPE			NAME									ID
+autoscaling-config	master-us-east-1a.masters.msginova.com					lt-04aa39151d77832bc
+autoscaling-config	nodes-us-east-1a.msginova.com						lt-059c233dfb339f066
+autoscaling-group	master-us-east-1a.masters.msginova.com					master-us-east-1a.masters.msginova.com
+...
+...
+...
+```
+
+![alt text](img/16-kops.png "Delete Cluster")
+
+Esse comando limpa todos os serviços, EC2, Security Groups, LoadBalancer, Route53. Enfim, esse comando deve ser executado com cautela.
