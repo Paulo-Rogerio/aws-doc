@@ -325,7 +325,9 @@ Commercial support is available at
 
 ### 4.4) LoadBalancer Acesso Externo
 
-Até o momento o serviço está rodando mas apenas localmente, precisamos expor o serviço para o mundo exterior
+Até o momento o serviço está rodando mas apenas localmente, precisamos nesse momento expor o serviço para o mundo exterior para disponibilizar externamente. Para isso precisaremos criar LoadBalancer para fazer essa ponte. Se observarmos não temos nenhum L.B cadastrado em nosso cluster.
+
+![alt text](img/8-kops.png "Kops")
 
 ## 5) Manipulando Orquestrador
 
