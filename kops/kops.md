@@ -171,7 +171,6 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 
 ```bash
 [root@kops-server ~]# export KOPS_STATE_STORE=s3://k8s-dev.msginova.com
-[root@kops-server ~]# export NAME=msginova.com
 [root@kops-server ~]# aws s3 mb $KOPS_STATE_STORE
 ```
 
@@ -192,7 +191,11 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 ### 4.1) Criando Cluster
 
 ```bash
+[root@kops-server ~]# export NAME=msginova.com
 [root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2
+```
+
+```bash
 [root@kops-server ~]# kops create secret --name=$NAME sshpublickey admin -i ~/.ssh/id_rsa.pub
 [root@kops-server ~]# kops update cluster $NAME --yes
 ```
@@ -206,6 +209,7 @@ Cluster Homologacao  => homologacao.k8s.msginova.com
 [root@kops-server ~]# kubectl get nodes
 ```
 ### 4.3) Primeiro Deployment
+
 ### 4.4) LoadBalancer Acesso Externo
 
 ## 5) Manipulando Orquestrador
