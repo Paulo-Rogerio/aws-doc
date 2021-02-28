@@ -35,13 +35,12 @@
 
   Existem várias formas de criar um cluster kubernetes, dentre as mais conhecidas estão:
 
-```yaml
-  - Kind        => https://github.com/kubernetes-sigs/kind
+
+  - Kind        => (https://github.com/kubernetes-sigs/kind)
   - K3S         => https://github.com/k3s-io/k3s
   - Runcher RKE => https://github.com/rancher/rke
   - Kubspray    => https://github.com/kubernetes-sigs/kubespray
- ```
- 
+
 #### 2.1.1) Kops
   * [Kops Kubernetes](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md)
  
