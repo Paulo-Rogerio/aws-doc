@@ -8,6 +8,9 @@
         - [2.3.1) Cursos Deployment](#231-cursos-deployment)
         - [2.3.2) Cursos Services ClusterIP](#232-cursos-services-clusterIP)
         - [2.3.3) Cursos Ingress](#233-cursos-ingress)
+   - [2.4) Definindo Variáveis](#24-definindo-variáveis)
+        - [2.4.1) Arquivo de Manifesto Values](#241-arquivo-de-manifesto-values)        
+- [3) Helm Chart](#2-helm-chart)
 
 ## 1) Versão do Helm
 
@@ -19,7 +22,7 @@ Será preciso ter o *HELM CLI* instalado em sua máquina. Para isso visite o sit
 ## 2) Helm Chart
 #### 2.1) Criando um Chart
 
-Estou criando um chart chamado *cursos-chart*
+Estou criando um chart chamado *cursos-chart*.
 
 ```bash
 [paulo@kops-server ~]$ helm create cursos-chart
@@ -202,15 +205,15 @@ spec:
 </pre>
 
 
-h2. 3) Definindo Variáveis 
+#### 2.4) Definindo Variáveis
 
-As variáveis definidas nos manifestos , tem a seguinte syntaxe *{{ .Values.domain.cursos }}*, essa variáveis precisam ser em algum arquivo, ou passado como argumento. 
+As variáveis definidas nos manifestos tem a seguinte syntaxe *{{ .Values.domain.cursos }}*, essa variáveis precisam ser definidos em algum arquivo, ou passados como argumentos. 
 
-Para que isso funcione é necessário editar o arquivo *values.yaml*
+#### 2.4.1) Arquivo de Manifesto Values
 
-h2. 3.1) Arquivo de Manifesto - values.yaml
+Para que isso funcione é necessário editar o arquivo *values.yaml*. E nesse aquivo que definimos as variáveis.
 
-<pre>
+```yaml
 metrics: true
 domain:
   cursos: cursos.meudominio.com.br
@@ -235,7 +238,7 @@ resources:
     limit:
       ram: 600Mi
       cpu: 800m
-</pre> 
+```
 
 h2. 4) Fazendo Deploy
 
