@@ -2,7 +2,7 @@
 
 - [1) AWS](#1-aws)
   - [1.1) Volumes EBS](#11-volumes-ebs)
-    - [1.1.1) SnapShot / Restore](#111-snapshot-/-restore)
+    - [1.1.1) SnapShot / Restore](#111-snapshot-\/-restore)
 - [2) Kubernetes](#2-kubernetes)
   - [2.1) Provisionando Cluster](#21-provisionando-cluster)
     - [2.1.1) Kops](#211-kops)
