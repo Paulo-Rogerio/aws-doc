@@ -8,7 +8,7 @@
   - [2.1) Provisionando Cluster](#21-provisionando-cluster)
     - [2.1.1) Kops](#211-kops)
   - [2.2) Deploy de Manifestos](#22-deploy-de-manifestos)
-    - [2.2.1) Helm](#221-helm)  
+    - [2.2.1) Helm Chart](#221-helm-chart)  
 
 ## 1) AWS
 
@@ -45,5 +45,8 @@
   * [Kops Kubernetes](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md)
  
 #### 2.2) Deploy de Manifestos
-#### 2.2.1) Helm
+
+  Empacotando os manifestos usando o Helm Chart e aplicando-os no Kubernetes.
+  
+#### 2.2.1) Helm Chart
   * [Aplicando Maninfestos com Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
