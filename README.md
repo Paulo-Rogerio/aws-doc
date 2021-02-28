@@ -10,10 +10,9 @@
 
 ## 1.1) Provisionando Cluster
   
-  * ### [Kops](https://github.com/Paulo-Rogerio/aws-doc/kubernetes/blob/main/kops/kops.md)
-
+  * ### [Kops](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md)
+ 
 ## 1.2) Deploy de Manifestos
 
 
-* ### [Helm](https://github.com/Paulo-Rogerio/aws-doc/kubernetes/blob/main/helm/helm.md)
-
+* ### [Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
