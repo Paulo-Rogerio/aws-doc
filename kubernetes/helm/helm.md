@@ -6,9 +6,9 @@
 
 ## 1) Versão do Helm
 
-    Nessa documentação será adotada a versão *3* do helm. Antes na versão *2* era necessário que o cluster kubernetes executasse um processo chamado *TILLER*, o qual o helm se comunicava com esse serviço chamado *TILLER*, além de ter toda uma configuração necessária de RBAC para isso funcionar bem. Na versão *3* o helm faz uso das credencias do usuário, ou seja, ele usa a chave do usuário *KUBECONFIG* para interagir diretamente com o kube-api. 
+Nessa documentação será adotada a versão *3* do helm. Antes na versão *2* era necessário que o cluster kubernetes executasse um processo chamado *TILLER*, o qual o helm se comunicava com esse serviço chamado *TILLER*, além de ter toda uma configuração necessária de RBAC para isso funcionar bem. Na versão *3* o helm faz uso das credencias do usuário, ou seja, ele usa a chave do usuário *KUBECONFIG* para interagir diretamente com o kube-api. 
 
-    Será preciso ter o *HELM CLI* instalado em sua máquina. Para isso visite o site [[https://helm.sh/docs/intro/quickstart/]]
+Será preciso ter o *HELM CLI* instalado em sua máquina. Para isso visite o site [[https://helm.sh/docs/intro/quickstart/]]
 
 
 ## 2) Helm Chart
