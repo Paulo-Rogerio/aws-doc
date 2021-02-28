@@ -1,18 +1,20 @@
-# Estudos AWS 
+# 🚀  Estudos AWS 
 
-  - [1) Ferramentas K8S](#1-ferramentas-k8s)
-    - [1.1) Provisionando Cluster](#11-provisionando-cluster)
-    - [1.2) Deploy de Manifestos](#12-deploy-de-manifestos)
+- [2) Kubernetes](#2-kubernetes)
+  - [2.1) Kubernetes na AWS](#21-kubernetes-na-aws)
+    - [2.1.1) Provisionando Cluster](#211-provisionando-cluster)
+    - [2.1.2) Helm - Deploy de Manifestos](#212-helm---deploy-de-manifestos)
 
-## 1) Ferramentas K8S
+## 1) Kubernetes
 
   Esse projeto tem o objetivo de auxiliar no entendimento do Kubernetes.
 
-## 1.1) Provisionando Cluster
+### 1.1) Kubernetes na AWS
+
+### 1.1.1) Provisionando Cluster
   
   * ### [Kops](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md)
  
-## 1.2) Deploy de Manifestos
+### 1.1.2) Helm - Deploy de Manifestos
 
-
-* ### [Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
+  * ### [Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
