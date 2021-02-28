@@ -36,9 +36,9 @@
   Existem várias formas de criar um cluster kubernetes, dentre as mais conhecidas estão:
 
 
-  - ```Kind     =>``` (https://github.com/kubernetes-sigs/kind)
-  - ```K3S      =>``` https://github.com/k3s-io/k3s
-  - ```Runcher  =>``` https://github.com/rancher/rke
+  - ```Kind         =>``` (https://github.com/kubernetes-sigs/kind)
+  - ```K3S          =>``` https://github.com/k3s-io/k3s
+  - ```Runcher    =>``` https://github.com/rancher/rke
   - ```Kubspray =>``` https://github.com/kubernetes-sigs/kubespray
 
 #### 2.1.1) Kops
