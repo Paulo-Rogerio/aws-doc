@@ -14,17 +14,10 @@
 ### 1.1.1) SnapShot e Restore
 
 ## 2) Kubernetes
-
-  Tópicos relacionado a Kubernetes.
-
 ### 2.1) Provisionando Cluster
-
 ### 2.1.1) Kops
-  
-  * ### [Kops](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md)
+  * Provisonando um cluster kubernetes usando [Kops](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md).
  
 ### 2.2) Deploy de Manifestos
-
 ### 2.2.1) Helm
-
-  * ### [Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
+  * [Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
