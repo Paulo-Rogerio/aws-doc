@@ -24,11 +24,11 @@
 
 #### 1.1.1) SnapShot e Restore
 
-  * [SnapShot - AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot/snapshot.md).
+  * [SnapShot - AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot/snapshot.md)
 
 #### 1.2) LoadBalancer
 
-  * [LoadBalancer](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/loadbalancer/loadbalancer.md)
+  * [LoadBalancer com EC2](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/loadbalancer/loadbalancer.md)
 
 ## 2) Kubernetes
 #### 2.1) Provisionando Cluster
@@ -37,4 +37,4 @@
  
 #### 2.2) Deploy de Manifestos
 #### 2.2.1) Helm
-  * [Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
+  * [Aplicando Maninfestos com Helm](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/helm/helm.md)
