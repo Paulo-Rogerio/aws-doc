@@ -3,29 +3,33 @@
 - [1) Versão do Helm](#1-versão-do-helm)
 - [2) Helm Chart](#2-helm-chart)
    - [2.1) Criando um Chart](#21-criando-um-chart)
+   - [2.2) Estrutura de um Chart](#22-estrutura-de-um-chart) 
+   - [2.3) Arquivos de Manifestos](#23-arquivos-de-manifestos)
+        - [2.3.1) Cursos Deployment](#231-cursos-deployment)
+        - [2.3.2) Cursos Services ClusterIP](#232-cursos-services-clusterIP)
+        - [2.3.3) Cursos Ingress](#233-cursos-ingress)
 
 ## 1) Versão do Helm
 
 Nessa documentação será adotada a versão *3* do helm. Antes na versão *2* era necessário que o cluster kubernetes executasse um processo chamado *TILLER*, o qual o helm se comunicava com esse serviço chamado *TILLER*, além de ter toda uma configuração necessária de RBAC para isso funcionar bem. Na versão *3* o helm faz uso das credencias do usuário, ou seja, ele usa a chave do usuário *KUBECONFIG* para interagir diretamente com o kube-api. 
 
-Será preciso ter o *HELM CLI* instalado em sua máquina. Para isso visite o site [[https://helm.sh/docs/intro/quickstart/]]
+Será preciso ter o *HELM CLI* instalado em sua máquina. Para isso visite o site oficial [Setup Helm](https://helm.sh/docs/intro/quickstart)
 
 
 ## 2) Helm Chart
 #### 2.1) Criando um Chart
 
-    Estou criando um chart chamado *cursos-chart*
+Estou criando um chart chamado *cursos-chart*
 
 ```bash
 [paulo@kops-server ~]$ helm create cursos-chart
 ```
 
+#### 2.2) Estrutura de um Chart
 
-h2. 2.1) Estrutura de um Chart
+Após criado o chart, alguns arquivos podem ser excluídos para manter dentro do chart apenas os arquivos necessário para rodar os projetos.
 
-Após criar alguns arquivos podem ser excluídos para manter dentro do chart o necessário para rodar os projetos.
-
-<pre>
+```yaml
 ├── Chart.yaml
 ├── templates
 │   ├── NOTES.txt
@@ -34,16 +38,15 @@ Após criar alguns arquivos podem ser excluídos para manter dentro do chart o n
 │   ├── cursos-deployment.yaml
 │   └── cursos-ingress.yaml
 └── values.yaml
-</pre>
+``` 
 
-
-h2. 2.1) Arquivos de Manifestos.
+#### 2.3) Arquivos de Manifestos
 
 Esse projeto cursos, é um exemplo fictício para exemplificar como deployar uma app com chart.
 
-h2. 2.1.1) Arquivo de Manifesto - cursos-deployment.yaml
+#### 2.3.1) Cursos Deployment
 
-<pre>
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -159,12 +162,12 @@ spec:
               secretKeyRef:
                 name: vault-secret
                 key: VAULT_TOKEN
-</pre>
+```
 
 
-h2. 2.1.2) Arquivo de Manifesto - cursos-cluster-ip-service.yaml
+#### 2.3.2) Cursos Services ClusterIP
 
-<pre>
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -177,10 +180,9 @@ spec:
   ports:
     - port: 80
       targetPort: http
-</pre>
+```
 
-
-h2. 2.1.3) Arquivo de Manifesto - cursos-ingress.yaml
+#### 2.3.3) Cursos Ingress
 
 <pre>
 apiVersion: extensions/v1beta1
