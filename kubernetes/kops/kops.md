@@ -194,7 +194,7 @@ Após salvar vamos testar se o Sub-Domínio está respondendo.
 ### 3.1) Criando um Bucket
 
 ```bash
-[root@kops-server ~]# export KOPS_STATE_STORE=s3://k8s-dev.msginova.com
+[root@kops-server ~]# export KOPS_STATE_STORE=s3://staging.k8s.msginova.com
 [root@kops-server ~]# aws s3 mb $KOPS_STATE_STORE
 ```
 
@@ -215,7 +215,7 @@ Após salvar vamos testar se o Sub-Domínio está respondendo.
 ### 4.1) Criando Cluster
 
 ```bash
-[root@kops-server ~]# export NAME=msginova.com
+[root@kops-server ~]# export NAME=k8s.msginova.com
 [root@kops-server ~]# kops create cluster --name=$NAME --zones=us-east-1a --master-size t3.medium --node-size t2.micro --master-count 1 --node-count=2
 ```
 
@@ -235,12 +235,12 @@ Após salvar vamos testar se o Sub-Domínio está respondendo.
 ```bash
 [root@kops-server ~]# kops get cluster
 NAME		CLOUD	ZONES
-msginova.com	aws	us-east-1a
+k8s.msginova.com	aws	us-east-1a
 ```
 
 ```bash
-[root@kops-server ~]# kops export kubecfg msginova.com --admin
-kops has set your kubectl context to msginova.com
+[root@kops-server ~]# kops export kubecfg k8s.msginova.com --admin
+kops has set your kubectl context to k8s.msginova.com
 ```
 
 ```bash
@@ -257,11 +257,11 @@ Após aguardar os 10 minutos, rode novamente o comando.
 
 ```bash
 [root@kops-server ~]# kubectl get nodes
+NAME                            STATUS   ROLES    AGE   VERSION
+ip-172-20-35-30.ec2.internal    Ready    master   39m   v1.19.7
+ip-172-20-50-132.ec2.internal   Ready    node     36m   v1.19.7
+ip-172-20-58-230.ec2.internal   Ready    node     30m   v1.19.7
 ```
-
-![alt text](img/6-kops.png "Kops")
-
-Após aguardar os 10 minutos....
 
 ![alt text](img/7-kops.png "Kops")
 
