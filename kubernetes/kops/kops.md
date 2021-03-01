@@ -17,12 +17,13 @@
   - [4) Kops Provisionando Cluster](#4-kops-provisionando-cluster)
     - [4.1) Criando Cluster](#41-criando-cluster)
     - [4.2) Validando Cluster](#42-criando-cluster)
-    - [4.3) Primeiro Deployment](#43-primeiro-deployment)
-    - [4.4) LoadBalancer Acesso Externo](#44-loadbalancer-acesso-externo)
-    - [4.5) DNS Amigável](#45-dns-amig%C3%A1vel)    
   - [5) Manipulando Orquestrador](#5-manipulando-orquestrador)
     - [5.1) Aumentando Quantidade de Workers](#5.1-aumentando-quantidade-de-workers)
-  - [6) Destruindo o Cluster](#6-destruindo-o-cluster)
+  - [6) Deployando](#6-deployando)
+    - [6.1) Primeiro Deployment](#61-primeiro-deployment)
+    - [6.2) LoadBalancer Acesso Externo](#62-loadbalancer-acesso-externo)
+    - [6.3) DNS Amigável](#63-dns-amig%C3%A1vel)       
+  - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
 
@@ -265,7 +266,116 @@ ip-172-20-58-230.ec2.internal   Ready    node     30m   v1.19.7
 
 ![alt text](img/7-kops.png "Kops")
 
-### 4.3) Primeiro Deployment
+## 5) Manipulando Orquestrador
+
+Como podemos observar temos 2 instâncias EC2 rodando como worker. 
+
+```bash
+[root@kops-server ~]# kubectl get nodes
+NAME                            STATUS   ROLES    AGE   VERSION
+ip-172-20-35-7.ec2.internal     Ready    master   69m   v1.19.7
+ip-172-20-46-193.ec2.internal   Ready    node     65m   v1.19.7
+ip-172-20-49-167.ec2.internal   Ready    node     65m   v1.19.7
+```
+
+Suponhamos que a quantidade de worker não esteja aguentando a carga de trabalho, então é necessário aumentar a quantidade de instâncias EC2 fazendo esse papel.
+
+### 5.1) Aumentando Quantidade de Workers
+
+Primeiramente é necessário listarmos nossa **Instance Groups**
+
+```bash
+[root@kops-server ~]# kops get cluster
+NAME		CLOUD	ZONES
+msginova.com	aws	us-east-1a
+```
+
+*Obd.: Pode usar o alias (ig) ao envez do nome instancegroup*
+
+```bash
+[root@kops-server ~]# kops get ig --name k8s.msginova.com
+NAME			ROLE	MACHINETYPE	MIN	MAX	ZONES
+master-us-east-1a	Master	t3.medium	1	1	us-east-1a
+nodes-us-east-1a	Node	  t2.micro	2	2	us-east-1a
+```
+
+Vamos editar o instânce group responsável por gerir os nodes workers *nodes-us-east-1a*
+
+```bash
+[root@kops-server ~]# kops edit ig --name k8s.msginova.com nodes-us-east-1a
+```
+Esse comando abre um arquivo yaml 
+
+```yaml
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: "2021-02-21T17:30:57Z"
+  labels:
+    kops.k8s.io/cluster: k8s.msginova.com
+  name: nodes-us-east-1a
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210119.1
+  machineType: t2.micro
+  maxSize: 4
+  minSize: 3
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-us-east-1a
+  role: Node
+  subnets:
+  - us-east-1a
+```
+
+```bash
+[root@kops-server ~]# kops update cluster --name k8s.msginova.com --yes
+I0221 18:51:18.027040    4548 executor.go:111] Tasks: 0 done / 79 total; 45 can run
+I0221 18:51:18.356633    4548 executor.go:111] Tasks: 45 done / 79 total; 16 can run
+I0221 18:51:18.520630    4548 executor.go:111] Tasks: 61 done / 79 total; 16 can run
+I0221 18:51:18.793169    4548 executor.go:111] Tasks: 77 done / 79 total; 2 can run
+I0221 18:51:19.065463    4548 executor.go:111] Tasks: 79 done / 79 total; 0 can run
+I0221 18:51:19.065575    4548 dns.go:156] Pre-creating DNS records
+I0221 18:51:19.351162    4548 update_cluster.go:313] Exporting kubecfg for cluster
+kops has set your kubectl context to k8s.msginova.com
+W0221 18:51:19.401363    4548 update_cluster.go:337] Exported kubecfg with no user authentication; use --admin, --user or --auth-plugin flags with `kops export kubecfg`
+
+Cluster changes have been applied to the cloud.
+
+
+Changes may require instances to restart: kops rolling-update cluster
+```
+
+```bash
+[root@kops-server ~]# kops export kubecfg k8s.msginova.com --admin
+kops has set your kubectl context to k8s.msginova.com
+```
+
+```bash
+[root@kops-server ~]# kops rolling-update cluster --name k8s.msginova.com --yes
+NAME			STATUS	NEEDUPDATE	READY	MIN	TARGET	MAX	NODES
+master-us-east-1a	Ready	0		1	1	1	1	1
+nodes-us-east-1a	Ready	0		3	3	3	4	2
+
+No rolling-update required.
+```
+
+Após executar os procedimentos acima deve-se criar uma nova instância EC2, pois definimos que o mínimo de instância que queriamos eram 3 EC2 funcionando como worker.
+
+![alt text](img/15-kops.png "Update Cluster")
+
+```bash
+[root@kops-server ~]# kubectl get nodes
+NAME                            STATUS   ROLES    AGE     VERSION
+ip-172-20-35-7.ec2.internal     Ready    master   85m     v1.19.7
+ip-172-20-46-193.ec2.internal   Ready    node     81m     v1.19.7
+ip-172-20-49-167.ec2.internal   Ready    node     81m     v1.19.7
+ip-172-20-56-184.ec2.internal   Ready    node     5m21s   v1.19.7
+```
+
+## 6) Deployando
+
+    Com o cluster *OnLine*, vamos subir o primeiro deployment.
+
+### 6.1) Primeiro Deployment
 
   Nesse momento o cluster já está disponível, vamos subir um pod apenas para validar se tudo está funcionando conforme o esperado. Vamos criar o aquivo **nginx-deployment.yaml** com o seguinte conteúdo.
 
@@ -347,7 +457,7 @@ Commercial support is available at
 </html>
 ```
 
-### 4.4) LoadBalancer Acesso Externo
+### 6.2) LoadBalancer Acesso Externo
 
   Até o momento o serviço está rodando mas apenas localmente, precisamos nesse momento expor o serviço para o mundo exterior para disponibilizar externamente. Para isso precisaremos criar LoadBalancer para fazer essa ponte. Se observarmos não temos nenhum L.B cadastrado em nosso cluster.
 
@@ -388,7 +498,7 @@ Esse endereço é provisionado dinâmicamente pelo LoadBalancer do AWS.
 
 ![alt text](img/11-kops.png "Kops")
 
-### 4.5) DNS Amigável
+### 6.3) DNS Amigável
 
 Apesar da aplicação está disponível na internet, esse DNS não ficou muito amigável para dipsonibilizá-la para os usuários consumirem a aplicação. Para contornar isso vamos adicionar uma entrada no DNS ( Route53 ).
 
@@ -400,113 +510,7 @@ Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agra
 
 ![alt text](img/14-kops.png "Nginx")
 
-## 5) Manipulando Orquestrador
-
-Como podemos observar temos 2 instâncias EC2 rodando como worker. 
-
-```bash
-[root@kops-server ~]# kubectl get nodes
-NAME                            STATUS   ROLES    AGE   VERSION
-ip-172-20-35-7.ec2.internal     Ready    master   69m   v1.19.7
-ip-172-20-46-193.ec2.internal   Ready    node     65m   v1.19.7
-ip-172-20-49-167.ec2.internal   Ready    node     65m   v1.19.7
-```
-
-Suponhamos que a quantidade de worker não esteja aguentando a carga de trabalho, então é necessário aumentar a quantidade de instâncias EC2 fazendo esse papel.
-
-### 5.1) Aumentando Quantidade de Workers
-
-Primeiramente é necessário listarmos nossa **Instance Groups**
-
-```bash
-[root@kops-server ~]# kops get cluster
-NAME		CLOUD	ZONES
-msginova.com	aws	us-east-1a
-```
-
-*Obd.: Pode usar o alias (ig) ao envez do nome instancegroup*
-
-```bash
-[root@kops-server ~]# kops get ig --name msginova.com
-NAME			ROLE	MACHINETYPE	MIN	MAX	ZONES
-master-us-east-1a	Master	t3.medium	1	1	us-east-1a
-nodes-us-east-1a	Node	  t2.micro	2	2	us-east-1a
-```
-
-Vamos editar o instânce group responsável por gerir os nodes workers *nodes-us-east-1a*
-
-```bash
-[root@kops-server ~]# kops edit ig --name msginova.com nodes-us-east-1a
-```
-Esse comando abre um arquivo yaml 
-
-```yaml
-apiVersion: kops.k8s.io/v1alpha2
-kind: InstanceGroup
-metadata:
-  creationTimestamp: "2021-02-21T17:30:57Z"
-  labels:
-    kops.k8s.io/cluster: msginova.com
-  name: nodes-us-east-1a
-spec:
-  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210119.1
-  machineType: t2.micro
-  maxSize: 4
-  minSize: 3
-  nodeLabels:
-    kops.k8s.io/instancegroup: nodes-us-east-1a
-  role: Node
-  subnets:
-  - us-east-1a
-```
-
-
-```bash
-[root@kops-server ~]# kops update cluster --name msginova.com --yes
-I0221 18:51:18.027040    4548 executor.go:111] Tasks: 0 done / 79 total; 45 can run
-I0221 18:51:18.356633    4548 executor.go:111] Tasks: 45 done / 79 total; 16 can run
-I0221 18:51:18.520630    4548 executor.go:111] Tasks: 61 done / 79 total; 16 can run
-I0221 18:51:18.793169    4548 executor.go:111] Tasks: 77 done / 79 total; 2 can run
-I0221 18:51:19.065463    4548 executor.go:111] Tasks: 79 done / 79 total; 0 can run
-I0221 18:51:19.065575    4548 dns.go:156] Pre-creating DNS records
-I0221 18:51:19.351162    4548 update_cluster.go:313] Exporting kubecfg for cluster
-kops has set your kubectl context to msginova.com
-W0221 18:51:19.401363    4548 update_cluster.go:337] Exported kubecfg with no user authentication; use --admin, --user or --auth-plugin flags with `kops export kubecfg`
-
-Cluster changes have been applied to the cloud.
-
-
-Changes may require instances to restart: kops rolling-update cluster
-```
-
-```bash
-[root@kops-server ~]# kops export kubecfg msginova.com --admin
-kops has set your kubectl context to msginova.com
-```
-
-```bash
-[root@kops-server ~]# kops rolling-update cluster --name msginova.com --yes
-NAME			STATUS	NEEDUPDATE	READY	MIN	TARGET	MAX	NODES
-master-us-east-1a	Ready	0		1	1	1	1	1
-nodes-us-east-1a	Ready	0		3	3	3	4	2
-
-No rolling-update required.
-```
-
-Após executar os procedimentos acima deve-se criar uma nova instância EC2, pois definimos que o mínimo de instância que queriamos eram 3 EC2 funcionando como worker.
-
-![alt text](img/15-kops.png "Update Cluster")
-
-```bash
-[root@kops-server ~]# kubectl get nodes
-NAME                            STATUS   ROLES    AGE     VERSION
-ip-172-20-35-7.ec2.internal     Ready    master   85m     v1.19.7
-ip-172-20-46-193.ec2.internal   Ready    node     81m     v1.19.7
-ip-172-20-49-167.ec2.internal   Ready    node     81m     v1.19.7
-ip-172-20-56-184.ec2.internal   Ready    node     5m21s   v1.19.7
-```
-
-## 6) Destruindo o Cluster
+## 7) Destruindo o Cluster
 
   Por fim, podemos destruir o cluster após aprendermos sobre o kops.
 
@@ -517,11 +521,11 @@ msginova.com	aws	us-east-1a
 ```
 
 ```bash
-[root@kops-server manifestos]# kops delete cluster msginova.com --yes
+[root@kops-server manifestos]# kops delete cluster k8s.msginova.com --yes
 TYPE			NAME									ID
-autoscaling-config	master-us-east-1a.masters.msginova.com					lt-04aa39151d77832bc
-autoscaling-config	nodes-us-east-1a.msginova.com						lt-059c233dfb339f066
-autoscaling-group	master-us-east-1a.masters.msginova.com					master-us-east-1a.masters.msginova.com
+autoscaling-config	master-us-east-1a.masters.k8s.msginova.com					lt-04aa39151d77832bc
+autoscaling-config	nodes-us-east-1a.k8s.msginova.com						lt-059c233dfb339f066
+autoscaling-group	master-us-east-1a.masters.k8s.msginova.com					master-us-east-1a.masters.k8s.msginova.com
 ...
 ...
 ...
