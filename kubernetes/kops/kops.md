@@ -9,8 +9,9 @@
     - [1.6) Instalando Kops](#16-instalando-kops)
     - [1.7) Par de Chaves](#17-par-de-chaves)            
   - [2) Route53](#2-route53)
-    - [2.1) DNS Sub-Domínios](#21-dns-sub-dom%C3%ADnios)
-    - [2.2) Configurar DNS](#22-configurar-dns)                  
+    - [2.1) Configurar DNS](#21-configurar-dns)                  
+    - [2.2) DNS Sub-Domínios](#22-dns-sub-dom%C3%ADnios)
+    - [2.3) Configurando Sub-Domínios](#23-configurando-sub-dom%C3%ADnios)
   - [3) Buckets S3](#3-buckets-s3)
     - [3.1) Criando um Bucket](#31-criando-um-bucket) 
   - [4) Kops Provisionando Cluster](#4-kops-provisionando-cluster)
@@ -147,7 +148,13 @@ The key's randomart image is:
 
   Para fazer uso do sub-domínio é necessário migrar o gerenciamento do *DNS* para *AWS*. 
 
-### 2.1) DNS Sub-Domínios
+### 2.1) Configurar DNS
+
+  Para o laboratório vamos usar um **DNS Vádido** *msginova.com*. No painel AWS busque por *Route53*, depois crie uma Zona do tipo *Público*.
+
+![alt text](img/1-route53.png "Route 53")  
+
+### 2.2) DNS Sub-Domínios
 
   Uma vez que o sub-domino estiver configurado, o layout desejado seria esse:
 
@@ -160,13 +167,27 @@ Cluster Staging      => staging.k8s.msginova.com
 Cluster Homologacao  => homologacao.k8s.msginova.com
 ```
 
-### 2.2) Configurar DNS
+### 2.3) Configurando Sub-Domínios
 
-  Para o laboratório vamos usar um **DNS Vádido** *msginova.com*. No painel AWS busque por *Route53*, depois crie uma Zona do tipo *Público*.
+Crei uma nova *Zona* no meu cenário chamei essa zona de **k8s.msginova.com**
 
-![alt text](img/1-route53.png "Route 53")  
+![alt text](img/2-route53.png "SubDomain")  
 
- ## 3) Buckets S3
+Depois de criada, copie os servidores DNS, delegado para essa nova *Zona*.
+
+![alt text](img/3-route53.png "SubDomain") 
+
+Aqui está um passo importante, volte na *Zona* **msginova.com** e adicione um novo registro, conforme mostra na imagem abaixo.
+
+![alt text](img/4-route53.png "SubDomain") 
+
+![alt text](img/5-route53.png "SubDomain") 
+
+Após salvar vamos testar se o Sub-Domínio está respondendo.
+
+![alt text](img/6-route53.png "SubDomain") 
+
+## 3) Buckets S3
 
   Todas as configurações do cluster kubernetes gerenciado pelo kops ficam armazenados no *S3*, portanto devemos configurar esse serviço antes de iniciarmos os trabalhos com o kops.
 
