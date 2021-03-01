@@ -373,7 +373,7 @@ ip-172-20-56-184.ec2.internal   Ready    node     5m21s   v1.19.7
 
 ## 6) Deployando
 
-    Com o cluster *OnLine*, vamos subir o primeiro deployment.
+  Com o cluster *OnLine*, vamos subir o primeiro deployment.
 
 ### 6.1) Primeiro Deployment
 
