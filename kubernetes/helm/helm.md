@@ -10,7 +10,24 @@
         - [2.3.3) Cursos Ingress](#233-cursos-ingress)
    - [2.4) Definindo Variáveis](#24-definindo-variáveis)
         - [2.4.1) Arquivo de Manifesto Values](#241-arquivo-de-manifesto-values)        
-- [3) Helm Chart](#2-helm-chart)
+- [3) Deploy de um Chart](#3-deploy-de-um-chart)
+  - [3.1) Validando os Manifestos](#31-validando-os-manifestos)
+  - [3.2) Aplicando os Manifestos](#32-aplicando-os-manifestos)
+- [4) Pós Deploy](#4-pós-deploy)  
+  - [4.1) Inspecionando os Deploys](#41-inspecionando-os-deploys)
+  - [4.2) Histórico dos Deploys](#42-histórico-dos-deploys)
+- [5) Manipulando meus Charts após Deploy](#5-manipulando-meus-charts-após-deploy)
+  - [5.1) Downgrade de Versões Deployadas](#51-downgrade-de-versões-deployadas)
+  - [5.2) Deletando um deployment](#52-deletando-um-deployment)
+- [6) Hospendando meus Charts](#6-hospedando-meus-charts)
+- [6.1) Criando um repositório local](#61-criando-um-repositório-local)
+- [6.2) Checando meus repositórios](62-checando-meus-repositórios)
+  - [6.2.1) Listando meus repositórios](#621-listando-meus-repositórios)
+  - [6.2.2) Adicionando meu repositório](#622-adicionando-meu-repositório)
+  - [6.2.3) Deletando um repositório](#623-deletando-um-repositório)
+  - [6.3.4) Enviando Chart para meu repositório](#634-enviando-chart-para-meu-repositório)
+- [7) Download de um repositório remoto](#7-download-de-um-repositorio-remoto)
+- [8) Comandos Úteis](#8-comandos-úteis)
 
 ## 1) Versão do Helm
 
@@ -187,7 +204,7 @@ spec:
 
 #### 2.3.3) Cursos Ingress
 
-<pre>
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -202,7 +219,7 @@ spec:
           backend:
             serviceName: cursos-cluster-ip-service
             servicePort: 80
-</pre>
+```
 
 
 #### 2.4) Definindo Variáveis
@@ -240,110 +257,132 @@ resources:
       cpu: 800m
 ```
 
-h2. 4) Fazendo Deploy
+#### 2.4.1) Arquivo de Manifesto Values
+
+## 3) Deploy de um Chart
 
 No momento do deploy deve-se passar algumas variáveis de ambiente para construir os manifestos.
 
+#### 3.1) Validando os Manifestos
 
-h2. 4.1) Validando os Manifestos antes de aplica-los
+Parametros Utilizados:
 
+```yaml
+helm-cursos  => Um  Nome que identifica o meu Chart Helm 
+helm-cursos  => Nome do diretório que contém os manifestos
+--set        => Usado para definir variáveis dinâmicamente.
+```
 
-<pre>
-helm upgrade helm-cursos helm-cursos \
+```bash
+[paulo@kops-server ~]$ helm upgrade helm-cursos helm-cursos \
 --namespace staging \
 --set image.repository="registry.meudominio.com.br/sistemas/cursos/sistema-cursos" \
 --set image.tag="1.0.0" \
 --set railsEnv="staging" \
 --set domain.cursos="cursos.meudominio.com.br" --dry-run --debug
-</pre>
+```
 
+#### 3.2) Aplicando os Manifestos
 
-helm-cursos  => Um ( Nome | Apelido ) que identifica o Meu Helm 
-helm-cursos  => Nome do diretório que contém os manifestos
---set        => Usado para definir variáveis dinâmicamente.
-
-
-h2. 4.2) Aplicando os Manifestos
-
-
-<pre>
-helm upgrade helm-cursos helm-cursos \
+```bash
+[paulo@kops-server ~]$ helm upgrade helm-cursos helm-cursos \
 --namespace staging \
 --set image.repository="registry.meudominio.com.br/sistemas/cursos/sistema-cursos" \
 --set image.tag="1.0.0" \
 --set railsEnv="staging" \
 --set domain.cursos="cursos.meudominio.com.br"
-</pre> 
+```
 
-h2. 5) Inspecionando os Deploys
+## 4) Pós Deploy
 
-<pre>
-helm list -n staging
+#### 4.1) Inspecionando os Deploys
+
+```bash
+[paulo@kops-server ~]$ helm list -n staging
 
 NAME        NAMESPACE REVISION  UPDATED                                 STATUS    CHART             APP VERSION
 helm-cursos staging   3         2021-02-12 00:44:44.058644871 +0000 UTC deployed  helm-cursos-0.1.0 1.16.0
 
-</pre>
+```
 
-<pre>
-helm history -n staging helm-cursos
+#### 4.2) Histórico dos Deploys
+
+```bash
+[paulo@kops-server ~]$ helm history -n staging helm-cursos
 
 REVISION  UPDATED                   STATUS      CHART             APP VERSION DESCRIPTION
 1         Thu Feb 11 21:10:54 2021  superseded  helm-cursos-0.1.0 1.16.0      Install complete
 2         Fri Feb 12 00:33:55 2021  superseded  helm-cursos-0.1.0 1.16.0      Upgrade complete
 3         Fri Feb 12 00:44:44 2021  deployed    helm-cursos-0.1.0 1.16.0      Upgrade complete
-</pre>
+```
 
-h2. 6) Fazendo Downgrade
+## 5) Manipulando meus Charts após Deploy
 
-<pre>
-helm rollback -n staging helm-cursos 1
-</pre>
+#### 5.1) Downgrade de Versões Deployadas
 
-h2. 7) Hospendando meus Charts
+Caso haja necessidade de fazer um rollback de um deploy.
 
-Vc pode hospedar seu Charts em um repositório privado, para isso vamos usar um projeto OpenSource chamado *ChartMuseum*
+```bash
+[paulo@kops-server ~]$ helm rollback -n staging helm-cursos 1
+```
 
-[[https://chartmuseum.com/#Instructions]]
+#### 5.2) Deletando um deployment
 
+```
+[paulo@kops-server ~]$ helm delete -n staging helm-cursos
+```
 
-h2. 7.1) Criando um repositório local
+## 6) Hospendando meus Charts
 
-<pre>
-docker run --rm -it \
+Podemos hospedar os Charts em um repositório privado, para isso vamos usar um projeto OpenSource chamado *ChartMuseum*  * [ChartMuseum](https://chartmuseum.com/#Instructions)
+
+#### 6.1) Criando um repositório local
+
+```bash
+[paulo@kops-server ~]$ docker run --rm -it \
   -p 8080:8080 \
   -v $(pwd)/charts:/charts \
   -e DEBUG=true \
   -e STORAGE=local \
   -e STORAGE_LOCAL_ROOTDIR=/charts \
   chartmuseum/chartmuseum:latest
-</pre>
+```
 
-h2. 7.2) Checando meus repositórios
+#### 6.2) Checando meus repositórios
 
-<pre>
-helm repo list
-helm repo add meurepo http://localhost:8080
-helm repo del meurepo
-helm repo add meurepo http://localhost:8080
-helm push helm-cursos meurepo
-</pre>
+#### 6.2.1) Listando meus repositórios
 
-h2. 7.3) Baixando um repositório remoto
+```bash
+[paulo@kops-server ~]$ helm repo list
+```
 
-<pre>
-helm pull meurepo/helm-cursos
-</pre>
+#### 6.2.2) Adicionando meu repositório
 
-h2. 7.4) Deletando um deployment
+```bash
+[paulo@kops-server ~]$ helm repo add meurepo http://localhost:8080
+```
 
-<pre>
-helm delete -n staging helm-cursos
-</pre>
+#### 6.2.3) Deletando um repositório
 
-h2. 8) Comando Uteis ( Helm )
+```bash
+[paulo@kops-server ~]$ helm repo del meurepo
+```
 
-<pre>
+#### 6.2.3) Enviando Chart para meu repositório
+
+```bash
+[paulo@kops-server ~]$ helm push helm-cursos meurepo
+```
+
+## 7) Download de um repositório remoto
+
+```bash
+[paulo@kops-server ~]$ helm pull meurepo/helm-cursos
+```
+
+## 8) Comando Uteis
+
+```
 helm repo add
 helm search repo 
 helm install
@@ -352,6 +391,4 @@ helm rollback
 helm create
 helm delete
 helm status
-</pre>
-
-
+```
