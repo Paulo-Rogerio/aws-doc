@@ -25,8 +25,8 @@
   - [6.2.1) Listando meus repositórios](#621-listando-meus-repositórios)
   - [6.2.2) Adicionando meu repositório](#622-adicionando-meu-repositório)
   - [6.2.3) Deletando um repositório](#623-deletando-um-repositório)
-  - [6.3.4) Enviando Chart para meu repositório](#634-enviando-chart-para-meu-repositório)
-- [7) Download de um repositório remoto](#7-download-de-um-repositorio-remoto)
+  - [6.3.4) Enviando Chart para meu repositório](#624-enviando-chart-para-meu-repositório)
+- [7) Download de um repositório remoto](#7-download-de-um-repositório-remoto)
 - [8) Comandos Úteis](#8-comandos-úteis)
 
 ## 1) Versão do Helm
@@ -368,7 +368,7 @@ Podemos hospedar os Charts em um repositório privado, para isso vamos usar um p
 [paulo@kops-server ~]$ helm repo del meurepo
 ```
 
-#### 6.2.3) Enviando Chart para meu repositório
+#### 6.2.4) Enviando Chart para meu repositório
 
 ```bash
 [paulo@kops-server ~]$ helm push helm-cursos meurepo
