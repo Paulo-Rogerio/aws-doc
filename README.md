@@ -3,7 +3,9 @@
 - [1) AWS](#1-aws)
   - [1.1) Volumes EBS](#11-volumes-ebs)
     - [1.1.1) SnapShot e Restore](#111-snapshot-e-restore)
-  - [1.2) LoadBalancer](#12-loadbalancer)    
+    - [1.1.2) Volumes e EC2](#112-volumes-e-ec2)
+  - [1.2) LoadBalancer](#12-loadbalancer)
+  - [1.3) VPC](#13-vpc)      
 - [2) Kubernetes](#2-kubernetes)
   - [2.1) Provisionando Cluster](#21-provisionando-cluster)
     - [2.1.1) Kops](#211-kops)
@@ -26,20 +28,16 @@
 
   * [SnapShot - AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot/snapshot.md)
 
+#### 1.1.2) Volumes e EC2
+
+  * [Volumes e EC2](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/volumes/volumes-ec2.md)
+
 #### 1.2) LoadBalancer
 
   * [LoadBalancer com EC2](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/loadbalancer/loadbalancer.md)
 
 ## 2) Kubernetes
 #### 2.1) Provisionando Cluster
-
-  Existem várias formas de criar um cluster kubernetes, dentre as mais conhecidas estão:
-
-
-  - ```Kind ------>``` (https://github.com/kubernetes-sigs/kind)
-  - ```K3S ------->``` https://github.com/k3s-io/k3s
-  - ```Runcher --->``` https://github.com/rancher/rke
-  - ```Kubspray -->``` https://github.com/kubernetes-sigs/kubespray
 
 #### 2.1.1) Kops
   * [Kops Kubernetes](https://github.com/Paulo-Rogerio/aws-doc/blob/main/kubernetes/kops/kops.md)
