@@ -28,8 +28,9 @@
           - [6.2.1.2) Criando DNS](#6212-criando-dns)
         - [6.2.2) Ingress Controller](#622-ingress-controller)
           - [6.2.2.1) Removendo Todos LoadBalancer](#6221-removendo-todos-loadbalancer)
-          - [6.2.2.2) Ingress Controller AWS](#6222-ingress-controller-aws) 
-          - [6.2.2.3) Criando DNS](#6223-criando-dns)
+          - [6.2.2.2) Criando Services ClusterIP](#6222-criando-services-clusterip)
+          - [6.2.2.3) Instalando Ingress no Cluster](#6223-instalando-ingress-no-cluster)      
+          - [6.2.2.4) Criando DNS](#6224-criando-dns)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -590,7 +591,7 @@ service "nginx-elb" deleted
 service "nginx2-elb" deleted
 ```
 
-### 6.2.2.2) Ingress Controller AWS 
+### 6.2.2.2) Criando Services ClusterIP 
 
 Primeiramente vamos analizar o que está rodando em nosso cluster. Temos *2 POD* rodando
 
@@ -652,7 +653,9 @@ nginx1-cluster-ip-service   ClusterIP   100.69.147.16    <none>        80/TCP   
 nginx2-cluster-ip-service   ClusterIP   100.67.162.107   <none>        80/TCP    56s
 ```
 
-### 6.2.2.3) Criando DNS
+### 6.2.2.3) Instalando Ingress no Cluster
+
+### 6.2.2.4) Criando DNS
 
 ## 7) Destruindo o Cluster
 
