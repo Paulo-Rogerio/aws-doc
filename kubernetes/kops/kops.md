@@ -654,7 +654,7 @@ nginx1-cluster-ip-service   ClusterIP   100.69.147.16    <none>        80/TCP   
 nginx2-cluster-ip-service   ClusterIP   100.67.162.107   <none>        80/TCP    56s
 ```
 
-### 6.2.2.3) Qual Ingress devo instalar?
+### 6.2.2.3) Qual Ingress Instalar
 
 Os manifestos usado para provisionar o Ingress Controller, foi baseado no projetos:
 1) https://github.com/MithunTechnologiesDevOps/kubernetes-ingress
