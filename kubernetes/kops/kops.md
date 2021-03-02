@@ -483,7 +483,7 @@ Até o momento o serviço está rodando mas apenas localmente, precisamos nesse 
 
 ### 6.2.1) LoadBalancer
 
-Usando o tipo de service *LoadBalancer*, cada pod que precise ser disponibilizado para internet terá um servico gerenciado pela própria AWS que fará essa ponte entre o *POD* e o DNS criado dinamicamente pela AWS. 
+Usando o tipo de service *LoadBalancer*, cada pod que precise ser disponibilizado para internet terá um servico gerenciado pela própria AWS que fará essa ponte entre o *POD* e o serviço criado dinamicamente pela AWS LoadBalancer. 
 
 Vale ressaltar que nessa modalidade se tivermos *10 POD rodando*, teremos *10 LoadBalancer criado*. Isso pode onerar o negócio.
 
