@@ -792,7 +792,7 @@ Crie os arquivos ( **nginx1-ingress.yaml** e **nginx12-ingress.yaml** ).
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: nginx1-ingress
+  name: msginova-ingress
   namespace: default
 spec:
   rules:
@@ -803,25 +803,33 @@ spec:
           backend:
             serviceName: nginx1-cluster-ip-service
             servicePort: 80
-``` 
-
-```yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: nginx2-ingress
-  namespace: default
-spec:
-  rules:
   - host: nginx2.msginova.com
     http:
       paths:
         - path: /
           backend:
             serviceName: nginx2-cluster-ip-service
-            servicePort: 80
+            servicePort: 80            
+``` 
+
+```bash
+[root@kops-server manifestos]# kubectl  get ingress
+NAME               CLASS    HOSTS                                     ADDRESS   PORTS   AGE
+msginova-ingress   <none>   nginx1.msginova.com,nginx2.msginova.com             80      28m
 ```
+
 ### 6.2.2.7) Criando DNS
+
+
+#### Criando entradas CNAME
+
+![alt text](img/7-route53.png "Route53")
+
+Crie as 2 entradas ( **nginx1** e **nginx2** ), conforme mostra a imagem abaixo.
+
+![alt text](img/8-route53.png "Route53")
+
+#### Acessando os Host Virtuais
 
 ## 7) Destruindo o Cluster
 
