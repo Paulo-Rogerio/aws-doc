@@ -793,7 +793,7 @@ Crie os arquivos ( **nginx1-ingress.yaml** e **nginx12-ingress.yaml** ).
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: msginova-ingress
+  name: nginx1-ingress
 spec:
   ingressClassName: nginx
   rules:
@@ -803,18 +803,29 @@ spec:
       - backend:
           serviceName: nginx1-cluster-ip-service
           servicePort: 80
+``` 
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx2-ingress
+spec:
+  ingressClassName: nginx
+  rules:
   - host: nginx2.msginova.com
     http:
       paths:
       - backend:
           serviceName: nginx2-cluster-ip-service
-          servicePort: 80            
-``` 
+          servicePort: 80
+```
 
 ```bash
 [root@kops-server ingress]# kubectl  get ingress
-NAME               CLASS   HOSTS                                     ADDRESS   PORTS   AGE
-msginova-ingress   nginx   nginx1.msginova.com,nginx2.msginova.com             80      5s
+NAME             CLASS   HOSTS                 ADDRESS   PORTS   AGE
+nginx1-ingress   nginx   nginx1.msginova.com             80      105s
+nginx2-ingress   nginx   nginx2.msginova.com             80      102s
 ```
 
 ### 6.2.2.7) Criando DNS
