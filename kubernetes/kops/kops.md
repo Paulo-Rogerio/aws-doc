@@ -654,7 +654,7 @@ nginx1-cluster-ip-service   ClusterIP   100.69.147.16    <none>        80/TCP   
 nginx2-cluster-ip-service   ClusterIP   100.67.162.107   <none>        80/TCP    56s
 ```
 
-### 6.2.2.3) Instalando Ingress no Cluster
+### 6.2.2.3) Qual Ingress devo instalar?
 
 Os manifestos usado para provisionar o Ingress Controller, foi baseado no projetos:
 1) https://github.com/MithunTechnologiesDevOps/kubernetes-ingress
@@ -663,8 +663,16 @@ Os manifestos usado para provisionar o Ingress Controller, foi baseado no projet
 
 Sendo que os manifestos tratado pelo projeto **MithunTechnologiesDevOps** é uma junção necessária que provê o Ingress integrado com o serviço de LoadBalancer da AWS.
 
+### 6.2.2.4) Instalando Ingress no Cluster
 
-### 6.2.2.4) Criando DNS
+```bash
+[root@kops-server ~]# mkdir manifestos && cd manifestos 
+[root@kops-server manifestos]# git clone
+```
+
+https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/namespaces/ns-and-sa.yaml
+
+### 6.2.2.5) Criando DNS
 
 ## 7) Destruindo o Cluster
 
