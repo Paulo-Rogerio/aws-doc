@@ -768,8 +768,59 @@ Events:
   Normal  EnsuredLoadBalancer   45m   service-controller  Ensured load balancer
 ```
 
+![alt text](img/17-kops.png "LoadBalancer Ingress")
+
 ### 6.2.2.6) Criando Ingress Resources
 
+Os Ingress Resources é uma forma de entregar as aplicações por meio de um virtual host. 
+
+Ex.: 
+ - https://sistema.msginova.com
+ - https://api.msginova.com
+
+```bash
+[root@kops-server cluster-ip]# kubectl  get svc
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes                  ClusterIP   100.64.0.1       <none>        443/TCP   165m
+nginx1-cluster-ip-service   ClusterIP   100.69.147.16    <none>        80/TCP    152m
+nginx2-cluster-ip-service   ClusterIP   100.67.162.107   <none>        80/TCP    142m
+```
+
+Crie os arquivos ( **nginx1-ingress.yaml** e **nginx12-ingress.yaml** ).
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx1-ingress
+  namespace: default
+spec:
+  rules:
+  - host: nginx1.msginova.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: nginx1-cluster-ip-service
+            servicePort: 80
+``` 
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx2-ingress
+  namespace: default
+spec:
+  rules:
+  - host: nginx2.msginova.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: nginx2-cluster-ip-service
+            servicePort: 80
+```
 ### 6.2.2.7) Criando DNS
 
 ## 7) Destruindo o Cluster
