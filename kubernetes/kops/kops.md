@@ -655,6 +655,14 @@ nginx2-cluster-ip-service   ClusterIP   100.67.162.107   <none>        80/TCP   
 
 ### 6.2.2.3) Instalando Ingress no Cluster
 
+Os manifestos usado para provisionar o Ingress Controller, foi baseado no projetos:
+1) https://github.com/MithunTechnologiesDevOps/kubernetes-ingress
+2) https://github.com/nginxinc/kubernetes-ingress
+3) https://github.com/kubernetes/ingress-nginx
+
+Sendo que os manifestos tratado pelo projeto **MithunTechnologiesDevOps** é uma junção necessária que provê o Ingress integrado com o serviço de LoadBalancer da AWS.
+
+
 ### 6.2.2.4) Criando DNS
 
 ## 7) Destruindo o Cluster
