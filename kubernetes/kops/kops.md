@@ -31,7 +31,8 @@
           - [6.2.2.2) Criando Services ClusterIP](#6222-criando-services-clusterip)
           - [6.2.2.3) Qual Ingress Instalar](#6223-qual-ingress-instalar)
           - [6.2.2.4) Instalando Ingress no Cluster](#6224-instalando-ingress-no-cluster)
-          - [6.2.2.5) Criando DNS](#6225-criando-dns)
+          - [6.2.2.5) Checando Instalações](#6225-checando-instalações)          
+          - [6.2.2.6) Criando DNS](#6225-criando-dns)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -669,21 +670,49 @@ Sendo que os manifestos tratado pelo projeto **MithunTechnologiesDevOps** é uma
 
 ```bash
 [root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/namespaces/ns-and-sa.yaml
+namespace/nginx-ingress created
+serviceaccount/nginx-ingress created
 ```
 
 ##### RBAC, Default Secret e Config Map
 
 ```bash
 [root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/rbac.yaml 
+clusterrole.rbac.authorization.k8s.io/nginx-ingress created
+clusterrolebinding.rbac.authorization.k8s.io/nginx-ingress created
 
 [root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/nginx-config.yaml
+ingressclass.networking.k8s.io/nginx created
+configmap/nginx-config created
 
 [root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/default-server-secret.yaml
+secret/default-server-secret created
 
 [root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/crds.yml
+customresourcedefinition.apiextensions.k8s.io/globalconfigurations.k8s.nginx.org created
+customresourcedefinition.apiextensions.k8s.io/policies.k8s.nginx.org created
+customresourcedefinition.apiextensions.k8s.io/transportservers.k8s.nginx.org created
+customresourcedefinition.apiextensions.k8s.io/virtualservers.k8s.nginx.org created
+customresourcedefinition.apiextensions.k8s.io/virtualserverroutes.k8s.nginx.org created
 ```
 
-### 6.2.2.5) Criando DNS
+##### DaemonSet
+
+```bash
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/daemon-set/nginx-ingress.yaml
+daemonset.apps/nginx-ingress created
+```
+
+##### Services LoadBalancer AWS
+
+```bash
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/service/loadbalancer-aws-elb.yaml
+service/nginx-ingress created
+```
+
+### 6.2.2.5) Checando Instalações
+
+### 6.2.2.6) Criando DNS
 
 ## 7) Destruindo o Cluster
 
