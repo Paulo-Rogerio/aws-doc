@@ -26,9 +26,10 @@
         - [6.2.1) LoadBalancer](#621-loadbalancer)
           - [6.2.1.1) LoadBalancer AWS](#6211-loadbalancer-aws) 
           - [6.2.1.2) Criando DNS](#6212-criando-dns)
-        - [6.2.2) Ingress Controller](#621-ingress-controller)
-          - [6.2.2.1) Ingress Controller AWS](#6221-ingress-controller-aws) 
-          - [6.2.2.2) Criando DNS](#6222-criando-dns)
+        - [6.2.2) Ingress Controller](#622-ingress-controller)
+          - [6.2.2.1) Removendo Todos LoadBalancer](#6221-removendo-todos-loadbalancer)
+          - [6.2.2.2) Ingress Controller AWS](#6222-ingress-controller-aws) 
+          - [6.2.2.3) Criando DNS](#6223-criando-dns)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -542,7 +543,21 @@ Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agra
 
 ### 6.2) Acesso Externo via Ingress Controller
 
-Usando o service do tipo *Ingress*, teremos apenas um LoadBalancer, esse serviço encaminhará as requisiçoes para Ingress e esse por sua vez que comunicará com os PODs. 
+Usando o service do tipo *Ingress* teremos apenas um LoadBalancer, esse serviço encaminhará as requisiçoes para *Ingress Controller* que por sua vez que comunicará com os *Services* e esse sim se comunicará com os PODs.
+
+```yaml
+L.B => Ingress Controller => Services ClusterIP => POD
+```
+
+### 6.2.2) Ingress Controller
+
+Usando a modalidade *Ingress Controller*, para expor as aplicações temos alumas vantagens.
+- Diminuimos a complexidade, pois teremos apenas um LoadBalancer para nos preucupar.
+- Teremos uma enconomia pois reduzimos o numero de LoadBalancer para 1.
+
+Vale ressaltar que nessa modalidade se tivermos *10 POD rodando*, teremos apenas *1 LoadBalancer criado*. Isso pode ser bom para o negócio.
+
+### 6.2.2.1) Removendo Todos LoadBalancer
 
 2 Pods Rodando ...
 
@@ -575,16 +590,8 @@ service "nginx-elb" deleted
 service "nginx2-elb" deleted
 ```
 
-### 6.2.2) Ingress Controller
-
-Usando a modalidade *Ingress Controller*, para expor as aplicações temos alumas vantagens.
-- Diminuimos a complexidade, pois teremos apenas um LoadBalancer para nos preucupar.
-- Teremos uma enconomia pois reduzimos o numero de LoadBalancer para 1.
-
-Vale ressaltar que nessa modalidade se tivermos *10 POD rodando*, teremos apenas *1 LoadBalancer criado*. Isso pode ser bom para o negócio.
-
-#### 6.2.2.1) Ingress Controller AWS 
-#### 6.2.2.2) Criando DNS
+### 6.2.2.2) Ingress Controller AWS 
+### 6.2.2.3) Criando DNS
 
 ## 7) Destruindo o Cluster
 
