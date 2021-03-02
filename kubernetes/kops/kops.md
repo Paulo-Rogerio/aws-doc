@@ -668,13 +668,19 @@ Sendo que os manifestos tratado pelo projeto **MithunTechnologiesDevOps** é uma
 ##### NameSpace e ServiceAccount
 
 ```bash
-[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/namespaces 
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/namespaces/ns-and-sa.yaml
 ```
 
 ##### RBAC, Default Secret e Config Map
 
 ```bash
-[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common 
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/rbac.yaml 
+
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/nginx-config.yaml
+
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/default-server-secret.yaml
+
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/common/crds.yml
 ```
 
 ### 6.2.2.5) Criando DNS
