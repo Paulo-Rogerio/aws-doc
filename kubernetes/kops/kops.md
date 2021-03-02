@@ -35,10 +35,10 @@
           - [6.2.2.6) Criando Ingress Resources](#6226-criando-ingress-resources)
           - [6.2.2.7) Criando DNS](#6227-criando-dns)
           - [6.2.2.8) Acessando Virtual Hosts](#6228-acessando-virtual-hosts)
-      - [6.3) Rodando Apicações com HTTPS ](#63-rodando-aplicações-com-https)
+      - [6.3) Rodando Aplicações com Https ](#63-rodando-aplicações-com-https)
         - [6.3.1) Certificado Auto Assinado ](#631-certificado-auto-assinado)
           - [6.3.1.1) Gerando Certificado](#6311-gerando-certificado)
-          - [6.3.1.2) Criando Manifesto Ingress HTTPS](#6312-criando-manifestos-ingress-https)
+          - [6.3.1.2) Criando Manifesto Ingress Https](#6312-criando-manifesto-ingress-https)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -847,7 +847,7 @@ Crie as 2 entradas ( **nginx1** e **nginx2** ), conforme mostra a imagem abaixo.
 ![alt text](img/1-nginx.png "Nginx1")
 ![alt text](img/2-nginx.png "Nginx2")
 
-## 6.3) Rodando Apicações com HTTPS 
+## 6.3) Rodando Aplicações com Https 
 
 ### 6.3.1) Certificado Auto Assinado 
 
@@ -873,7 +873,7 @@ Criando um secret ...
 secret/msginova created
 ```
 
-### 6.3.1.2) Criando Manifesto Ingress HTTPS
+### 6.3.1.2) Criando Manifesto Ingress Https
 
 Crie o aquivo **nginx-https-ingress.yaml**
 
