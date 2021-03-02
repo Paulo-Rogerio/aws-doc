@@ -29,8 +29,9 @@
         - [6.2.2) Ingress Controller](#622-ingress-controller)
           - [6.2.2.1) Removendo Todos LoadBalancer](#6221-removendo-todos-loadbalancer)
           - [6.2.2.2) Criando Services ClusterIP](#6222-criando-services-clusterip)
-          - [6.2.2.3) Instalando Ingress no Cluster](#6223-instalando-ingress-no-cluster)      
-          - [6.2.2.4) Criando DNS](#6224-criando-dns)
+          - [6.2.2.3) Qual Ingress devo instalar?](#6223-qual-ingress-devo-instalar?)
+          - [6.2.2.4) Instalando Ingress no Cluster](#6224-instalando-ingress-no-cluster)
+          - [6.2.2.5) Criando DNS](#6225-criando-dns)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
