@@ -428,7 +428,7 @@ NAME                     READY   STATUS    RESTARTS   AGE
 nginx-698676d7f8-z25rs   1/1     Running   0          7m39s
 ```
 
-Como ainda não criamos nenhum serviço, não há possibilidades de consumir o serviço para testarmos. Para resolver esse impace, conecte-se no POD no modo interativo ( bash ), onde vc tem um terminal.
+Como ainda não criamos nenhum serviço, não há possibilidades de consumir o serviço para testarmos. Para resolver esse impasse, conecte-se no POD no modo interativo ( bash ), onde vc tem um terminal.
 
 ```bash
 [root@kops-server ~]# kubectl exec -it nginx-698676d7f8-z25rs -n default -- bash
