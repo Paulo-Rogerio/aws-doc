@@ -666,11 +666,9 @@ Sendo que os manifestos tratado pelo projeto **MithunTechnologiesDevOps** é uma
 ### 6.2.2.4) Instalando Ingress no Cluster
 
 ```bash
-[root@kops-server ~]# mkdir manifestos && cd manifestos 
-[root@kops-server manifestos]# git clone
-```
+[root@kops-server ~]# kubectl apply -f https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/namespaces/ns-and-sa.yaml 
 
-https://raw.githubusercontent.com/Paulo-Rogerio/aws-doc/main/kubernetes/kops/manifestos/kubernetes-ingress/deployments/namespaces/ns-and-sa.yaml
+```
 
 ### 6.2.2.5) Criando DNS
 
