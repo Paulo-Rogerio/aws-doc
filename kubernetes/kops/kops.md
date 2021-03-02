@@ -34,6 +34,7 @@
           - [6.2.2.5) Checando Instalações](#6225-checando-instalações)          
           - [6.2.2.6) Criando Ingress Resources](#6226-criando-ingress-resources)
           - [6.2.2.7) Criando DNS](#6227-criando-dns)
+          - [6.2.2.8) Acessando Virtual Hosts](#6228-acessando-virtual-hosts)          
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -793,33 +794,30 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: msginova-ingress
-  namespace: default
 spec:
+  ingressClassName: nginx
   rules:
   - host: nginx1.msginova.com
     http:
       paths:
-        - path: /
-          backend:
-            serviceName: nginx1-cluster-ip-service
-            servicePort: 80
+      - backend:
+          serviceName: nginx1-cluster-ip-service
+          servicePort: 80
   - host: nginx2.msginova.com
     http:
       paths:
-        - path: /
-          backend:
-            serviceName: nginx2-cluster-ip-service
-            servicePort: 80            
+      - backend:
+          serviceName: nginx2-cluster-ip-service
+          servicePort: 80            
 ``` 
 
 ```bash
-[root@kops-server manifestos]# kubectl  get ingress
-NAME               CLASS    HOSTS                                     ADDRESS   PORTS   AGE
-msginova-ingress   <none>   nginx1.msginova.com,nginx2.msginova.com             80      28m
+[root@kops-server ingress]# kubectl  get ingress
+NAME               CLASS   HOSTS                                     ADDRESS   PORTS   AGE
+msginova-ingress   nginx   nginx1.msginova.com,nginx2.msginova.com             80      5s
 ```
 
 ### 6.2.2.7) Criando DNS
-
 
 #### Criando entradas CNAME
 
@@ -829,7 +827,10 @@ Crie as 2 entradas ( **nginx1** e **nginx2** ), conforme mostra a imagem abaixo.
 
 ![alt text](img/8-route53.png "Route53")
 
-#### Acessando os Host Virtuais
+### 6.2.2.8) Acessando Virtual Hosts
+
+![alt text](img/1-nginx.png "Nginx1")
+![alt text](img/2-nginx.png "Nginx2")
 
 ## 7) Destruindo o Cluster
 
