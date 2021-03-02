@@ -34,7 +34,11 @@
           - [6.2.2.5) Checando Instalações](#6225-checando-instalações)          
           - [6.2.2.6) Criando Ingress Resources](#6226-criando-ingress-resources)
           - [6.2.2.7) Criando DNS](#6227-criando-dns)
-          - [6.2.2.8) Acessando Virtual Hosts](#6228-acessando-virtual-hosts)          
+          - [6.2.2.8) Acessando Virtual Hosts](#6228-acessando-virtual-hosts)
+      - [6.3) Rodando Apicações com HTTPS ](#63-rodando-aplicações-com-https)
+        - [6.3.1) Certificado Auto Assinado ](#631-certificado-auto-assinado)
+          - [6.3.1.1) Gerando Certificado](#6311-gerando-certificado)
+          - [6.3.1.2) Criando Manifesto Ingress HTTPS](#6312-criando-manifestos-ingress-https)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -842,6 +846,74 @@ Crie as 2 entradas ( **nginx1** e **nginx2** ), conforme mostra a imagem abaixo.
 
 ![alt text](img/1-nginx.png "Nginx1")
 ![alt text](img/2-nginx.png "Nginx2")
+
+## 6.3) Rodando Apicações com HTTPS 
+
+### 6.3.1) Certificado Auto Assinado 
+
+Para fins didáticos vamos criar um certificado auto-assinado e vincula-lo a um ingress.
+
+### 6.3.1.1) Gerando Certificado
+
+Criando um certificado ...
+
+```bash
+[root@kops-server ingress]# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -out msginova.crt -keyout msginova.key -subj "/CN=nginx.msginova.com/O=msginova"
+Generating a 2048 bit RSA private key
+...+++
+..+++
+writing new private key to 'msginova.key'
+-----
+```
+
+Criando um secret ...
+
+```bash
+[root@kops-server ingress]# kubectl create secret tls msginova --namespace default --key msginova.key --cert msginova.crt
+secret/msginova created
+```
+
+### 6.3.1.2) Criando Manifesto Ingress HTTPS
+
+Crie o aquivo **nginx-https-ingress.yaml**
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx1-https-ingress
+spec:
+  tls:
+    - hosts:
+      - nginx1.msginova.com
+      secretName: msginova
+  ingressClassName: nginx
+  rules:
+  - host: nginx1.msginova.com
+    http:
+      paths:
+      - backend:
+          serviceName: nginx1-cluster-ip-service
+          servicePort: 80
+```
+
+```bash
+[root@kops-server ingress]# kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+default-token-9px4x   kubernetes.io/service-account-token   3      5h5m
+msginova              kubernetes.io/tls                     2      4m30s
+```
+
+```bash
+[root@kops-server ingress]# kubectl apply -f nginx-https-ingress.yaml
+ingress.extensions/nginx1-https-ingress created
+```
+
+![alt text](img/3-nginx.png "Nginx")
+
+Ao acessar o browser ...
+
+![alt text](img/4-nginx.png "Nginx")
 
 ## 7) Destruindo o Cluster
 
