@@ -32,7 +32,8 @@
           - [6.2.2.3) Qual Ingress Instalar](#6223-qual-ingress-instalar)
           - [6.2.2.4) Instalando Ingress no Cluster](#6224-instalando-ingress-no-cluster)
           - [6.2.2.5) Checando Instalações](#6225-checando-instalações)          
-          - [6.2.2.6) Criando DNS](#6225-criando-dns)
+          - [6.2.2.6) Criando Ingress Resources](#6226-criando-ingress-resources)
+          - [6.2.2.7) Criando DNS](#6227-criando-dns)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -712,7 +713,64 @@ service/nginx-ingress created
 
 ### 6.2.2.5) Checando Instalações
 
-### 6.2.2.6) Criando DNS
+Daemon Set ...
+
+```bash
+[root@kops-server cluster-ip]# kubectl get ds -n nginx-ingress
+NAME            DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+nginx-ingress   2         2         2       2            2           <none>          44m
+```
+
+Pods ...
+
+```bash
+[root@kops-server cluster-ip]# kubectl get pods --namespace=nginx-ingress
+NAME                  READY   STATUS    RESTARTS   AGE
+nginx-ingress-9xmkk   1/1     Running   0          44m
+nginx-ingress-wrzdq   1/1     Running   0          44m
+```
+
+Services ...
+
+```bash
+[root@kops-server cluster-ip]# kubectl get svc -n nginx-ingress
+NAME            TYPE           CLUSTER-IP     EXTERNAL-IP                                                               PORT(S)                      AGE
+nginx-ingress   LoadBalancer   100.66.134.0   ae73f1e4b41c94496bd995510a77e7f4-2117941234.us-east-1.elb.amazonaws.com   80:32219/TCP,443:31247/TCP   44m
+```
+
+```bash
+[root@kops-server cluster-ip]# kubectl describe svc nginx-ingress -n nginx-ingress
+Name:                     nginx-ingress
+Namespace:                nginx-ingress
+Labels:                   <none>
+Annotations:              service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+                          service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: *
+Selector:                 app=nginx-ingress
+Type:                     LoadBalancer
+IP Families:              <none>
+IP:                       100.66.134.0
+IPs:                      <none>
+LoadBalancer Ingress:     ae73f1e4b41c94496bd995510a77e7f4-2117941234.us-east-1.elb.amazonaws.com
+Port:                     http  80/TCP
+TargetPort:               80/TCP
+NodePort:                 http  32219/TCP
+Endpoints:                100.96.1.6:80,100.96.2.3:80
+Port:                     https  443/TCP
+TargetPort:               443/TCP
+NodePort:                 https  31247/TCP
+Endpoints:                100.96.1.6:443,100.96.2.3:443
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:
+  Type    Reason                Age   From                Message
+  ----    ------                ----  ----                -------
+  Normal  EnsuringLoadBalancer  45m   service-controller  Ensuring load balancer
+  Normal  EnsuredLoadBalancer   45m   service-controller  Ensured load balancer
+```
+
+### 6.2.2.6) Criando Ingress Resources
+
+### 6.2.2.7) Criando DNS
 
 ## 7) Destruindo o Cluster
 
