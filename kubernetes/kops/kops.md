@@ -19,10 +19,16 @@
     - [4.2) Validando Cluster](#42-criando-cluster)
   - [5) Manipulando Orquestrador](#5-manipulando-orquestrador)
     - [5.1) Aumentando Quantidade de Workers](#5.1-aumentando-quantidade-de-workers)
-  - [6) Deployando](#6-deployando)
-    - [6.1) Primeiro Deployment](#61-primeiro-deployment)
-    - [6.2) LoadBalancer Acesso Externo](#62-loadbalancer-acesso-externo)
-    - [6.3) DNS Amigável](#63-dns-amig%C3%A1vel)       
+  - [6) Deploy Aplicação](#6-deploy-aplicação)  
+      - [6.1) Primeiro Deployment](#61-primeiro-deployment)
+        - [6.1.1) Aplicando Manifestos](#611-aplicando-manifestos)
+      - [6.2) Expondo Aplicação ](#62-expondo-aplicação)
+        - [6.2.1) LoadBalancer](#621-loadbalancer)
+          - [6.2.1.1) LoadBalancer AWS](#6211-loadbalancer-aws) 
+          - [6.2.1.2) Criando DNS](#6212-criando-dns)
+        - [6.2.2) Ingress Controller](#621-ingress-controller)
+          - [6.2.2.1) Ingress Controller AWS](#6221-ingress-controller-aws) 
+          - [6.2.2.2) Criando DNS](#6222-criando-dns)
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
@@ -371,13 +377,17 @@ ip-172-20-49-167.ec2.internal   Ready    node     81m     v1.19.7
 ip-172-20-56-184.ec2.internal   Ready    node     5m21s   v1.19.7
 ```
 
-## 6) Deployando
+## 6) Deploy Aplicação
 
-  Com o cluster *OnLine*, vamos subir o primeiro deployment.
+Com o cluster *OnLine*, vamos subir o primeiro deployment.
 
 ### 6.1) Primeiro Deployment
 
-  Nesse momento o cluster já está disponível, vamos subir um pod apenas para validar se tudo está funcionando conforme o esperado. Vamos criar o aquivo **nginx-deployment.yaml** com o seguinte conteúdo.
+Nesse momento o cluster já está disponível, vamos subir um pod apenas para validar se tudo está funcionando conforme o esperado. 
+
+### 6.1.1) Aplicando Manifestos
+
+Criar o aquivo **nginx-deployment.yaml** com o seguinte conteúdo.
 
 ```yaml
 kind: Deployment
@@ -403,10 +413,14 @@ spec:
         - containerPort: 80
 ```
 
+Aplicando os manifestos
+
 ```bash
 [root@kops-server ~]# kubectl  apply -f nginx-deployment.yaml
 pod/nginx created
 ```
+
+Checando se o POD subiu
 
 ```bash
 [root@kops-server ~]# kubectl get pods
@@ -414,11 +428,13 @@ NAME                     READY   STATUS    RESTARTS   AGE
 nginx-698676d7f8-z25rs   1/1     Running   0          7m39s
 ```
 
-Conectando na Instância Nginx
+Como ainda não criamos nenhum serviço, não há possibilidades de consumir o serviço para testarmos. Para resolver esse impace, conecte-se no POD no modo interativo ( bash ), onde vc tem um terminal.
 
 ```bash
 [root@kops-server ~]# kubectl exec -it nginx-698676d7f8-z25rs -n default -- bash
 ```
+
+Instale o curl ... 
 
 ```bash
 root@nginx-698676d7f8-z25rs:/# apt update && apt install curl -y
@@ -427,6 +443,8 @@ Get:2 http://deb.debian.org/debian stretch-updates InRelease [93.6 kB]
 ...
 ...
 ```
+
+Testando Aplicação ...
 
 ```bash
 root@nginx-698676d7f8-z25rs:/# curl localhost:80
@@ -457,13 +475,23 @@ Commercial support is available at
 </html>
 ```
 
-### 6.2) LoadBalancer Acesso Externo
+### 6.2) Expondo Aplicação
 
-  Até o momento o serviço está rodando mas apenas localmente, precisamos nesse momento expor o serviço para o mundo exterior para disponibilizar externamente. Para isso precisaremos criar LoadBalancer para fazer essa ponte. Se observarmos não temos nenhum L.B cadastrado em nosso cluster.
+Até o momento o serviço está rodando mas apenas localmente, precisamos nesse momento expor o serviço para o mundo exterior para disponibilizar externamente. Para isso precisaremos criar LoadBalancer para fazer essa ponte. Se observarmos não temos nenhum L.B cadastrado em nosso cluster.
 
 ![alt text](img/8-kops.png "Kops")
 
-  Vamos criar um service que fará essa ponte entre o Pod que roda a aplicação e o mundo exterior. Vamos criar o aquivo **nginx-service-loadbalancer.yaml** com o seguinte conteúdo.
+### 6.2.1) LoadBalancer
+
+Usando o tipo de service *LoadBalancer*, cada pod que precise ser disponibilizado para internet terá um servico gerenciado pela própria AWS que fará essa ponte entre o *POD* e o DNS criado dinamicamente pela AWS. 
+
+Vale ressaltar que nessa modalidade se tivermos *10 POD rodando*, teremos *10 LoadBalancer criado*. Isso pode onerar o negócio.
+
+### 6.2.1.1) LoadBalancer AWS
+
+Vamos criar um service que fará essa ponte entre o Pod que roda a aplicação e o mundo exterior. Vamos criar o aquivo **nginx-service-loadbalancer-aws.yaml** com o seguinte conteúdo.
+
+*Obs.:*  **Nas especificações do service (spec) deve-se atentar que o seletor que no caso é (nginx) deve fazer match ( ser idêntico ) ao matchLabels declarado no deployment, feito no passo anterior.**
 
 ```yaml
 kind: Service
@@ -485,8 +513,10 @@ spec:
       targetPort: 80
 ```
 
+Aplicando o manifesto ...
+
 ```bash
-[root@kops-server ~]# kubectl  apply -f nginx-service-loadbalancer.yaml
+[root@kops-server ~]# kubectl  apply -f nginx-service-loadbalancer-aws.yaml
 pod/nginx created
 ```
 
@@ -498,9 +528,9 @@ Esse endereço é provisionado dinâmicamente pelo LoadBalancer do AWS.
 
 ![alt text](img/11-kops.png "Kops")
 
-### 6.3) DNS Amigável
+### 6.2.1.2) Criando DNS
 
-Apesar da aplicação está disponível na internet, esse DNS não ficou muito amigável para dipsonibilizá-la para os usuários consumirem a aplicação. Para contornar isso vamos adicionar uma entrada no DNS ( Route53 ).
+Apesar da aplicação está disponível na internet, esse DNS não ficou muito amigável para dipoonibilizá-lo para os usuários consumirem a aplicação. Para contornar isso vamos adicionar uma entrada no DNS ( Route53 ).
 
 ![alt text](img/12-kops.png "DNS")
 
@@ -510,9 +540,55 @@ Após adicionar a entrada DNS podemos chamar a aplicação por um nome mais agra
 
 ![alt text](img/14-kops.png "Nginx")
 
+### 6.2) Acesso Externo via Ingress Controller
+
+Usando o service do tipo *Ingress*, teremos apenas um LoadBalancer, esse serviço encaminhará as requisiçoes para Ingress e esse por sua vez que comunicará com os PODs. 
+
+2 Pods Rodando ...
+
+```bash
+[root@kops-server manifestos]# kubectl  get pods
+NAME                      READY   STATUS    RESTARTS   AGE
+nginx-698676d7f8-m7tnk    1/1     Running   0          22m
+nginx2-6889c4bbc4-5dntg   1/1     Running   0          5m54s
+```
+
+2 Services Rodando ...
+
+```bash
+[root@kops-server manifestos]# kubectl  get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP                                                                     PORT(S)        AGE
+kubernetes   ClusterIP      100.64.0.1       <none>                                                                          443/TCP        3h4m
+nginx-elb    LoadBalancer   100.66.168.195   a54d8549f030749649f4ef9cb88025c8-bdf2a1df15db5a09.elb.us-east-1.amazonaws.com   80:32259/TCP   8m21s
+nginx2-elb   LoadBalancer   100.65.98.191    ae9a7ca820fe645548757af7d1dc6e5d-1023ad4e8db679f1.elb.us-east-1.amazonaws.com   80:30533/TCP   5m54s
+```
+
+Deletando os services antigos ...
+
+```bash
+[root@kops-server manifestos]# kubectl  delete svc nginx-elb
+service "nginx-elb" deleted
+```
+
+```bash
+[root@kops-server manifestos]# kubectl  delete svc nginx2-elb
+service "nginx2-elb" deleted
+```
+
+### 6.2.2) Ingress Controller
+
+Usando a modalidade *Ingress Controller*, para expor as aplicações temos alumas vantagens.
+- Diminuimos a complexidade, pois teremos apenas um LoadBalancer para nos preucupar.
+- Teremos uma enconomia pois reduzimos o numero de LoadBalancer para 1.
+
+Vale ressaltar que nessa modalidade se tivermos *10 POD rodando*, teremos apenas *1 LoadBalancer criado*. Isso pode ser bom para o negócio.
+
+#### 6.2.2.1) Ingress Controller AWS 
+#### 6.2.2.2) Criando DNS
+
 ## 7) Destruindo o Cluster
 
-  Por fim, podemos destruir o cluster após aprendermos sobre o kops.
+Por fim, podemos destruir o cluster após aprendermos sobre o kops.
 
 ```bash
 [root@kops-server manifestos]# kops get cluster
