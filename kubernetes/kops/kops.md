@@ -39,6 +39,7 @@
         - [6.3.1) Certificado Auto Assinado ](#631-certificado-auto-assinado)
           - [6.3.1.1) Gerando Certificado](#6311-gerando-certificado)
           - [6.3.1.2) Criando Manifesto Ingress Https](#6312-criando-manifesto-ingress-https)
+        - [6.3.2) AWS Certificate Manager](#632-aws-certificate-manager)          
   - [7) Destruindo o Cluster](#7-destruindo-o-cluster)
 
 ## 1) Preparando Host Compartilhado
