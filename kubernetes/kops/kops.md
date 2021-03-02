@@ -591,6 +591,67 @@ service "nginx2-elb" deleted
 ```
 
 ### 6.2.2.2) Ingress Controller AWS 
+
+Primeiramente vamos analizar o que está rodando em nosso cluster. Temos *2 POD* rodando
+
+```bash
+[root@kops-server manifestos]# kubectl  get pods
+NAME                      READY   STATUS    RESTARTS   AGE
+nginx1-65d7dc8454-bjvjc   1/1     Running   0          4m41s
+nginx2-6889c4bbc4-nbks9   1/1     Running   0          4m41s
+```
+
+Vamos criar os manifestos responsável por criar o service, que nesse caso será do tipo *ClusterIP*. Crei respectivamente os arquivos (**nginx1-cluster-ip-service.yaml** e **nginx2-cluster-ip-service.yaml**)
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx1-cluster-ip-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx1
+  ports:
+    - port: 80
+      targetPort: 80
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx2-cluster-ip-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx2
+  ports:
+    - port: 80
+      targetPort: 80
+```
+
+Aplicando os manifestos ...
+
+```bash
+[root@kops-server cluster-ip]# kubectl apply -f nginx1-cluster-ip.yaml
+service/nginx1-cluster-ip-service created
+[root@kops-server cluster-ip]# kubectl apply -f nginx2-cluster-ip.yaml
+service/nginx2-cluster-ip-service created
+```
+
+Checando ser os serviços estão rodando ...
+
+```bash
+[root@kops-server cluster-ip]# kubectl get svc
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes                  ClusterIP   100.64.0.1       <none>        443/TCP   24m
+nginx1-cluster-ip-service   ClusterIP   100.69.147.16    <none>        80/TCP    11m
+nginx2-cluster-ip-service   ClusterIP   100.67.162.107   <none>        80/TCP    56s
+```
+
 ### 6.2.2.3) Criando DNS
 
 ## 7) Destruindo o Cluster
