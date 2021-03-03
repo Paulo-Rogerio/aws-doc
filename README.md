@@ -2,7 +2,7 @@
 
 - [1) AWS](#1-aws)
   - [1.1) Volumes EBS](#11-volumes-ebs)
-    - [1.1.1) SnapShot e Restore](#111-snapshot-e-restore)
+    - [1.1.1) SnapShot AMI](#111-snapshot-ami)
     - [1.1.2) Volumes e EC2](#112-volumes-e-ec2)
   - [1.2) LoadBalancer](#12-loadbalancer)
   - [1.3) VPC](#13-vpc)      
@@ -24,9 +24,9 @@
 
   EBS é a forma de *Armazenamento de Bloco* utilizada pela AWS. No tópico abaixo será mostrado como fazer um *SnapShot da EC2* e restaurá-la em outra Instância.
 
-#### 1.1.1) SnapShot e Restore
+#### 1.1.1) SnapShot AMI
 
-  * [SnapShot - AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot/snapshot.md)
+  * [SnapShot - AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot-ami/snapshot-ami.md)
 
 #### 1.1.2) Volumes e EC2
 
