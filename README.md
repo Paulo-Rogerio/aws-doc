@@ -42,7 +42,7 @@
 É uma rede virtual dedicada à sua conta da AWS. É composta de Sub-rede, Tabela de Roteamento,Internet Gateway além de um intervalo de endereços IPs. No tópico abaixo vamos entrar mais detalhadamente nesse assunto.
 
 #### 1.3.1) Criando VPC
-  * [VPC](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/vpc/vpc.md)
+  * [Criando Minha VPC](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/vpc/vpc.md)
 
 ## 2) Kubernetes
 #### 2.1) Provisionando Cluster
