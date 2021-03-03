@@ -26,7 +26,7 @@
 
 #### 1.1.1) SnapShot AMI
 
-  * [SnapShot - AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot-ami/snapshot-ami.md)
+  * [SnapShot AMI](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/volumes-ebs/snapshot-ami/snapshot-ami.md)
 
 #### 1.1.2) Volumes e EC2
 
