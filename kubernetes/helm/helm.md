@@ -42,7 +42,7 @@ Será preciso ter o *HELM CLI* instalado em sua máquina. Para isso visite o sit
 Estou criando um chart chamado *cursos-chart*.
 
 ```bash
-[paulo@kops-server ~]$ helm create cursos-chart
+[root@kops-server ~]# helm create cursos-chart
 ```
 
 #### 2.2) Estrutura de um Chart
@@ -274,7 +274,7 @@ helm-cursos  => Nome do diretório que contém os manifestos
 ```
 
 ```bash
-[paulo@kops-server ~]$ helm upgrade helm-cursos helm-cursos \
+[root@kops-server ~]# helm upgrade helm-cursos helm-cursos \
 --namespace staging \
 --set image.repository="registry.meudominio.com.br/sistemas/cursos/sistema-cursos" \
 --set image.tag="1.0.0" \
@@ -285,7 +285,7 @@ helm-cursos  => Nome do diretório que contém os manifestos
 #### 3.2) Aplicando os Manifestos
 
 ```bash
-[paulo@kops-server ~]$ helm upgrade helm-cursos helm-cursos \
+[root@kops-server ~]# helm upgrade helm-cursos helm-cursos \
 --namespace staging \
 --set image.repository="registry.meudominio.com.br/sistemas/cursos/sistema-cursos" \
 --set image.tag="1.0.0" \
@@ -298,7 +298,7 @@ helm-cursos  => Nome do diretório que contém os manifestos
 #### 4.1) Inspecionando os Deploys
 
 ```bash
-[paulo@kops-server ~]$ helm list -n staging
+[root@kops-server ~]# helm list -n staging
 
 NAME        NAMESPACE REVISION  UPDATED                                 STATUS    CHART             APP VERSION
 helm-cursos staging   3         2021-02-12 00:44:44.058644871 +0000 UTC deployed  helm-cursos-0.1.0 1.16.0
@@ -308,7 +308,7 @@ helm-cursos staging   3         2021-02-12 00:44:44.058644871 +0000 UTC deployed
 #### 4.2) Histórico dos Deploys
 
 ```bash
-[paulo@kops-server ~]$ helm history -n staging helm-cursos
+[root@kops-server ~]# helm history -n staging helm-cursos
 
 REVISION  UPDATED                   STATUS      CHART             APP VERSION DESCRIPTION
 1         Thu Feb 11 21:10:54 2021  superseded  helm-cursos-0.1.0 1.16.0      Install complete
@@ -323,13 +323,13 @@ REVISION  UPDATED                   STATUS      CHART             APP VERSION DE
 Caso haja necessidade de fazer um rollback de um deploy.
 
 ```bash
-[paulo@kops-server ~]$ helm rollback -n staging helm-cursos 1
+[root@kops-server ~]# helm rollback -n staging helm-cursos 1
 ```
 
 #### 5.2) Deletando um deployment
 
 ```
-[paulo@kops-server ~]$ helm delete -n staging helm-cursos
+[root@kops-server ~]# helm delete -n staging helm-cursos
 ```
 
 ## 6) Hospendando meus Charts
@@ -339,7 +339,7 @@ Podemos hospedar os Charts em um repositório privado, para isso vamos usar um p
 #### 6.1) Criando um repositório local
 
 ```bash
-[paulo@kops-server ~]$ docker run --rm -it \
+[root@kops-server ~]# docker run --rm -it \
   -p 8080:8080 \
   -v $(pwd)/charts:/charts \
   -e DEBUG=true \
@@ -353,31 +353,31 @@ Podemos hospedar os Charts em um repositório privado, para isso vamos usar um p
 #### 6.2.1) Listando meus repositórios
 
 ```bash
-[paulo@kops-server ~]$ helm repo list
+[root@kops-server ~]# helm repo list
 ```
 
 #### 6.2.2) Adicionando meu repositório
 
 ```bash
-[paulo@kops-server ~]$ helm repo add meurepo http://localhost:8080
+[root@kops-server ~]# helm repo add meurepo http://localhost:8080
 ```
 
 #### 6.2.3) Deletando um repositório
 
 ```bash
-[paulo@kops-server ~]$ helm repo del meurepo
+[root@kops-server ~]# helm repo del meurepo
 ```
 
 #### 6.2.4) Enviando Chart para meu repositório
 
 ```bash
-[paulo@kops-server ~]$ helm push helm-cursos meurepo
+[root@kops-server ~]# helm push helm-cursos meurepo
 ```
 
 ## 7) Download de um repositório remoto
 
 ```bash
-[paulo@kops-server ~]$ helm pull meurepo/helm-cursos
+[root@kops-server ~]# helm pull meurepo/helm-cursos
 ```
 
 ## 8) Comando Uteis
