@@ -5,7 +5,8 @@
     - [1.1.1) SnapShot AMI](#111-snapshot-ami)
     - [1.1.2) Volumes e EC2](#112-volumes-e-ec2)
   - [1.2) LoadBalancer](#12-loadbalancer)
-  - [1.3) VPC](#13-vpc)      
+  - [1.3) Virtual Private Cloud](#13-virtual-private-cloud)
+    - [1.3.1) Criando VPC](#131-criando-vpc)      
 - [2) Kubernetes](#2-kubernetes)
   - [2.1) Provisionando Cluster](#21-provisionando-cluster)
     - [2.1.1) Kops](#211-kops)
@@ -36,8 +37,11 @@
 
   * [LoadBalancer com EC2](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/loadbalancer/loadbalancer.md)
 
-#### 1.3) VPC
+#### 1.3) Virtual Private Cloud
 
+É uma rede virtual dedicada à sua conta da AWS. É composta de Sub-rede, Tabela de Roteamento,Internet Gateway além de um intervalo de endereços IPs. No tópico abaixo vamos entrar mais detalhadamente nesse assunto.
+
+#### 1.3.1) Criando VPC
   * [VPC](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/vpc/vpc.md)
 
 ## 2) Kubernetes
