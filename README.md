@@ -36,6 +36,10 @@
 
   * [LoadBalancer com EC2](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/loadbalancer/loadbalancer.md)
 
+#### 1.3) VPC
+
+  * [VPC](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/vpc/vpc.md)
+
 ## 2) Kubernetes
 #### 2.1) Provisionando Cluster
 
