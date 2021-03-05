@@ -171,7 +171,7 @@ Observer que cada *EC2* tem seu respectivo IP Address definido na Sub-Rede.
 
 ### 5.2) EC2 Comunicação Entre SubRedes
 
-Para facilitar vou escrever no arquivos **HOSTS** os IPS e o nome que quero da para essa maquinas.
+Para facilitar vou escrever no arquivos **HOSTS** os **IPS** e o nome que quero dá para essa maquinas.
 
 ![alt text](img/1-ec2-comunicacao-subrede.png)
 
