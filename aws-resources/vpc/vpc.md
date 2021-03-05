@@ -66,10 +66,11 @@ Cada bit é representado por **0** ou **1**, sendo assim uma mascara no formato:
 
 Sendo que o **BITS REPRESENTADOS POR 0**, são definidos como *HOSTS*.
 
-A Conta é bem simples: **2 elevado a quantidade de NUMEROS 0 - 2**
+A Conta é bem simples: **2 ( elevado a quantidade de NUMEROS 0 ) - 2**
 
-2<sup>16</sup> -2
+2<sup>16</sup> -2 = **65.536 hosts**
 
+Porque - 2? Porque um endereço é destinado a **ENDEREÇO DE REDE** e outro **GATEWAY DA REDE**
 
 de rede *definirá* a quantidade de *HOSTS* suportada, sendo assim teremos:
 
