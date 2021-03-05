@@ -44,7 +44,7 @@ Classe C    192.168.0.0 – 192.168.255.255
 Nesse cenário escolhemos que a *VPC* terá uma rede no seguinte formato: **10.1.0.0/16**
 Isso nos permitirá criarmos até **65.536 hosts**
 
-#### Como é feito os calculos?
+#### Entendo como é feito os calculos
 
 ```yaml
 Rede: 10.1.0.0/255.255.0.0
@@ -66,12 +66,12 @@ Cada bit é representado por **0** ou **1**, sendo assim uma mascara no formato:
 
 Sendo que o **BITS REPRESENTADOS POR 0**, são definidos como *HOSTS*.
 
+#### Afinal como chegamos na conta 
+
 A Conta é bem simples: **2 ( elevado a quantidade de NUMEROS 0 ) - 2**
 
 2<sup>16</sup> -2 = **65.536 hosts**
 
-Porque - 2? Porque um endereço é destinado a **ENDEREÇO DE REDE** e outro **GATEWAY DA REDE**
-
-de rede *definirá* a quantidade de *HOSTS* suportada, sendo assim teremos:
+Porque - 2? Porque um dos endereço é destinado **ENDEREÇO DE REDE** e outro **GATEWAY DA REDE**.
 
 ![alt text](img/3-vpc.png)
