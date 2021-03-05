@@ -112,7 +112,7 @@ Foram criadas 3 Sub-Redes sendo:
 
 ![alt text](img/4-subnet.png)
 
-Após criar as 3 Sub-Redes devemos definir uma configuração em cada uma das sub-redes para garantir que quando um **EC2** for criada já seja vinculado um IP Público para essa instância.
+Após criar as 3 Sub-Redes devemos definir uma configuração em cada uma das sub-redes para garantir que quando um **EC2** for criada já seja vinculado um **IP Público** para as instância **EC2**.
 
 Repita os passos abaixos para cada uma das sub-redes.
 
