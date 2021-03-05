@@ -38,8 +38,8 @@ Para montarmos uma Rede IPV4 precisamos usar alguns endereços contidos nas clas
 
 ```yaml
 Classe A    10.0.0.0   – 10.255.255.255
-Classe B	172.16.0.0 – 172.31.255.255
-Classe C	192.168.0.0 – 192.168.255.255
+Classe B  172.16.0.0 – 172.31.255.255
+Classe C  192.168.0.0 – 192.168.255.255
 ```
 Nesse cenário escolhemos que a *VPC* terá uma rede no seguinte formato: **10.1.0.0/16**
 Isso nos permitirá criarmos até **65.536 hosts**
