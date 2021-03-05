@@ -7,6 +7,7 @@
   - [3.1) Calculando quantidade de endereços IPs](#31-calculando-quantidade-de-endereços-ips)
 - [4) VPC](#4-vpc)
   - [4.1) Criando Minha VPC](#41-criando-minha-vpc)
+
 ## 1) O que é VPC?
 
 Virtual é nuvem privada virtual, configurável de recursos compartilhados de computação alocados dentro de um ambiente de nuvem pública, fornecendo um certo nível de isolamento entre as diferentes organizações, utilizando os recursos da AWS
@@ -57,7 +58,7 @@ Cada bit é representado por **0** ou **1**, sendo assim uma mascara no formato:
 1.1.1.1.1.1.1.1 | 1.1.1.1.1.1.1.1 | 0.0.0.0.0.0.0 | 0.0.0.0.0.0.0 
 ```
 
-Sendo que o **BITS REPRESENTADOS POR 0**, são definidos como *HOSTS*.
+Sendo que o *BITS REPRESENTADOS POR* **0**, são definidos como *HOSTS*.
 
 #### Como calcular a quantidade de Hosts?
 
@@ -72,10 +73,22 @@ Porque - 2? Porque um dos endereço é destinado **ENDEREÇO DE REDE** e outro *
 Nesse cenário estou presumindo que não temos nenhuma VPC, Sub-Net, Intenet Gateway, pois iremos criar isso manualmente. Obsever que não possuimos nada criado.
 
 ## 4.1) Criando Minha VPC
+
 ![alt text](img/1-vpc.png)
 
 Click em *Create VPC*, conforme mostra a imagem abaixo 
 
 ![alt text](img/2-vpc.png)
 
+Defina o enderaçamento IP que será utililzado.
+
 ![alt text](img/3-vpc.png)
+
+#### Definindo que as EC2 serão resolvidas pelo DNS da AWS (ec2.intenal)
+
+![alt text](img/4-vpc.png)
+![alt text](img/5-vpc.png)
+
+#### Resumo do que foi instalado até o momento
+
+![alt text](img/6-vpc.png)
