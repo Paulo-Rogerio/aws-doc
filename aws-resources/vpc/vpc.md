@@ -9,6 +9,7 @@
   - [4.1) Criando VPC](#41-criando-vpc)
   - [4.2) Criando SubNet](#42-criando-subnet)
   - [4.3) Criando Intenet Gateway](#43-criando-intenet-gateway) 
+  - [4.4) Route Tables Liberando Internet](#44-route-tables-liberando-internet)   
 
 ## 1) O que é VPC?
 
@@ -128,8 +129,23 @@ Nesse momento estarei apenas criando o Gateway de Internet, isso *NÃO QUER DIZE
 ![alt text](img/2-internet-gateway.png)
 
 Agora precisamos vincular qual VPC esse **INTENET GATEWAY** irá atender.
- 
+
 ![alt text](img/3-internet-gateway.png)
 ![alt text](img/4-internet-gateway.png)
 
+## 4.4) Route Tables
 
+Aqui que fato vamos ligar qual Sub-Rede pode sair para Internet. Claro que não é somente Internet, mas qualquer tipo de Rota devo tratar nesse menu.
+
+Selecione a route table criada, clique na *ABA* routes e depois em **Edit Routes**
+
+![alt text](img/1-route-tables.png)
+
+Add uma rota cujo o destino seja qualquer coisa, e o gateway (**TARGET**) seja o *intenet gateway* criado no passo anterior
+
+![alt text](img/2-route-tables.png)
+
+Selecione a *ABA* **SubNet Associations** para definir qual Sub-Rede poderá acessar essas rotas definidas.
+
+![alt text](img/3-route-tables.png)
+![alt text](img/4-route-tables.png)
