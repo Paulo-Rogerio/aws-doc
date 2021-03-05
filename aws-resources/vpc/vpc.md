@@ -126,6 +126,9 @@ Nesse momento estarei apenas criando o Gateway de Internet, isso *NÃO QUER DIZE
 
 ![alt text](img/1-internet-gateway.png)
 ![alt text](img/2-internet-gateway.png)
+
+Agora precisamos vincular qual VPC esse **INTENET GATEWAY** irá atender.
+ 
 ![alt text](img/3-internet-gateway.png)
 ![alt text](img/4-internet-gateway.png)
 
