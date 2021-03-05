@@ -58,6 +58,19 @@ A mascara é formada por octetos, ou seja, uma mascara de rede contém até 32 b
 _._._._._._._._ | _._._._._._._._ | _._._._._._._._ | _._._._._._._._ 
 ``` 
 
+Cada bit é representado por **0** ou **1**, sendo assim uma mascara no formato: *255.255.0.0* tem o seguinte escrita binária.
+
+```yaml
+1.1.1.1.1.1.1.1 | 1.1.1.1.1.1.1.1 | 0.0.0.0.0.0.0 | 0.0.0.0.0.0.0 
+```
+
+Sendo que o **BITS REPRESENTADOS POR 0**, são definidos como *HOSTS*.
+
+A Conta é bem simples: **2 elevado a quantidade de NUMEROS 0 - 2**
+
+2<sup>16</sup> -2
+
+
 de rede *definirá* a quantidade de *HOSTS* suportada, sendo assim teremos:
 
 ![alt text](img/3-vpc.png)
