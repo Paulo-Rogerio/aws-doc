@@ -7,7 +7,8 @@
   - [3.1) Calculando quantidade de endereços IPs](#31-calculando-quantidade-de-endereços-ips)
 - [4) Primeira VPC](#4-primeira-vpc)
   - [4.1) Criando VPC](#41-criando-vpc)
-  - [4.2) Criando SubNet](#41-criando-minha-vpc)
+  - [4.2) Criando SubNet](#42-criando-subnet)
+  - [4.3) Criando Intenet Gateway](#43-criando-intenet-gateway) 
 
 ## 1) O que é VPC?
 
@@ -118,3 +119,14 @@ Repita os passos abaixos para cada uma das sub-redes.
 
 ![alt text](img/5-subnet.png)
 ![alt text](img/6-subnet.png)
+
+## 4.3) Criando Intenet Gateway
+
+Nesse momento estarei apenas criando o Gateway de Internet, isso *NÃO QUER DIZER* que minhas instâncias EC2 já terão internet nesse momento, isso ainda precisa ser explicitado em outra configuração.
+
+![alt text](img/1-internet-gateway.png)
+![alt text](img/2-internet-gateway.png)
+![alt text](img/3-internet-gateway.png)
+![alt text](img/4-internet-gateway.png)
+
+
