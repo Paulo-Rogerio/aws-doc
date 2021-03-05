@@ -5,8 +5,9 @@
 - [2) Qual cenário vamos abordar?](#2-qual-cenário-vamos-abordar)  
 - [3) O que preciso saber antes?](#3-o-que-preciso-saber-antes)
   - [3.1) Calculando quantidade de endereços IPs](#31-calculando-quantidade-de-endereços-ips)
-- [4) VPC](#4-vpc)
-  - [4.1) Criando Minha VPC](#41-criando-minha-vpc)
+- [4) Primeira VPC](#4-primeira-vpc)
+  - [4.1) Criando VPC](#41-criando-vpc)
+  - [4.2) Criando SubNet](#41-criando-minha-vpc)
 
 ## 1) O que é VPC?
 
@@ -68,11 +69,11 @@ Porque - 2? Porque um dos endereço é destinado **ENDEREÇO DE REDE** e outro *
 
 2<sup>16</sup> -2 = **65.536 hosts**
 
-## 4) VPC
+## 4) Primeira VPC
 
 Nesse cenário estou presumindo que não temos nenhuma VPC, Sub-Net, Intenet Gateway, pois iremos criar isso manualmente. Obsever que não possuimos nada criado.
 
-## 4.1) Criando Minha VPC
+## 4.1) Criando VPC
 
 ![alt text](img/1-vpc.png)
 
@@ -92,3 +93,28 @@ Defina o enderaçamento IP que será utililzado.
 #### Resumo do que foi instalado até o momento
 
 ![alt text](img/6-vpc.png)
+
+## 4.2) Criando SubNet
+
+Clique em create subnet conforme mostra na imagem abaixo.
+
+![alt text](img/1-subnet.png)
+
+Selecione a VPC
+
+![alt text](img/2-subnet.png)
+
+Definia um **NOME**, e um **BLOCO DE REDE** que atenderá essa sub-rede, lembrando que essa sub-rede deve possuir uma quantidade de hosts menor para caber dentro da VPC. Observer que estou criando as sub-redes com a sub-rede no formato (**255.255.255.0**), isso garantirá que tenhamos 254 Hosts nessa sub-rede.
+
+![alt text](img/3-subnet.png)
+
+Foram criadas 3 Sub-Redes sendo:
+
+![alt text](img/4-subnet.png)
+
+Após criar as 3 Sub-Redes devemos definir uma configuração em cada uma das sub-redes para garantir que quando um **EC2** for criada já seja vinculado um IP Público para essa instância.
+
+Repita os passos abaixos para cada uma das sub-redes.
+
+![alt text](img/5-subnet.png)
+![alt text](img/6-subnet.png)
