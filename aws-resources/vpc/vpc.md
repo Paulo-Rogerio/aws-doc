@@ -3,9 +3,10 @@
 - [1) O que é VPC?](#1-o-que-é-vpc)
   - [1.1) Como é criado uma VPC?](#11-como-é-criado-uma-vpc)
 - [2) Qual cenário vamos abordar?](#2-qual-cenário-vamos-abordar)  
-- [3) Criando Minha VPC ](#3-criando-minha-vpc)
+- [3) O que preciso saber antes?](#3-o-que-preciso-saber-antes)
   - [3.1) Calculando quantidade de endereços IPs](#31-calculando-quantidade-de-endereços-ips)
-
+- [4) VPC](#4-vpc)
+  - [4.1) Criando Minha VPC](#41-criando-minha-vpc)
 ## 1) O que é VPC?
 
 Virtual é nuvem privada virtual, configurável de recursos compartilhados de computação alocados dentro de um ambiente de nuvem pública, fornecendo um certo nível de isolamento entre as diferentes organizações, utilizando os recursos da AWS
@@ -20,15 +21,7 @@ Teremos 2 VPC, sendo que uma terá multiplas sub-redes e essas VPC se comunicar�
 
 ![alt text](img/1-diagrama.png "Cenario")
 
-## 3) Criando Minha VPC
-
-Nesse cenário estou presumindo que não temos nenhuma VPC, Sub-Net, Intenet Gateway, pois iremos criar isso manualmente. Obsever que não possuimos nada criado.
-
-![alt text](img/1-vpc.png)
-
-Click em *Create VPC*, conforme mostra a imagem abaixo 
-
-![alt text](img/2-vpc.png)
+## 3) O que preciso saber antes?
 
 ### 3.1) Calculando quantidade de endereços IPs
 
@@ -70,8 +63,19 @@ Sendo que o **BITS REPRESENTADOS POR 0**, são definidos como *HOSTS*.
 
 A Conta é bem simples: **2 ( elevado a quantidade de NUMEROS 0 ) - 2**
 
+Porque - 2? Porque um dos endereço é destinado **ENDEREÇO DE REDE** e outro **GATEWAY DA REDE**. Sendo assim temos o seguinte resultado.
+
 2<sup>16</sup> -2 = **65.536 hosts**
 
-Porque - 2? Porque um dos endereço é destinado **ENDEREÇO DE REDE** e outro **GATEWAY DA REDE**.
+## 4) VPC
+
+Nesse cenário estou presumindo que não temos nenhuma VPC, Sub-Net, Intenet Gateway, pois iremos criar isso manualmente. Obsever que não possuimos nada criado.
+
+## 4.1) Criando Minha VPC
+![alt text](img/1-vpc.png)
+
+Click em *Create VPC*, conforme mostra a imagem abaixo 
+
+![alt text](img/2-vpc.png)
 
 ![alt text](img/3-vpc.png)
