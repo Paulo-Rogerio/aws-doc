@@ -66,7 +66,7 @@ Cada bit é representado por **0** ou **1**, sendo assim uma mascara no formato:
 
 Sendo que o **BITS REPRESENTADOS POR 0**, são definidos como *HOSTS*.
 
-#### Afinal como chegamos na conta 
+#### Como calcular a quantidade de Hosts?
 
 A Conta é bem simples: **2 ( elevado a quantidade de NUMEROS 0 ) - 2**
 
