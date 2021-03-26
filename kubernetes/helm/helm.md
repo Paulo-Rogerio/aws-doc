@@ -353,7 +353,10 @@ Podemos hospedar os Charts em um repositório privado, para isso vamos usar um p
 #### 6.2.1) Listando meus repositórios
 
 ```bash
+
 [root@kops-server ~]# helm repo list
+[root@kops-server ~]# helm repo update
+[root@kops-server ~]# helm search repo
 ```
 
 #### 6.2.2) Adicionando meu repositório
