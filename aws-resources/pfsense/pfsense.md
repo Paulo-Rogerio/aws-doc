@@ -53,3 +53,12 @@
     - [6.3) Fechando Conexão com Primeiro IP Público](#63-fechando-conexão-com-primeiro-ip-público)
     - [6.4) Fechando Conexão com Segundo IP Público](#63-fechando-conexão-com-segundo-ip-público)        
 
+## 1) Porque usar Pfsense como concentrador?
+
+A própria **AWS** forcesse um serviço de Túnel VPN entre as VPC, porém isso é cobrado. O objetivo é utilizar o **pfSense** para interligar as redes VPC.
+
+## 2) Qual cenário vamos abordar?
+
+Teremos **2 VPC** na mesma região, cada qual com sua respectiva faixa de IP. O desenho abaixo ilustrará melhor o papel do Pfsense.
+
+![alt text](img/diagrama-rede/1.png)
