@@ -73,6 +73,8 @@ Vamos criar nossa **Primeira VPC**. Observer que não temos nenhuma VPC associad
 
 #### 3.1.1) Criando VPC
 
+Os passos abaixos irá criar uma **Nova VPC**, a faixa de Rede usada será: **10.170.0.0/16**
+
 ![alt text](img/primeira-vpc/2.png)
 ![alt text](img/primeira-vpc/3.png)
 ![alt text](img/primeira-vpc/4.png)
