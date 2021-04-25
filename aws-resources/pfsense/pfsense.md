@@ -123,3 +123,12 @@ Após criado deve-se attachar qual VPC estará vinculada a esse internet gateway
 
 
 #### 3.1.4) Tabela de Roteamento   
+
+![alt text](img/primeira-vpc/route-table/1.png)
+
+![alt text](img/primeira-vpc/route-table/2.png)
+
+![alt text](img/primeira-vpc/route-table/3.png)
+
+![alt text](img/primeira-vpc/route-table/4.png)
+
