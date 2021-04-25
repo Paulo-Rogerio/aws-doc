@@ -132,3 +132,4 @@ Após criado deve-se attachar qual VPC estará vinculada a esse internet gateway
 
 ![alt text](img/primeira-vpc/route-table/4.png)
 
+![alt text](img/primeira-vpc/route-table/5.png)
