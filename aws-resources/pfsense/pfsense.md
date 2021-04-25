@@ -99,10 +99,17 @@ Um detalhe importante é que podemos criar várias subnets dentro de uma VPC, pa
 
 Para que uma **EC2** possa ter um serviço acessado **externamente**, ou seja, que outras pessoas possam acessar o conteúdo dessa **EC2** é necessário que ela tenha um **IP Público** vinculado a essa **EC2**, quando habilitado essa flag dentro da subnet, em outras palavras, vc está permitindo que essa **EC2** vinculada a essa Subnet possa ser acessada externamente por um **IP Publico**.
 
-**Obs.:** Caso queira criar uma **Subnet apenas com acesso interno**, basta *NÃO* habilitar esse recurso. 
+**Obs.:** Caso queira criar uma **Subnet apenas com acesso interno**, basta *NÃO* habilitar o recurso abaixo. 
 
 ![alt text](img/primeira-vpc/subnet/4.png)
 ![alt text](img/primeira-vpc/subnet/5.png)
 
-#### 3.1.3) Criando Intenet Gateway 
+#### 3.1.3) Criando Intenet Gateway
+
+![alt text](img/primeira-vpc/internet-gateway/1.png)
+![alt text](img/primeira-vpc/internet-gateway/2.png)
+![alt text](img/primeira-vpc/internet-gateway/3.png)
+![alt text](img/primeira-vpc/internet-gateway/4.png)
+![alt text](img/primeira-vpc/internet-gateway/5.png)
+
 #### 3.1.4) Tabela de Roteamento   
