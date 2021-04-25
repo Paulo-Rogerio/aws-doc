@@ -157,6 +157,8 @@ Será criado uma VPC para atender o ambiente de desenvolvimento, cuja faixa de r
 
 #### 3.2.2) Criando SubNet
 
+Criar uma nova subnet e vincular e esssa recém criada **VPC => 10.160.0.0/16**
+
 ![alt text](img/segunda-vpc/subnet/1.png)
 
 A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24**
