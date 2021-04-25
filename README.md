@@ -6,13 +6,14 @@
     - [1.1.2) Volumes e EC2](#112-volumes-e-ec2)
   - [1.2) LoadBalancer](#12-loadbalancer)
   - [1.3) Virtual Private Cloud](#13-virtual-private-cloud)
-    - [1.3.1) Criando VPC](#131-criando-vpc)      
+    - [1.3.1) Criando VPC](#131-criando-vpc)
+  - [1.4) Pfsense como Concentrador](#14-pfsense-como-concentrador)
 - [2) Kubernetes](#2-kubernetes)
   - [2.1) Provisionando Cluster](#21-provisionando-cluster)
     - [2.1.1) Kops](#211-kops)
   - [2.2) Deploy de Manifestos](#22-deploy-de-manifestos)
-    - [2.2.1) Helm Chart](#221-helm-chart)  
-
+    - [2.2.1) Helm Chart](#221-helm-chart)
+      
 ## 1) AWS
 
   Esse material de estudo pode ser usado por qualquer pessoa que utiliza **AWS** como *Cloud Provider*. Nos tópicos abaixo serão utilizados Instâncias EC2 baseadas em **AWS Linux** e **Ubuntu**. 
@@ -43,6 +44,9 @@
 
 #### 1.3.1) Criando VPC
   * [Criando Minha VPC](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/vpc/vpc.md)
+
+#### 1.4) Pfsense como Concentrador
+  * [Criando Conentrador com PfSense](https://github.comPaulo-Rogerio/aws-doc/blob/main/aws-resources/pfsense/pfsense.md)
 
 ## 2) Kubernetes
 #### 2.1) Provisionando Cluster
