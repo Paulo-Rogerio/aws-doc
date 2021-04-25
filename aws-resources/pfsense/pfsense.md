@@ -159,8 +159,6 @@ Será criado uma VPC para atender o ambiente de desenvolvimento, cuja faixa de r
 
 ![alt text](img/segunda-vpc/subnet/1.png)
 
-A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24**
-
 ![alt text](img/segunda-vpc/subnet/2.png)
 
 #### 3.2.3) Criando Intenet Gateway
