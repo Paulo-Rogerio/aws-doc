@@ -76,7 +76,9 @@ Vamos criar nossa **Primeira VPC**. Observer que não temos nenhuma VPC associad
 Os passos abaixos irá criar uma **Nova VPC**, a faixa de Rede usada será: **10.170.0.0/16**
 
 ![alt text](img/primeira-vpc/vpc/2.png)
+
 ![alt text](img/primeira-vpc/vpc/3.png)
+
 ![alt text](img/primeira-vpc/vpc/4.png)
 
 Habilitando essa flag, fará com que as EC2 criadas nessa VPC já tenham os nomes das instâncias associadas ao DNS da AWS.
@@ -102,6 +104,7 @@ Para que uma **EC2** possa ter um serviço acessado **externamente**, ou seja, q
 **Obs.:** Caso queira criar uma **Subnet apenas com acesso interno**, basta *NÃO* habilitar o recurso abaixo. 
 
 ![alt text](img/primeira-vpc/subnet/4.png)
+
 ![alt text](img/primeira-vpc/subnet/5.png)
 
 #### 3.1.3) Criando Intenet Gateway
