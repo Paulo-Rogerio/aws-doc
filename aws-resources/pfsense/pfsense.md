@@ -166,4 +166,9 @@ A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24*
 ![alt text](img/segunda-vpc/subnet/2.png)
 
 #### 3.2.3) Criando Intenet Gateway
+
+![alt text](img/segunda-vpc/internet-gateway/1.png)
+![alt text](img/segunda-vpc/internet-gateway/2.png)
+![alt text](img/segunda-vpc/internet-gateway/3.png)
+
 #### 3.2.4) Tabela de Roteamento
