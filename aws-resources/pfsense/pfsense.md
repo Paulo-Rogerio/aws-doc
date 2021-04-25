@@ -97,7 +97,7 @@ Um detalhe importante é que podemos criar várias subnets dentro de uma VPC, pa
 
 ![alt text](img/primeira-vpc/subnet/3.png)
 
-Para que uma EC2 possa ter um serviço acessado externamente, ou seja, que outras pessoas possam acessar o conteúdo dessa EC2 é necessário que ela tenha um **IP Público** vinculado a essa EC2, quando habilitado essa flag dentro da subnet, em outras palavras, vc está permitindo que essa EC2 vinculada a essa Subnet possa ser acessada externamente por um **IP Publico**.
+Para que uma **EC2** possa ter um serviço acessado **externamente**, ou seja, que outras pessoas possam acessar o conteúdo dessa **EC2** é necessário que ela tenha um **IP Público** vinculado a essa **EC2**, quando habilitado essa flag dentro da subnet, em outras palavras, vc está permitindo que essa **EC2** vinculada a essa Subnet possa ser acessada externamente por um **IP Publico**.
 
 **Obs.:** Caso queira criar uma **Subnet apenas com acesso interno**, basta *NÃO* habilitar esse recurso. 
 
