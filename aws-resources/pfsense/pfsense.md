@@ -149,10 +149,19 @@ Vamos criar nossa **Segunda VPC**.
 
 Basicamente iremos realizar os mesmos passos feitos na criação da primeira VPC, será enfatizado apenas os aspectos específicos dessa segunda VPC.
 
+Será criado uma VPC para atender o ambiente de desenvolvimento, cuja faixa de rede é: **10.160.0.0/16**
+
 ![alt text](img/segunda-vpc/vpc/1.png)
 
 ![alt text](img/segunda-vpc/vpc/2.png)
 
 #### 3.2.2) Criando SubNet
+
+![alt text](img/segunda-vpc/subnet/1.png)
+
+A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24**
+
+![alt text](img/segunda-vpc/subnet/2.png)
+
 #### 3.2.3) Criando Intenet Gateway
 #### 3.2.4) Tabela de Roteamento
