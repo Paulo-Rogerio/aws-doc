@@ -8,7 +8,7 @@
     - [3.1.2) Criando SubNet](#312-criando-subnet)
     - [3.1.3) Criando Intenet Gateway](#313-criando-intenet-gateway) 
     - [3.1.4) Tabela de Roteamento](#314-tabela-de-roteamento)   
-  - [3.2) Segunda VPC](#31-primeira-vpc)
+  - [3.2) Segunda VPC](#32-primeira-vpc)
     - [3.2.1) Criando VPC](#321-criando-vpc)
     - [3.2.2) Criando SubNet](#322-criando-subnet)
     - [3.2.3) Criando Intenet Gateway](#323-criando-intenet-gateway) 
@@ -158,6 +158,8 @@ Será criado uma VPC para atender o ambiente de desenvolvimento, cuja faixa de r
 #### 3.2.2) Criando SubNet
 
 ![alt text](img/segunda-vpc/subnet/1.png)
+
+A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24**
 
 ![alt text](img/segunda-vpc/subnet/2.png)
 
