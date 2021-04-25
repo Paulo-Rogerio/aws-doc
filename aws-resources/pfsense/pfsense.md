@@ -149,7 +149,7 @@ Vamos criar nossa **Segunda VPC**.
 
 Basicamente iremos realizar os mesmos passos feitos na criação da primeira VPC, será enfatizado apenas os aspectos específicos dessa segunda VPC.
 
-![alt text](img/segunda-vpc/vpc/2.png)
+![alt text](img/segunda-vpc/vpc/1.png)
 
 ![alt text](img/segunda-vpc/vpc/2.png)
 
