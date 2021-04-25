@@ -109,6 +109,7 @@ Para que uma **EC2** possa ter um serviço acessado **externamente**, ou seja, q
 No menu localize **Internet Gateway**, e clique em **Create internet gateway**.
 
 ![alt text](img/primeira-vpc/internet-gateway/1.png)
+
 ![alt text](img/primeira-vpc/internet-gateway/2.png)
 
 ![alt text](img/primeira-vpc/internet-gateway/3.png)
