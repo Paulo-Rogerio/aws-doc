@@ -6,12 +6,12 @@
   - [3.1) Primeira VPC](#31-primeira-vpc)
     - [3.1.1) Criando VPC](#311-criando-vpc)
     - [3.1.2) Criando SubNet](#312-criando-subnet)
-    - [3.1.3) Criando Intenet Gateway](#313-criando-intenet-gateway) 
+    - [3.1.3) Criando Internet Gateway](#313-criando-internet-gateway) 
     - [3.1.4) Tabela de Roteamento](#314-tabela-de-roteamento)   
   - [3.2) Segunda VPC](#32-primeira-vpc)
     - [3.2.1) Criando VPC](#321-criando-vpc)
     - [3.2.2) Criando SubNet](#322-criando-subnet)
-    - [3.2.3) Criando Intenet Gateway](#323-criando-intenet-gateway) 
+    - [3.2.3) Criando Internet Gateway](#323-criando-internet-gateway) 
     - [3.2.4) Tabela de Roteamento](#324-tabela-de-roteamento)
 - [4) EC2 PfSense ](#4-ec2-pfsense)
     - [4.1) Criando EC2](#41-criando-ec2)
@@ -107,7 +107,7 @@ Para que uma **EC2** possa ter um serviço acessado **externamente**, ou seja, q
 
 ![alt text](img/primeira-vpc/subnet/5.png)
 
-#### 3.1.3) Criando Intenet Gateway
+#### 3.1.3) Criando Internet Gateway
 
 No menu localize **Internet Gateway**, e clique em **Create internet gateway**.
 
@@ -165,7 +165,7 @@ A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24*
 
 ![alt text](img/segunda-vpc/subnet/2.png)
 
-#### 3.2.3) Criando Intenet Gateway
+#### 3.2.3) Criando Internet Gateway
 
 Agora vamos criar um outro internet gateway e vincular a segunda VPC **10.160.0.0/24**
 
@@ -178,3 +178,19 @@ Depois de criado deve-se atachar qual **VPC** esse internet gateway irá atender
 ![alt text](img/segunda-vpc/internet-gateway/3.png)
 
 #### 3.2.4) Tabela de Roteamento
+
+
+Vamos definir se a subnet pode acessar a Internet criando uma rota default apontando para o gateway de internet criado no passo anterior.
+
+![alt text](img/segunda-vpc/route-table/1.png)
+
+![alt text](img/segunda-vpc/route-table/2.png)
+
+Adiconando a rota default para internet.
+
+![alt text](img/segunda-vpc/route-table/3.png)
+
+Por fim precisamos associar qual subnet essa configuração de rota irá aplicar-se.
+
+![alt text](img/segunda-vpc/route-table/4.png)
+
