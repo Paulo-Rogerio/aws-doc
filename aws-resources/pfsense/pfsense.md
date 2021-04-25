@@ -1,1 +1,21 @@
-# Pfsense
+# Usando Pfsense como Concentrador de Redes na AWS
+
+- [1) Porque usar Pfsense como concentrador?](#1-porque-usar-pfsense-como-concentrador)
+- [2) Qual cenário vamos abordar?](#2-qual-cenário-vamos-abordar)  
+- [3) VPCs](#3-vpcs)
+  - [3.1) Primeira VPC](#31-primeira-vpc)
+    - [3.1.1) Criando VPC](#311-criando-vpc)
+    - [3.1.2) Criando SubNet](#312-criando-subnet)
+    - [3.1.3) Criando Intenet Gateway](#313-criando-intenet-gateway) 
+    - [3.1.4) Tabela de Roteamento](#314-tabela-de-roteamento)   
+  - [3.2) Segunda VPC](#31-primeira-vpc)
+    - [3.2.1) Criando VPC](#321-criando-vpc)
+    - [3.2.2) Criando SubNet](#322-criando-subnet)
+    - [3.2.3) Criando Intenet Gateway](#323-criando-intenet-gateway) 
+    - [3.2.4) Tabela de Roteamento](#324-tabela-de-roteamento)
+- [4) EC2](#4-ec2)
+    - [4.1) Criando EC2 pfSense](#41-criando-ec2-pfsense)
+    - [4.2) Conectando na Instância EC2](#42-conectando-na-instância-ec2)
+    - [4.3) Configurações Básicas](#43-configurações-básicas)
+    - [4.4) Adicionando Nova Interface de Rede](#44-adicionando-nova-interface-de-rede)
+    - [4.5) Adicionando Ip Estático](#45-adicionando-ip-estático)
