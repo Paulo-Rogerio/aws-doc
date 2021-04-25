@@ -46,7 +46,7 @@
   * [Criando Minha VPC](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/vpc/vpc.md)
 
 #### 1.4) Pfsense como Concentrador
-  * [Criando Conentrador com PfSense](https://github.comPaulo-Rogerio/aws-doc/blob/main/aws-resources/pfsense/pfsense.md)
+  * [Criando Conentrador com PfSense](https://github.com/Paulo-Rogerio/aws-doc/blob/main/aws-resources/pfsense/pfsense.md)
 
 ## 2) Kubernetes
 #### 2.1) Provisionando Cluster
