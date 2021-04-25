@@ -85,6 +85,11 @@ Habilitando essa flag, fará com que as EC2 criadas nessa VPC já tenham os nome
 
 #### 3.1.2) Criando SubNet
 
+![alt text](img/primeira-vpc/subnet/1.png)
+![alt text](img/primeira-vpc/subnet/2.png)
+![alt text](img/primeira-vpc/subnet/3.png)
+![alt text](img/primeira-vpc/subnet/4.png)
+![alt text](img/primeira-vpc/subnet/5.png)
 
 
 #### 3.1.3) Criando Intenet Gateway 
