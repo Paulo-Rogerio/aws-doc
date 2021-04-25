@@ -62,3 +62,24 @@ A própria **AWS** forcesse um serviço de Túnel VPN entre as VPC, porém isso 
 Teremos **2 VPC** na mesma região, cada qual com sua respectiva faixa de IP. O desenho abaixo ilustrará melhor o papel do Pfsense.
 
 ![alt text](img/diagrama-rede/1.png)
+
+## 3) VPCs
+
+### 3.1) Primeira VPC
+
+Vamos criar nossa **Primeira VPC**. Observer que não temos nenhuma VPC associada nessa conta.
+
+![alt text](img/primeira-vpc/1.png)
+
+#### 3.1.1) Criando VPC
+
+![alt text](img/primeira-vpc/2.png)
+![alt text](img/primeira-vpc/3.png)
+![alt text](img/primeira-vpc/4.png)
+![alt text](img/primeira-vpc/5.png)
+
+#### 3.1.2) Criando SubNet
+
+
+#### 3.1.3) Criando Intenet Gateway 
+#### 3.1.4) Tabela de Roteamento   
