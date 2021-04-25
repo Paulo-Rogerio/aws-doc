@@ -139,3 +139,20 @@ Adiconando a rota default para internet.
 Por fim precisamos associar qual subnet essa configuração de rota irá aplicar-se.
 
 ![alt text](img/primeira-vpc/route-table/5.png)
+
+
+### 3.2) Segunda VPC
+
+Vamos criar nossa **Segunda VPC**. 
+
+#### 3.2.1) Criando VPC
+
+Basicamente iremos realizar os mesmos passos feitos na criação da primeira VPC, será enfatizado apenas os aspectos específicos dessa segunda VPC.
+
+![alt text](img/segunda-vpc/vpc/2.png)
+
+![alt text](img/segunda-vpc/vpc/2.png)
+
+#### 3.2.2) Criando SubNet
+#### 3.2.3) Criando Intenet Gateway
+#### 3.2.4) Tabela de Roteamento
