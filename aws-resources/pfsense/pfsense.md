@@ -85,12 +85,24 @@ Habilitando essa flag, fará com que as EC2 criadas nessa VPC já tenham os nome
 
 #### 3.1.2) Criando SubNet
 
+Localize o menu **Subnet**, e clique no menu **Create subnet**, conforme mostra na imagem abaixo.
+
 ![alt text](img/primeira-vpc/subnet/1.png)
+
+Escolha qual VPC irá associar a essa subnet.
+
 ![alt text](img/primeira-vpc/subnet/2.png)
+
+Um detalhe importante é que podemos criar várias subnets dentro de uma VPC, para esse material iremos criar uma Subnet na classe C, ou seja, a subnet terá o seguinte endereço de rede: **10.170.1.0/24**
+
 ![alt text](img/primeira-vpc/subnet/3.png)
+
+Para que uma EC2 possa ter um serviço acessado externamente, ou seja, que outras pessoas possam acessar o conteúdo dessa EC2 é necessário que ela tenha um **IP Público** vinculado a essa EC2, quando habilitado essa flag dentro da subnet, em outras palavras, vc está permitindo que essa EC2 vinculada a essa Subnet possa ser acessada externamente por um **IP Publico**.
+
+**Obs.:** Caso queira criar uma **Subnet apenas com acesso interno**, basta *NÃO* habilitar esse recurso. 
+
 ![alt text](img/primeira-vpc/subnet/4.png)
 ![alt text](img/primeira-vpc/subnet/5.png)
-
 
 #### 3.1.3) Criando Intenet Gateway 
 #### 3.1.4) Tabela de Roteamento   
