@@ -124,12 +124,18 @@ Após criado deve-se attachar qual VPC estará vinculada a esse internet gateway
 
 #### 3.1.4) Tabela de Roteamento   
 
+É aqui que vamos definir se a subnet pode acessar a Internet, devemos criar uma rota default apontando para o gateway de internet criado no passo anterior.
+
 ![alt text](img/primeira-vpc/route-table/1.png)
 
 ![alt text](img/primeira-vpc/route-table/2.png)
 
+Adiconando a rota default para internet.
+
 ![alt text](img/primeira-vpc/route-table/3.png)
 
 ![alt text](img/primeira-vpc/route-table/4.png)
+
+Por fim precisamos associar qual subnet essa configuração de rota irá aplicar-se.
 
 ![alt text](img/primeira-vpc/route-table/5.png)
