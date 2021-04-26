@@ -284,4 +284,19 @@ Nessa etapa , vamos adicionar uma segunda interface de rede. Essa interface func
 ![alt text](img/ec2/pfsense/interface-rede/9.png)
 
 ### 4.7) Desabilitando Firewall
+
+Nesse momento, o objtivo é concentrar o acesso e não bloquear os acessos, por isso, vamos desabilitar o firewall.
+
+![alt text](img/ec2/pfsense/desabilitar-firewall/1.png)
+
+![alt text](img/ec2/pfsense/desabilitar-firewall/2.png)
+
+![alt text](img/ec2/pfsense/desabilitar-firewall/3.png)
+
+![alt text](img/ec2/pfsense/desabilitar-firewall/4.png)
+
+![alt text](img/ec2/pfsense/desabilitar-firewall/5.png)
+
+![alt text](img/ec2/pfsense/desabilitar-firewall/6.png)
+
 ### 4.8) Adicionando Ip Estático na EC2
