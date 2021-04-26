@@ -354,6 +354,8 @@ Instalar os pacotes abaixo para exportar as configurações do usuário.
 
 #### 5.4.1) FreeRadios
 
+Instalar FreeRadius
+
 ![alt text](img/ec2/pfsense/openvpn/packages/5.png)
 
 ![alt text](img/ec2/pfsense/openvpn/packages/6.png)
@@ -361,6 +363,8 @@ Instalar os pacotes abaixo para exportar as configurações do usuário.
 ![alt text](img/ec2/pfsense/openvpn/packages/7.png)
 
 #### 5.4.2) OpenVPN Exporter
+
+Instalar OpenVPN Exporter
 
 ![alt text](img/ec2/pfsense/openvpn/packages/1.png)
 
