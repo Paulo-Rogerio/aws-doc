@@ -444,6 +444,8 @@ Aqui é um detalhe insteressante, pode-se definir rotas dinamicamentes e até me
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/14.png)
 
+Entre com o IP Fixo da EC2.
+
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/15.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/16.png)
