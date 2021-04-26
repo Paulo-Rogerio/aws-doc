@@ -279,5 +279,9 @@ Nessa etapa , vamos adicionar uma segunda interface de rede. Essa interface func
 
 ![alt text](img/ec2/pfsense/interface-rede/7.png)
 
+![alt text](img/ec2/pfsense/interface-rede/8.png)
+
+![alt text](img/ec2/pfsense/interface-rede/9.png)
+
 ### 4.7) Desabilitando Firewall
 ### 4.8) Adicionando Ip Estático na EC2
