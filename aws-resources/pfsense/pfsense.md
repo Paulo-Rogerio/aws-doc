@@ -458,8 +458,6 @@ Exportando a configuração do Usuário.
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/19.png)
 
-![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/20.png)
-
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/21.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/22.png)
