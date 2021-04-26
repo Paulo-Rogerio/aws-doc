@@ -200,14 +200,29 @@ Por fim precisamos associar qual subnet essa configuração de rota irá aplicar
 Nesse passo a passo vamos criar uma Instância EC2 com Pfsense.
 
 ![alt text](img/ec2/pfsense/startup/1.png)
+
 ![alt text](img/ec2/pfsense/startup/2.png)
+
 ![alt text](img/ec2/pfsense/startup/3.png)
+
 ![alt text](img/ec2/pfsense/startup/4.png)
+
 ![alt text](img/ec2/pfsense/startup/5.png)
+
 ![alt text](img/ec2/pfsense/startup/6.png)
+
 ![alt text](img/ec2/pfsense/startup/7.png)
 
 ### 4.2) Conectando na Instância
+
+Para descobrir a senha gerada pelo instalador, será necessário fazer um snapshot do boot do Sistema onde a senha é visualizada no browser, para realizar o primeiro acesso.
+
+![alt text](img/ec2/pfsense/conectando-pfsense/1.png)
+
+![alt text](img/ec2/pfsense/conectando-pfsense/2.png)
+
+![alt text](img/ec2/pfsense/conectando-pfsense/3.png)
+
 ### 4.3) Adicionando Usuário Admin
 ### 4.4) Configurações Básicas
 ### 4.5) Certificado Web Browser
