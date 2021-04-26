@@ -484,3 +484,9 @@ Vamos validar se a **Senha + Autenticador** está funcionando bem.
 ![alt text](img/ec2/pfsense/openvpn/usuario-vpn/6.png)
 
 ### 5.8) VPN Connect
+
+Estabelecendo Conexão
+
+![alt text](img/ec2/pfsense/openvpn/vpn-connect/24.png)
+
+![alt text](img/ec2/pfsense/openvpn/vpn-connect/25.png)
