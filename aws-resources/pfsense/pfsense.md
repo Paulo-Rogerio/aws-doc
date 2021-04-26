@@ -467,5 +467,22 @@ Liberar no security Group da AWS a porta **1194** protocolo **UDP**.
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/23.png)
 
 ### 5.7) Adicionando Usuário de VPN
+
+![alt text](img/ec2/pfsense/openvpn/usuario-vpn/1.png)
+
+**DEIXE A SENHA EM BRANCO**
+
+![alt text](img/ec2/pfsense/openvpn/usuario-vpn/2.png)
+
+![alt text](img/ec2/pfsense/openvpn/usuario-vpn/3.png)
+
+![alt text](img/ec2/pfsense/openvpn/usuario-vpn/4.png)
+
+Vamos validar se a **Senha + Autenticador** está funcionando bem. 
+
+![alt text](img/ec2/pfsense/openvpn/usuario-vpn/5.png)
+
+![alt text](img/ec2/pfsense/openvpn/usuario-vpn/6.png)
+
 ### 5.8) Exportando Configuração do Cliente
 ### 5.9) VPN Connect
