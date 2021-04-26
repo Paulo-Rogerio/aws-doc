@@ -341,6 +341,14 @@ Agora vamos criar um certificado para nosso serviço.
 ![alt text](img/ec2/pfsense/openvpn/certificado/3.png)
 
 ### 5.3) Criando para Usuário
+
+Cada usuário que precisar conectar-se em nossa VPN precisará de um certificado assinado pela certificadora **OpenVPN_CA**, gerada nos passos anteriores.
+
+![alt text](img/ec2/pfsense/openvpn/certificado-usuario/1.png)
+
+![alt text](img/ec2/pfsense/openvpn/certificado-usuario/2.png)
+
+
 ### 5.4) Instalação de Pacotes
 #### 5.4.1) FreeRadios
 #### 5.4.2) OpenVPN Exporter
