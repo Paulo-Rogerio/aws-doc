@@ -19,7 +19,6 @@
     - [4.3) Adicionando Usuário Admin](#43-adicionando-usuário-admin)
     - [4.4) Configurações Básicas](#44-configurações-básicas)
     - [4.5) Certificado Web Browser](#45-certificado-web-browser)
-    - [4.5) Certificado Web Browser](#45-certificado-web-browser)
     - [4.6) Adicionando Interface de Rede](#46-adicionando-interface-de-rede)
     - [4.7) Desabilitando Firewall](#47-desabilitando-firewall)
     - [4.8) Adicionando Ip Estático na EC2](#48-adicionando-ip-estático-na-ec2)
@@ -194,3 +193,24 @@ Por fim precisamos associar qual subnet essa configuração de rota irá aplicar
 
 ![alt text](img/segunda-vpc/route-table/4.png)
 
+## 4) EC2 PfSense
+
+### 4.1) Criando EC2
+
+Nesse passo a passo vamos criar uma Instância EC2 com Pfsense.
+
+![alt text](img/ec2/pfsense/startup/1.png)
+![alt text](img/ec2/pfsense/startup/2.png)
+![alt text](img/ec2/pfsense/startup/3.png)
+![alt text](img/ec2/pfsense/startup/4.png)
+![alt text](img/ec2/pfsense/startup/5.png)
+![alt text](img/ec2/pfsense/startup/6.png)
+![alt text](img/ec2/pfsense/startup/7.png)
+
+### 4.2) Conectando na Instância
+### 4.3) Adicionando Usuário Admin
+### 4.4) Configurações Básicas
+### 4.5) Certificado Web Browser
+### 4.6) Adicionando Interface de Rede
+### 4.7) Desabilitando Firewall
+### 4.8) Adicionando Ip Estático na EC2
