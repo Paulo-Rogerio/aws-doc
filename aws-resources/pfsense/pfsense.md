@@ -224,6 +224,21 @@ Para descobrir a senha gerada pelo instalador, será necessário fazer um snapsh
 ![alt text](img/ec2/pfsense/conectando-pfsense/3.png)
 
 ### 4.3) Adicionando Usuário Admin
+
+Após login, vamos dar inicio as configurações inicias. A primeira configuração a ser realizada, será a criação de um usuário com perfil **Admin**.
+
+![alt text](img/ec2/pfsense/user-admin/1.png)
+
+![alt text](img/ec2/pfsense/user-admin/2.png)
+
+![alt text](img/ec2/pfsense/user-admin/3.png)
+
+![alt text](img/ec2/pfsense/user-admin/4.png)
+
+![alt text](img/ec2/pfsense/user-admin/5.png)
+
+![alt text](img/ec2/pfsense/user-admin/6.png)
+
 ### 4.4) Configurações Básicas
 ### 4.5) Certificado Web Browser
 ### 4.6) Adicionando Interface de Rede
