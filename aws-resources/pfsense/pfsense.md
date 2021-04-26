@@ -430,6 +430,8 @@ Aqui você precisa definir qual é a faixa de Rede da VPN.
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/10.png)
 
+Depois de Configurado o Wizard, vamos ajustar alguns detalhes.
+
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/11.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/12.png)
