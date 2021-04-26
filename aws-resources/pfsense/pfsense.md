@@ -412,6 +412,48 @@ Aqui vamos definir qual usuário irá conectar-se no FreeRadius para validar a a
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/2.png)
 
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/3.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/4.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/5.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/6.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/7.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/8.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/9.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/10.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/11.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/12.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/13.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/14.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/15.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/16.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/17.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/18.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/19.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/20.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/21.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/22.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/23.png)
+
 ### 5.7) Adicionando Usuário de VPN
 ### 5.8) Exportando Configuração do Cliente
 ### 5.9) VPN Connect
