@@ -434,9 +434,13 @@ Depois de Configurado o Wizard, vamos ajustar alguns detalhes.
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/11.png)
 
+Mude o autenticador para usar a base do FreeRadius.
+
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/12.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/13.png)
+
+Aqui é um detalhe insteressante, pode-se definir rotas dinamicamentes e até mesmo definir os logs do serviço.
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/14.png)
 
