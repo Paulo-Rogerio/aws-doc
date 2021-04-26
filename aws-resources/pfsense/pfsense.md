@@ -397,6 +397,15 @@ Aqui vamos definir qual usuário irá conectar-se no FreeRadius para validar a a
 ![alt text](img/ec2/pfsense/openvpn/nas-client/5.png)
 
 #### 5.5.3) Usuário FreeRadios    
+
+![alt text](img/ec2/pfsense/openvpn/user-freeradius/6.png)
+
+![alt text](img/ec2/pfsense/openvpn/user-freeradius/7.png)
+
+![alt text](img/ec2/pfsense/openvpn/user-freeradius/8.png)
+
+![alt text](img/ec2/pfsense/openvpn/user-freeradius/9.png)
+
 ### 5.6) OpenVPN Wizard
 ### 5.7) Adicionando Usuário de VPN
 ### 5.8) Exportando Configuração do Cliente
