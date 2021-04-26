@@ -420,6 +420,8 @@ Aqui vamos definir qual usuário irá conectar-se no FreeRadius para validar a a
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/6.png)
 
+Aqui você precisa definir qual é a faixa de Rede da VPN.
+
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/7.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/8.png)
