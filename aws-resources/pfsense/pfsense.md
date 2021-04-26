@@ -331,6 +331,15 @@ Nessa etapa vamos configurar o OpenVPN com autenticação baseada em FreeRadios 
 ![alt text](img/ec2/pfsense/openvpn/ca/4.png)
 
 ### 5.2) Criando uma Certificado
+
+Agora vamos criar um certificado para nosso serviço.
+
+![alt text](img/ec2/pfsense/openvpn/certificado/1.png)
+
+![alt text](img/ec2/pfsense/openvpn/certificado/2.png)
+
+![alt text](img/ec2/pfsense/openvpn/certificado/3.png)
+
 ### 5.3) Criando para Usuário
 ### 5.4) Instalação de Pacotes
 #### 5.4.1) FreeRadios
