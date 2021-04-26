@@ -448,6 +448,8 @@ Entre com o IP Fixo da EC2.
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/15.png)
 
+Exportando a configuração do Usuário.
+
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/16.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/17.png)
