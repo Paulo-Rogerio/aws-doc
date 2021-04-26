@@ -300,3 +300,17 @@ Nesse momento, o objtivo é concentrar o acesso e não bloquear os acessos, por 
 ![alt text](img/ec2/pfsense/desabilitar-firewall/6.png)
 
 ### 4.8) Adicionando Ip Estático na EC2
+
+Nessa etapa vamos adicionar um **IP Fixo** para facilitar os acessos via VPN, para isso desligue a VM e localize o menu, **Elastic IPS**
+
+![alt text](img/ec2/pfsense/ip-elastic/1.png)
+
+![alt text](img/ec2/pfsense/ip-elastic/2.png)
+
+![alt text](img/ec2/pfsense/ip-elastic/3.png)
+
+![alt text](img/ec2/pfsense/ip-elastic/4.png)
+
+![alt text](img/ec2/pfsense/ip-elastic/5.png)
+
+![alt text](img/ec2/pfsense/ip-elastic/6.png)
