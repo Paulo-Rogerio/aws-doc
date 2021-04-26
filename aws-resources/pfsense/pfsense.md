@@ -262,5 +262,22 @@ Se vc tem um certificado válido para um domínio, pode-se usá-lo no frontend d
 ![alt text](img/ec2/pfsense/certificado-web/3.png)
 
 ### 4.6) Adicionando Interface de Rede
+
+Nessa etapa , vamos adicionar uma segunda interface de rede. Essa interface funcionará como uma rede local. 
+
+![alt text](img/ec2/pfsense/interface-rede/1.png)
+
+![alt text](img/ec2/pfsense/interface-rede/2.png)
+
+![alt text](img/ec2/pfsense/interface-rede/3.png)
+
+![alt text](img/ec2/pfsense/interface-rede/4.png)
+
+![alt text](img/ec2/pfsense/interface-rede/5.png)
+
+![alt text](img/ec2/pfsense/interface-rede/6.png)
+
+![alt text](img/ec2/pfsense/interface-rede/7.png)
+
 ### 4.7) Desabilitando Firewall
 ### 4.8) Adicionando Ip Estático na EC2
