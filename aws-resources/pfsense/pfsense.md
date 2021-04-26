@@ -35,8 +35,7 @@
         - [5.5.3) Usuário FreeRadios](#553-usuário-freeradios)    
     - [5.6) OpenVPN Wizard](#56-openvpn-wizard)
     - [5.7) Adicionando Usuário de VPN](#57-adicionando-usuário-de-vpn)
-    - [5.8) Exportando Configuração do Cliente](#58-exportando-configuração-do-cliente)
-    - [5.9) VPN Connect](#59-vpn-connect)
+    - [5.8) VPN Connect](#58-vpn-connect)
 - [6) IPSec](#6-ipsec)
     - [6.1) IPSec Wizard](#61-ipsec-wizard)
         - [6.1.1) Permissões AWS Necessárias](#611-permissões-aws-necessárias)
@@ -484,5 +483,4 @@ Vamos validar se a **Senha + Autenticador** está funcionando bem.
 
 ![alt text](img/ec2/pfsense/openvpn/usuario-vpn/6.png)
 
-### 5.8) Exportando Configuração do Cliente
-### 5.9) VPN Connect
+### 5.8) VPN Connect
