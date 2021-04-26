@@ -375,7 +375,17 @@ Instalar OpenVPN Exporter
 ![alt text](img/ec2/pfsense/openvpn/packages/4.png)
 
 ### 5.5) FreeRadios Configurações
+
 #### 5.5.1) Interfaces
+
+Qual interface o serviço FreeRadiu vai ficar listen?
+
+![alt text](img/ec2/pfsense/openvpn/freeradius/1.png)
+
+![alt text](img/ec2/pfsense/openvpn/freeradius/2.png)
+
+![alt text](img/ec2/pfsense/openvpn/freeradius/3.png)
+
 #### 5.5.2) Nas Clients
 #### 5.5.3) Usuário FreeRadios    
 ### 5.6) OpenVPN Wizard
