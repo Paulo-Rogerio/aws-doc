@@ -387,6 +387,15 @@ Qual interface o serviço FreeRadiu vai ficar listen?
 ![alt text](img/ec2/pfsense/openvpn/freeradius/3.png)
 
 #### 5.5.2) Nas Clients
+
+Aqui vamos definir qual usuário irá conectar-se no FreeRadius para validar a autenticação do usuário que está requisitando o login.
+
+![alt text](img/ec2/pfsense/openvpn/nas-client/3.png)
+
+![alt text](img/ec2/pfsense/openvpn/nas-client/4.png)
+
+![alt text](img/ec2/pfsense/openvpn/nas-client/5.png)
+
 #### 5.5.3) Usuário FreeRadios    
 ### 5.6) OpenVPN Wizard
 ### 5.7) Adicionando Usuário de VPN
