@@ -32,7 +32,7 @@
     - [5.5) FreeRadios Configurações](#55-freeradios-configurações)
         - [5.5.1) Interfaces](#551-interfaces)
         - [5.5.2) Nas Clients](#552-nas-clients)
-        - [5.5.2) Usuário FreeRadios](#552-usuário-freeradios)    
+        - [5.5.3) Usuário FreeRadios](#553-usuário-freeradios)    
     - [5.6) OpenVPN Wizard](#56-openvpn-wizard)
     - [5.7) Adicionando Usuário de VPN](#57-adicionando-usuário-de-vpn)
     - [5.8) Exportando Configuração do Cliente](#58-exportando-configuração-do-cliente)
@@ -314,3 +314,32 @@ Nessa etapa vamos adicionar um **IP Fixo** para facilitar os acessos via VPN, pa
 ![alt text](img/ec2/pfsense/ip-elastic/5.png)
 
 ![alt text](img/ec2/pfsense/ip-elastic/6.png)
+
+
+## 5) OpenVPN
+
+### 5.1) Criando uma CA
+
+Nessa etapa vamos configurar o OpenVPN com autenticação baseada em FreeRadios + Google Autentication. Para iniciarmos os trabalhos, vamos criar primeiramente o Autoridade Certificadora auto assinado.
+
+![alt text](img/ec2/pfsense/openvpn/ca/1.png)
+
+![alt text](img/ec2/pfsense/openvpn/ca/2.png)
+
+![alt text](img/ec2/pfsense/openvpn/ca/3.png)
+
+![alt text](img/ec2/pfsense/openvpn/ca/4.png)
+
+### 5.2) Criando uma Certificado
+### 5.3) Criando para Usuário
+### 5.4) Instalação de Pacotes
+#### 5.4.1) FreeRadios
+#### 5.4.2) OpenVPN Exporter
+### 5.5) FreeRadios Configurações
+#### 5.5.1) Interfaces
+#### 5.5.2) Nas Clients
+#### 5.5.3) Usuário FreeRadios    
+### 5.6) OpenVPN Wizard
+### 5.7) Adicionando Usuário de VPN
+### 5.8) Exportando Configuração do Cliente
+### 5.9) VPN Connect
