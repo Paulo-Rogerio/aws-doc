@@ -456,6 +456,8 @@ Exportando a configuração do Usuário.
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/18.png)
 
+Liberar no security Group da AWS a porta **1194** protocolo **UDP**.
+
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/19.png)
 
 ![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/21.png)
