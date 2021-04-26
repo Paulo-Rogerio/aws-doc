@@ -240,6 +240,17 @@ Após login, vamos dar inicio as configurações inicias. A primeira configuraç
 ![alt text](img/ec2/pfsense/user-admin/6.png)
 
 ### 4.4) Configurações Básicas
+
+Algumas configurções básicas são necessárias para garantir acesso externo do Pfsense para internet.
+
+![alt text](img/ec2/pfsense/configuracoes-basicas/1.png)
+
+![alt text](img/ec2/pfsense/configuracoes-basicas/2.png)
+
+![alt text](img/ec2/pfsense/configuracoes-basicas/3.png)
+
+![alt text](img/ec2/pfsense/configuracoes-basicas/4.png)
+
 ### 4.5) Certificado Web Browser
 ### 4.6) Adicionando Interface de Rede
 ### 4.7) Desabilitando Firewall
