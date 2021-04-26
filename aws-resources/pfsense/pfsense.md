@@ -252,6 +252,15 @@ Algumas configurções básicas são necessárias para garantir acesso externo d
 ![alt text](img/ec2/pfsense/configuracoes-basicas/4.png)
 
 ### 4.5) Certificado Web Browser
+
+Se vc tem um certificado válido para um domínio, pode-se usá-lo no frontend do Pfsense.
+
+![alt text](img/ec2/pfsense/certificado-web/1.png)
+
+![alt text](img/ec2/pfsense/certificado-web/2.png)
+
+![alt text](img/ec2/pfsense/certificado-web/3.png)
+
 ### 4.6) Adicionando Interface de Rede
 ### 4.7) Desabilitando Firewall
 ### 4.8) Adicionando Ip Estático na EC2
