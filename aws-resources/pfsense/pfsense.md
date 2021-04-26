@@ -348,9 +348,27 @@ Cada usuário que precisar conectar-se em nossa VPN precisará de um certificado
 
 ![alt text](img/ec2/pfsense/openvpn/certificado-usuario/2.png)
 
-
 ### 5.4) Instalação de Pacotes
+
+Instalar os pacotes abaixo para exportar as configurações do usuário.
+
+![alt text](img/ec2/pfsense/openvpn/packages/1.png)
+
+![alt text](img/ec2/pfsense/openvpn/packages/2.png)
+
+![alt text](img/ec2/pfsense/openvpn/packages/3.png)
+
+![alt text](img/ec2/pfsense/openvpn/packages/4.png)
+
+![alt text](img/ec2/pfsense/openvpn/packages/5.png)
+
+![alt text](img/ec2/pfsense/openvpn/packages/6.png)
+
+![alt text](img/ec2/pfsense/openvpn/packages/7.png)
+
 #### 5.4.1) FreeRadios
+
+
 #### 5.4.2) OpenVPN Exporter
 ### 5.5) FreeRadios Configurações
 #### 5.5.1) Interfaces
