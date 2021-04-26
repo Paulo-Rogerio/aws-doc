@@ -407,6 +407,11 @@ Aqui vamos definir qual usuário irá conectar-se no FreeRadius para validar a a
 ![alt text](img/ec2/pfsense/openvpn/user-freeradius/9.png)
 
 ### 5.6) OpenVPN Wizard
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/1.png)
+
+![alt text](img/ec2/pfsense/openvpn/openvpn-wizard/2.png)
+
 ### 5.7) Adicionando Usuário de VPN
 ### 5.8) Exportando Configuração do Cliente
 ### 5.9) VPN Connect
