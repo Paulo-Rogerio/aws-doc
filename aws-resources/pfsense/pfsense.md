@@ -40,7 +40,7 @@
     - [6.1) IPSec Wizard](#61-ipsec-wizard)
         - [6.1.1) Permissões AWS Necessárias](#611-permissões-aws-necessárias)
         - [6.1.2) Pacotes Pfsense Necessários](#612-pacotes-pfsense-necessários)
-        - [6.1.3) Fechando Túnel](#613-fechando-tunel)
+        - [6.1.3) Fechando Túnel](#613-fechando-túnel)
     - [6.2) IPSec Manualmente](#62-ipsec-manualmente)
         - [6.2.1) Fechando com Primeiro IP Público](#621-fechando-com-primeiro-ip-público)
             - [6.2.1.1) Fase 1](#6211-fase-1)
@@ -49,7 +49,7 @@
             - [6.2.2.1) Fase 1](#6221-fase-1)
             - [6.2.2.1) Fase 2](#6221-fase-2)
     - [6.3) Fechando Conexão com Primeiro IP Público](#63-fechando-conexão-com-primeiro-ip-público)
-    - [6.4) Fechando Conexão com Segundo IP Público](#63-fechando-conexão-com-segundo-ip-público)        
+    - [6.4) Fechando Conexão com Segundo IP Público](#64-fechando-conexão-com-segundo-ip-público)        
 
 ## 1) Porque usar Pfsense como concentrador?
 
@@ -505,4 +505,4 @@ Estabelecendo Conexão
 ##### 6.2.2.1) Fase 1
 ##### 6.2.2.1) Fase 2
 ### 6.3) Fechando Conexão com Primeiro IP Público
-### 6.4) Fechando Conexão com Segundo IP Públicos        
+### 6.4) Fechando Conexão com Segundo IP Público        
