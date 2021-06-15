@@ -46,9 +46,11 @@
         - [6.2.2) Fechando com Primeiro IP Público](#622-fechando-com-primeiro-ip-público)
             - [6.2.2.1) Fase 1](#6221-fase-1)
             - [6.2.2.2) Fase 2](#6222-fase-2)
+            - [6.2.2.3) Fase 3](#6223-fase-3)            
         - [6.2.3) Fechando com Segundo IP Público](#623-fechando-com-segundo-ip-público)
             - [6.2.3.1) Fase 1](#6231-fase-1)
             - [6.2.3.2) Fase 2](#6232-fase-2)
+            - [6.2.3.3) Fase 3](#6233-fase-3)            
     - [6.3) Fechando Conexão com Primeiro IP Público](#63-fechando-conexão-com-primeiro-ip-público)
     - [6.4) Fechando Conexão com Segundo IP Público](#64-fechando-conexão-com-segundo-ip-público)        
 
@@ -515,23 +517,356 @@ Para que o **Pfesene**, possa manipular **AWS**, é necessário que tenha um pac
 #### 6.1.3) Fechando Túnel
 
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/1.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/2.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/3.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/4.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/5.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/6.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/7.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/8.png)
+
 ![alt text](img/ipsec/ipsec-wizard/fechando-tunel/9.png)
 
 
 ### 6.2) IPSec Manualmente
+
 #### 6.2.1) Configurando VPN na AWS
+
+Nessa etapa vamos contruir o tunel manualmente, isso deixará claro o processo que é realizado pelo Wizard.
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/4.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/5.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/6.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/7.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/8.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/9.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/10.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/11.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/12.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/13.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/14.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/15.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/16.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/17.png)
+
+![alt text](img/ipsec/ipsec-manualmente/configurando-aws/18.png)
+
+```yaml
+! Amazon Web Services
+! Virtual Private Cloud
+
+! AWS utilizes unique identifiers to manipulate the configuration of 
+! a VPN Connection. Each VPN Connection is assigned an identifier and is 
+! associated with two other identifiers, namely the 
+! Customer Gateway Identifier and Virtual Private Gateway Identifier.
+!
+! Your VPN Connection ID 		  : vpn-0207bc02e3bd667a4
+! Your Virtual Private Gateway ID  : vgw-0e1a3b80deef026d6
+! Your Customer Gateway ID		  : cgw-013eeff0568cf8b5c
+!
+!
+! This configuration consists of two tunnels. Both tunnels must be 
+! configured on your Customer Gateway for redundancy.
+!
+! --------------------------------------------------------------------------------
+! IPSec Tunnel #1
+! --------------------------------------------------------------------------------
+! #1: Internet Key Exchange (IKE) Configuration
+!
+! A policy is established for the supported ISAKMP encryption, authentication, Diffie-Hellman, lifetime, 
+! and key parameters.The IKE peer is configured with the supported IKE encryption,  authentication, Diffie-Hellman, lifetime, and key 
+! parameters.Please note, these sample configurations are for the minimum requirement of AES128, SHA1, and DH Group 2.
+! Category "VPN" connections in the GovCloud region have a minimum requirement of AES128, SHA2, and DH Group 14.
+! You will need to modify these sample configuration files to take advantage of AES256, SHA256,  or other DH 
+! groups like 2, 14-18, 22, 23, and 24.
+! NOTE: If you customized tunnel options when creating or modifying your VPN connection, you may need to modify these sample configurations to match the custom settings for your tunnels.
+!
+! Higher parameters are only available for VPNs of category "VPN," and not for "VPN-Classic".
+! The address of the external interface for your customer gateway must be a static address.
+! Your customer gateway may reside behind a device performing network address translation (NAT). To 
+! ensure that NAT traversal (NAT-T) can function, you must adjust your firewall 
+! rules to unblock UDP port 4500. 
+| If not behind NAT, and you are not using an Accelerated VPN, we recommend disabling NAT-T. If you are using an Accelerated VPN, make sure that NAT-T is enabled.
+!
+!
+Go to VPN-->IPSec. Add a new Phase1 entry (click + button )
+
+General information
+ a. Disabled : uncheck
+ b. Key Exchange version :V1
+ c. Internet Protocol : IPv4
+ d. Interface : WAN
+ e. Remote Gateway: 52.67.200.218
+ f. Description: Amazon-IKE-vpn-0207bc02e3bd667a4-0
+ 
+ Phase 1 proposal (Authentication)
+ a. Authentication Method: Mutual PSK
+ b. Negotiation mode : Main
+ c. My identifier : My IP address
+ d. Peer identifier : Peer IP address
+ e. Pre-Shared Key: YQPKqoO7jIMspTUWCUXl7FzvnbihbgIw
+ 
+ Phase 1 proposal (Algorithms)
+ a. Encryption algorithm : aes128 
+ b. Hash algorithm :  sha1
+ c. DH key group :  2
+ d. Lifetime : 28800 seconds
+ 
+ Advanced Options
+ a. Disable Rekey : uncheck
+ b. Responder Only : uncheck
+ c. NAT Traversal : Auto
+ d. Deed Peer Detection : Enable DPD
+    Delay between requesting peer acknowledgement : 10 seconds
+	Number of consecutive failures allowed before disconnect : 3 retries
+	
+	
+
+! #2: IPSec Configuration
+! 
+! The IPSec transform set defines the encryption, authentication, and IPSec
+! mode parameters.
+! Category "VPN" connections in the GovCloud region have a minimum requirement of AES128, SHA2, and DH Group 14.
+! Please note, you may use these additionally supported IPSec parameters for encryption like AES256 and other DH groups like 2, 5, 14-18, 22, 23, and 24.
+! Higher parameters are only available for VPNs of category "VPN," and not for "VPN-Classic".
+
+Expand the VPN configuration clicking in "+" and then create a new Phase2 entry as follows:
+
+ a. Disabled :uncheck
+ b. Mode : Tunnel
+ c. Local Network : Type: LAN subnet
+    Address :  ! Enter your local network CIDR in the Address tab 
+ d. Remote Network : Type : Network 
+    Address :  ! Enter your remote network CIDR in the Address tab
+ e. Description : Amazon-IPSec-vpn-0207bc02e3bd667a4-0
+ 
+ Phase 2 proposal (SA/Key Exchange)
+ a. Protocol : ESP
+ b. Encryption algorithms :aes128 
+  c. Hash algorithms : hmac-sha1-96
+  d. PFS key group :   2
+e. Lifetime : 3600 seconds 
+
+Advanced Options
+
+Automatically ping host : ! Provide the IP address of an EC2 instance in VPC that will respond to ICMP.
+
+
+! --------------------------------------------------------------------------------
+
+
+! --------------------------------------------------------------------------------
+! IPSec Tunnel #2
+! --------------------------------------------------------------------------------
+! #1: Internet Key Exchange (IKE) Configuration
+!
+! A policy is established for the supported ISAKMP encryption, authentication, Diffie-Hellman, lifetime, 
+! and key parameters.The IKE peer is configured with the supported IKE encryption,  authentication, Diffie-Hellman, lifetime, and key 
+! parameters.Please note, these sample configurations are for the minimum requirement of AES128, SHA1, and DH Group 2.
+! Category "VPN" connections in the GovCloud region have a minimum requirement of AES128, SHA2, and DH Group 14.
+! You will need to modify these sample configuration files to take advantage of AES256, SHA256,  or other DH 
+! groups like 2, 14-18, 22, 23, and 24.
+! NOTE: If you customized tunnel options when creating or modifying your VPN connection, you may need to modify these sample configurations to match the custom settings for your tunnels.
+!
+! Higher parameters are only available for VPNs of category "VPN," and not for "VPN-Classic".
+! The address of the external interface for your customer gateway must be a static address.
+! Your customer gateway may reside behind a device performing network address translation (NAT). To 
+! ensure that NAT traversal (NAT-T) can function, you must adjust your firewall 
+! rules to unblock UDP port 4500. 
+| If not behind NAT, and you are not using an Accelerated VPN, we recommend disabling NAT-T. If you are using an Accelerated VPN, make sure that NAT-T is enabled.
+!
+!
+Go to VPN-->IPSec. Add a new Phase1 entry (click + button )
+
+General information
+ a. Disabled : uncheck
+ b. Key Exchange version :V1
+ c. Internet Protocol : IPv4
+ d. Interface : WAN
+ e. Remote Gateway: 54.233.165.172
+ f. Description: Amazon-IKE-vpn-0207bc02e3bd667a4-1
+ 
+ Phase 1 proposal (Authentication)
+ a. Authentication Method: Mutual PSK
+ b. Negotiation mode : Main
+ c. My identifier : My IP address
+ d. Peer identifier : Peer IP address
+ e. Pre-Shared Key: rZGpXdbGjFWMY6vyant6LqcxLycHx0rE
+ 
+ Phase 1 proposal (Algorithms)
+ a. Encryption algorithm : aes128 
+ b. Hash algorithm :  sha1
+ c. DH key group :  2
+ d. Lifetime : 28800 seconds
+ 
+ Advanced Options
+ a. Disable Rekey : uncheck
+ b. Responder Only : uncheck
+ c. NAT Traversal : Auto
+ d. Deed Peer Detection : Enable DPD
+    Delay between requesting peer acknowledgement : 10 seconds
+	Number of consecutive failures allowed before disconnect : 3 retries
+	
+	
+
+! #2: IPSec Configuration
+! 
+! The IPSec transform set defines the encryption, authentication, and IPSec
+! mode parameters.
+! Category "VPN" connections in the GovCloud region have a minimum requirement of AES128, SHA2, and DH Group 14.
+! Please note, you may use these additionally supported IPSec parameters for encryption like AES256 and other DH groups like 2, 5, 14-18, 22, 23, and 24.
+! Higher parameters are only available for VPNs of category "VPN," and not for "VPN-Classic".
+
+Expand the VPN configuration clicking in "+" and then create a new Phase2 entry as follows:
+
+ a. Disabled :uncheck
+ b. Mode : Tunnel
+ c. Local Network : Type: LAN subnet
+    Address :  ! Enter your local network CIDR in the Address tab 
+ d. Remote Network : Type : Network 
+    Address :  ! Enter your remote network CIDR in the Address tab
+ e. Description : Amazon-IPSec-vpn-0207bc02e3bd667a4-1
+ 
+ Phase 2 proposal (SA/Key Exchange)
+ a. Protocol : ESP
+ b. Encryption algorithms :aes128 
+  c. Hash algorithms : hmac-sha1-96
+  d. PFS key group :   2
+e. Lifetime : 3600 seconds 
+
+Advanced Options
+
+Automatically ping host : ! Provide the IP address of an EC2 instance in VPC that will respond to ICMP.
+
+
+! --------------------------------------------------------------------------------
+
+
+
+! Additional Notes and Questions
+!  - Amazon Virtual Private Cloud Getting Started Guide: 
+!       http://docs.amazonwebservices.com/AmazonVPC/latest/GettingStartedGuide
+!  - Amazon Virtual Private Cloud Network Administrator Guide: 
+!       http://docs.amazonwebservices.com/AmazonVPC/latest/NetworkAdminGuide
+!  - XSL Version: 2009-07-15-1119716
+```
+
 #### 6.2.2) Fechando com Primeiro IP Público
+
 ##### 6.2.2.1) Fase 1
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-1/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-1/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-1/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-1/4.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-1/5.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-1/6.png)
+
 ##### 6.2.2.2) Fase 2
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-2/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-2/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-2/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-2/4.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-2/5.png)
+
+##### 6.2.2.3) Fase 3
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-3/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-3/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-3/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-3/4.png)
+
+![alt text](img/ipsec/ipsec-manualmente/primeiro-ip/fase-3/5.png)
+
 ### 6.2.3) Fechando com Segundo IP Público
+
 ##### 6.2.3.1) Fase 1
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-1/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-1/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-1/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-1/4.png)
+
 ##### 6.2.3.2) Fase 2
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-2/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-2/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-2/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-2/4.png)
+
+##### 6.2.3.3) Fase 3
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-3/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-3/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-3/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-3/4.png)
+
+![alt text](img/ipsec/ipsec-manualmente/segundo-ip/fase-3/5.png)
+
 ### 6.3) Fechando Conexão com Primeiro IP Público
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/primeiro-ip/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/primeiro-ip/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/primeiro-ip/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/primeiro-ip/4.png)
+
 ### 6.4) Fechando Conexão com Segundo IP Público        
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/segundo-ip/1.png)
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/segundoo-ip/2.png)
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/segundo-ip/3.png)
+
+![alt text](img/ipsec/ipsec-manualmente/conectando/segundo-ip/4.png)
