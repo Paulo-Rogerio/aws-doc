@@ -502,7 +502,7 @@ Estabelecendo Conexão
 #### 6.2.1) Configurando VPN na AWS
 #### 6.2.2) Fechando com Primeiro IP Público
 ##### 6.2.2.1) Fase 1
-##### 6.2.2.1) Fase 2
+##### 6.2.2.2) Fase 2
 ### 6.2.3) Fechando com Segundo IP Público
 ##### 6.2.3.1) Fase 1
 ##### 6.2.3.2) Fase 2
