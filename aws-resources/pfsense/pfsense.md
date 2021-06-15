@@ -42,12 +42,13 @@
         - [6.1.2) Pacotes Pfsense Necessários](#612-pacotes-pfsense-necessários)
         - [6.1.3) Fechando Túnel](#613-fechando-túnel)
     - [6.2) IPSec Manualmente](#62-ipsec-manualmente)
-        - [6.2.1) Fechando com Primeiro IP Público](#621-fechando-com-primeiro-ip-público)
-            - [6.2.1.1) Fase 1](#6211-fase-1)
-            - [6.2.1.1) Fase 2](#6211-fase-2)
-        - [6.2.2) Fechando com Segundo IP Público](#622-fechando-com-segundo-ip-público)
+        - [6.2.1) Configurando VPN na AWS](#621-configurando-vpn-na-aws)
+        - [6.2.2) Fechando com Primeiro IP Público](#622-fechando-com-primeiro-ip-público)
             - [6.2.2.1) Fase 1](#6221-fase-1)
-            - [6.2.2.1) Fase 2](#6221-fase-2)
+            - [6.2.2.2) Fase 2](#6222-fase-2)
+        - [6.2.3) Fechando com Segundo IP Público](#623-fechando-com-segundo-ip-público)
+            - [6.2.3.1) Fase 1](#6231-fase-1)
+            - [6.2.3.2) Fase 2](#6232-fase-2)
     - [6.3) Fechando Conexão com Primeiro IP Público](#63-fechando-conexão-com-primeiro-ip-público)
     - [6.4) Fechando Conexão com Segundo IP Público](#64-fechando-conexão-com-segundo-ip-público)        
 
@@ -498,11 +499,12 @@ Estabelecendo Conexão
 #### 6.1.2) Pacotes Pfsense Necessários
 #### 6.1.3) Fechando Túnel
 ### 6.2) IPSec Manualmente
-#### 6.2.1) Fechando com Primeiro IP Público
-##### 6.2.1.1) Fase 1
-##### 6.2.1.1) Fase 2
-### 6.2.2) Fechando com Segundo IP Público
+#### 6.2.1) Configurando VPN na AWS
+#### 6.2.2) Fechando com Primeiro IP Público
 ##### 6.2.2.1) Fase 1
 ##### 6.2.2.1) Fase 2
+### 6.2.3) Fechando com Segundo IP Público
+##### 6.2.3.1) Fase 1
+##### 6.2.3.2) Fase 2
 ### 6.3) Fechando Conexão com Primeiro IP Público
 ### 6.4) Fechando Conexão com Segundo IP Público        
