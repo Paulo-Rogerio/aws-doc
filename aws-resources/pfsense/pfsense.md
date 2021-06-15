@@ -492,12 +492,39 @@ Estabelecendo Conexão
 
 ![alt text](img/ec2/pfsense/openvpn/vpn-connect/25.png)
 
-
 ## 6) IPSec
 ### 6.1) IPSec Wizard
+
 #### 6.1.1) Permissões AWS Necessárias
+
+Nessa etapa vamos usar o próprio **PfSense**, para criar as configurações necessárias tanto na **AWS**, quanto no **PfSense**. Para isso é necessário que o **PfSense** tenha acesso a uma conta na AWS e atrelar as seguintes permissões.
+
+![alt text](img/ipsec/ipsec-wizard/permissoes-iam/1.png)
+![alt text](img/ipsec/ipsec-wizard/permissoes-iam/2.png)
+![alt text](img/ipsec/ipsec-wizard/permissoes-iam/3.png)
+![alt text](img/ipsec/ipsec-wizard/permissoes-iam/4.png)
+![alt text](img/ipsec/ipsec-wizard/permissoes-iam/5.png)
+![alt text](img/ipsec/ipsec-wizard/permissoes-iam/6.png)
+
 #### 6.1.2) Pacotes Pfsense Necessários
+
+Para que o **Pfesene**, possa manipular **AWS**, é necessário que tenha um pacote para que essa interação aconteça.
+
+![alt text](img/ipsec/ipsec-wizard/pacotes/1.png)
+
 #### 6.1.3) Fechando Túnel
+
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/1.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/2.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/3.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/4.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/5.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/6.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/7.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/8.png)
+![alt text](img/ipsec/ipsec-wizard/fechando-tunel/9.png)
+
+
 ### 6.2) IPSec Manualmente
 #### 6.2.1) Configurando VPN na AWS
 #### 6.2.2) Fechando com Primeiro IP Público
