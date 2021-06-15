@@ -865,7 +865,7 @@ Automatically ping host : ! Provide the IP address of an EC2 instance in VPC tha
 
 ![alt text](img/ipsec/ipsec-manualmente/conectando/segundo-ip/1.png)
 
-![alt text](img/ipsec/ipsec-manualmente/conectando/segundoo-ip/2.png)
+![alt text](img/ipsec/ipsec-manualmente/conectando/segundo-ip/2.png)
 
 ![alt text](img/ipsec/ipsec-manualmente/conectando/segundo-ip/3.png)
 
