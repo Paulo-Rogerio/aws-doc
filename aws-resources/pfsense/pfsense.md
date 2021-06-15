@@ -8,7 +8,7 @@
     - [3.1.2) Criando SubNet](#312-criando-subnet)
     - [3.1.3) Criando Internet Gateway](#313-criando-internet-gateway) 
     - [3.1.4) Tabela de Roteamento](#314-tabela-de-roteamento)   
-  - [3.2) Segunda VPC](#32-primeira-vpc)
+  - [3.2) Segunda VPC](#32-segunda-vpc)
     - [3.2.1) Criando VPC](#321-criando-vpc)
     - [3.2.2) Criando SubNet](#322-criando-subnet)
     - [3.2.3) Criando Internet Gateway](#323-criando-internet-gateway) 
@@ -24,8 +24,8 @@
     - [4.8) Adicionando Ip Estático na EC2](#48-adicionando-ip-estático-na-ec2)
 - [5) OpenVPN](#5-openvpn)
     - [5.1) Criando uma CA](#51-criando-uma-ca)
-    - [5.2) Criando uma Certificado](#52-criando-um-certificado)
-    - [5.3) Criando para Usuário](#53-certificado-para-usuario)
+    - [5.2) Criando um Certificado](#52-criando-um-certificado)
+    - [5.3) Criando Certificado para Usuário](#53-criando-certificado-para-usuário)
     - [5.4) Instalação de Pacotes](#54-instalação-de-pacotes)
         - [5.4.1) FreeRadios](#541-freeradios)
         - [5.4.2) OpenVPN Exporter](#542-openvpn-exporter)
@@ -329,7 +329,7 @@ Nessa etapa vamos configurar o OpenVPN com autenticação baseada em FreeRadios 
 
 ![alt text](img/ec2/pfsense/openvpn/ca/4.png)
 
-### 5.2) Criando uma Certificado
+### 5.2) Criando um Certificado
 
 Agora vamos criar um certificado para nosso serviço.
 
@@ -339,7 +339,7 @@ Agora vamos criar um certificado para nosso serviço.
 
 ![alt text](img/ec2/pfsense/openvpn/certificado/3.png)
 
-### 5.3) Criando para Usuário
+### 5.3) Criando Certificado para Usuário
 
 Cada usuário que precisar conectar-se em nossa VPN precisará de um certificado assinado pela certificadora **OpenVPN_CA**, gerada nos passos anteriores.
 
@@ -490,3 +490,19 @@ Estabelecendo Conexão
 ![alt text](img/ec2/pfsense/openvpn/vpn-connect/24.png)
 
 ![alt text](img/ec2/pfsense/openvpn/vpn-connect/25.png)
+
+
+## 6) IPSec
+### 6.1) IPSec Wizard
+#### 6.1.1) Permissões AWS Necessárias
+#### 6.1.2) Pacotes Pfsense Necessários
+#### 6.1.3) Fechando Túnel
+### 6.2) IPSec Manualmente
+#### 6.2.1) Fechando com Primeiro IP Público
+##### 6.2.1.1) Fase 1
+##### 6.2.1.1) Fase 2
+### 6.2.2) Fechando com Segundo IP Público
+##### 6.2.2.1) Fase 1
+##### 6.2.2.1) Fase 2
+### 6.3) Fechando Conexão com Primeiro IP Público
+### 6.4) Fechando Conexão com Segundo IP Públicos        
